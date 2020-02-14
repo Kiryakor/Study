@@ -14,6 +14,7 @@
 class Date{
 private:
     int day, month, year;
+    
     bool isValid();
     bool isRange(int value, int min, int max);
 public:

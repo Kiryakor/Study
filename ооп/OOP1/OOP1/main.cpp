@@ -21,10 +21,11 @@ void readDate(int dateArr[]){
 }
 
 void menu(){
-    cout << "1 - ввести данные" << endl;
-    cout << "2 - вывести данные" << endl;
-    cout << "3 - проверить дату рождения" << endl;
-    cout << "4 - выход" << endl;
+    cout << "Выберите пункт меню" << endl;
+    cout << "1 - Ввести данные" << endl;
+    cout << "2 - Вывести данные" << endl;
+    cout << "3 - Проверить дату рождения" << endl;
+    cout << "4 - Выход" << endl;
 }
 
 int main() {

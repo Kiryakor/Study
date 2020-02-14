@@ -12,7 +12,7 @@
 using namespace std;
 
 void Date::print(){
-    cout << day << " " << month << " " << year << endl;
+    cout << day << "." << month << "." << year << endl;
 }
 
 bool Date::isRange(int value, int min, int max) {
