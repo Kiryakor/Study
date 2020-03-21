@@ -1,0 +1,14 @@
+%option noyywrap
+%{
+#include <stdio.h>
+#include "lab8.h"
+%}
+
+Identifier [*x65()]
+BadSymbol [^*x65()\n]
+
+%%
+{Identifier} { return *yytext; }
+{BadSymbol} { return badsym; }
+\n { return ident; }
+%%

@@ -1,0 +1,37 @@
+%{
+#include <stdio.h>
+void yyerror(char const* msg);
+%}
+
+%token ident
+%token badsym
+
+%%
+word: | word line;
+line: ident |
+	S ident { printf("Success!\n"); YYACCEPT; } |
+	badsym { printf("Syntax error!\n"); YYERROR;} |
+	error ident { YYABORT;};
+
+S : E;
+E : E'+'T;
+S : T;
+T : T'*'F;
+T : F;
+F : 'x';
+F : '6';
+F : '5';
+F : (E);
+
+%%
+
+void yyerror(char const* msg) {
+	printf("Syntax error!\n");
+}
+int main() {
+	printf("Enter words:\n");
+	while(1) {
+		yyparse();
+	}
+	return 0;
+}
