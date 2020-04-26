@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		ED7D17D1245576170083629A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17D0245576170083629A /* main.swift */; };
+		ED7D17D9245576FF0083629A /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17D8245576FF0083629A /* Passenger.swift */; };
+		ED7D17DB245577230083629A /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17DA245577230083629A /* Flight.swift */; };
+		ED7D17DD2455773C0083629A /* Tickets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17DC2455773C0083629A /* Tickets.swift */; };
+		ED7D17E0245577670083629A /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17DF245577670083629A /* AVLTree.swift */; };
+		ED7D17E2245577850083629A /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17E1245577850083629A /* HashTable.swift */; };
+		ED7D17E72455794C0083629A /* list.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17E62455794C0083629A /* list.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,12 @@
 /* Begin PBXFileReference section */
 		ED7D17CD245576170083629A /* курсач */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "курсач"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7D17D0245576170083629A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		ED7D17D8245576FF0083629A /* Passenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
+		ED7D17DA245577230083629A /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		ED7D17DC2455773C0083629A /* Tickets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tickets.swift; sourceTree = "<group>"; };
+		ED7D17DF245577670083629A /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
+		ED7D17E1245577850083629A /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
+		ED7D17E62455794C0083629A /* list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +69,39 @@
 		ED7D17CF245576170083629A /* курсач */ = {
 			isa = PBXGroup;
 			children = (
+				ED7D17E3245577AF0083629A /* Helpers */,
+				ED7D17DE245577520083629A /* Структуры данных */,
+				ED7D17D7245576E30083629A /* Model */,
 				ED7D17D0245576170083629A /* main.swift */,
 			);
 			path = "курсач";
+			sourceTree = "<group>";
+		};
+		ED7D17D7245576E30083629A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED7D17D8245576FF0083629A /* Passenger.swift */,
+				ED7D17DA245577230083629A /* Flight.swift */,
+				ED7D17DC2455773C0083629A /* Tickets.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ED7D17DE245577520083629A /* Структуры данных */ = {
+			isa = PBXGroup;
+			children = (
+				ED7D17DF245577670083629A /* AVLTree.swift */,
+				ED7D17E1245577850083629A /* HashTable.swift */,
+				ED7D17E62455794C0083629A /* list.swift */,
+			);
+			path = "Структуры данных";
+			sourceTree = "<group>";
+		};
+		ED7D17E3245577AF0083629A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED7D17E72455794C0083629A /* list.swift in Sources */,
+				ED7D17DB245577230083629A /* Flight.swift in Sources */,
+				ED7D17D9245576FF0083629A /* Passenger.swift in Sources */,
 				ED7D17D1245576170083629A /* main.swift in Sources */,
+				ED7D17DD2455773C0083629A /* Tickets.swift in Sources */,
+				ED7D17E2245577850083629A /* HashTable.swift in Sources */,
+				ED7D17E0245577670083629A /* AVLTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
