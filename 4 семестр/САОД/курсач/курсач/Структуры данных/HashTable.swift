@@ -83,4 +83,15 @@ class HashTable{
             tryCount += 1
         }
     }
+    
+    func findForFIO(fio:String) -> Bool{
+        var check = false
+        for i in data{
+            if i.fio == fio{
+                print("ФИО - \(fio)   номер паспорта - \(i.passport!)")
+                check = true
+            }
+        }
+        return check
+    }
 }

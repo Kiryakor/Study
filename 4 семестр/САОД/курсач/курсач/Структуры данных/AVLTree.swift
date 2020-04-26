@@ -26,7 +26,7 @@ public class AVLTree {
     
     /// removes a single occurrence of a value from the tree
     /// - Parameter value: the element to be removed
-    func remove(value: Flight) {
+    func remove(value: String) {
         guard let root = self.root else { return } // nothing to do
         self.root = root.remove(value)
     }
@@ -152,12 +152,12 @@ internal class AVLNode{
         return self
     }
     
-    internal func remove(_ value: Flight) -> AVLNode? {
-        if value.number < self.value.number, let left = self.left {
+    internal func remove(_ value: String) -> AVLNode? {
+        if value < self.value.number, let left = self.left {
             self.left = left.remove(value)
             self.recalculateHeight()
             return self.rebalanceIfNeeded()
-        } else if value.number > self.value.number, let right = self.right {
+        } else if value > self.value.number, let right = self.right {
             self.right = right.remove(value)
             self.recalculateHeight()
             return self.rebalanceIfNeeded()
