@@ -53,10 +53,10 @@ class CircularLinkedList{
         self.last = temp
     }
     
-    func popItem(data:Tickets){
+    func popItem(data:String){
         var currentNode = self.last
         while (currentNode != nil){
-            if currentNode?.next?.data.airTickets == data.airTickets{
+            if currentNode?.next?.data.airTickets == data{
                 currentNode?.next = currentNode?.next?.next
                 break
             }

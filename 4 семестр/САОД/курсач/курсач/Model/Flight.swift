@@ -79,4 +79,14 @@ struct Flight {
         return true
     }
 
+     func printData(){
+        print("номер рейса \(number)")
+        print("название компании \(company)")
+        print("откуда \(from)")
+        print("куда \(to)")
+        print("дату рейсаа \(date)")
+        print("время рейса \(time)")
+        print("кол-во мест \(count)")
+        print("кол-во свободных мест \(countFree)")
+    }
 }

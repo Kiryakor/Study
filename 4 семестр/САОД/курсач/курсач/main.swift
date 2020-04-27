@@ -24,7 +24,7 @@ class Main {
         while check {
             print("1 - регистрация нового пассажира")
             print("2 - удаление данных о пассажире")
-            print("3 - просмотр всех зарегистрированных пассажиров")
+            print("3 - просмотр всех зарегистрированных пассажиров. Результаты поиска – все сведения о найденном пассажире и номерах авиарейсов, на который он купил билет")
             print("4 - очистка данных о пассажирах")
             print("5 - поиск пассажира по его N паспорта")
             print("6 - поиск пассажира по его ФИО")
@@ -32,6 +32,10 @@ class Main {
             print("8 - удаление сведений об авиарейсе;")
             print("9 - просмотр всех авиарейсов")
             print("10 - очистка данных об авиарейсах")
+            print("11 - поиск пассажира по N авиарейса. Результаты поиска – все сведения о найденном авиарейсе, а также ФИО и номера паспортов пассажиров, которые купили билет на этот авиарейс")
+            print("12 - поиск авиарейса по фрагментам названия аэропорта прибытия. Результаты поиска – список найденных авиарейсов с указанием номера авиарейса, аэропорта прибытия, даты отправления, времени отправления;")
+            print("13 - регистрация продажи пассажиру авиабилета")
+            print("14 - регистрация возврата пассажиром авиабилета")
             
             let value = readLine()
             switch value {
@@ -64,6 +68,18 @@ class Main {
                 break
             case "10":
                 removeAllAirFligth()
+                break
+            case "11":
+                findForAirFlight()
+                break
+            case "12":
+                find12()
+                break
+            case "13":
+                saleTickets()
+                break
+            case "14":
+                returnTickets()
                 break
             default:
                 check = false
@@ -134,7 +150,7 @@ class Main {
     }
     
     private func removeAirFligth(){
-       print("Введите номер aвиарейса")
+        print("Введите номер aвиарейса")
         let number = readLine()
         guard number != nil, number != "" else { print("Вы ввели неверно данные"); return}
         if Flight.checkNumber(number: number!){
@@ -152,6 +168,54 @@ class Main {
     
     private func removeAllAirFligth(){
         tree = AVLTree()
+    }
+    
+    private func findForAirFlight(){
+//        Результаты поиска – все сведения
+//        о найденном авиарейсе, а также ФИО и номера паспортов
+//        пассажиров, которые купили билет на этот авиарейс;
+        print("Введите номер aвиарейса")
+        let number = readLine()
+        guard number != nil, number != "" else { print("Вы ввели неверно данные"); return}
+        
+        if Flight.checkNumber(number: number!){
+            let data:[Flight] = tree.values
+            for i in data{
+                if i.number == number!{
+                    i.printData()
+                }
+            }
+        }else{
+            print("Вы ввели неверно данные")
+        }
+    }
+    
+    private func find12(){
+        
+    }
+    
+    private func saleTickets(){
+        let passport = readLine()
+        guard passport != nil, true == Passenger.checkPassport(passport: passport!) else { return }
+        
+        let airFlight = readLine()
+        guard airFlight != nil, true == Flight.checkNumber(number: airFlight!) else {
+            return
+        }
+        
+        let airTickets = readLine()
+        guard airTickets != nil, true == Tickets.checkAirTickets(airTickets: airTickets!) else { return }
+        
+        let tickets = Tickets(passport: passport!, airFlight: airFlight!, airTickets: airTickets!)
+        
+        list.addToListEnd(data: tickets)
+    }
+    
+    private func returnTickets(){
+        let airTickets = readLine()
+        guard airTickets != nil, true == Tickets.checkAirTickets(airTickets: airTickets!) else { return }
+        
+        list.popItem(data: airTickets!)
     }
 }
 
