@@ -41,6 +41,23 @@ public class AVLTree {
         root.preorderTraversal { result.append($0) }
         return result
     }
+        
+    func searchBM(to:String) -> [Flight]{
+        guard let root = self.root else { return [] }
+        var result: [Flight] = []
+        root.preorderTraversalAndSearchBM(to: to, { result.append($0) })
+        return result
+    }
+    
+    func freePlace(company:String) -> Bool {
+        for i in values{
+            if i.company == company{
+                if i.countFree > 0 { return true }
+                else { return false }
+            }
+        }
+        return false
+    }
 }
 
 internal class AVLNode{
@@ -186,5 +203,14 @@ internal class AVLNode{
         self.left?.preorderTraversal(callback)
         self.right?.preorderTraversal(callback)
         callback(self.value)
+    }
+    
+    //обратный проход дерева
+    internal func preorderTraversalAndSearchBM(to:String,_ callback: (Flight) -> Void) {
+        self.left?.preorderTraversal(callback)
+        self.right?.preorderTraversal(callback)
+        if self.value.to.searchBM(pattern: to) != nil{
+            callback(self.value)
+        }
     }
 }

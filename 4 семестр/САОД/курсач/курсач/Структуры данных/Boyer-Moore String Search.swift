@@ -1,8 +1,15 @@
+//
+//  Boyer-Moore String Search.swift
+//  курсач
+//
+//  Created by Кирилл on 28.04.2020.
+//  Copyright © 2020 Кирилл. All rights reserved.
+//
 
 import Foundation
 
 extension String {
-    func index(pattern: String) -> Index? {
+    func searchBM(pattern: String) -> Index? {
         // Cache the length of the search pattern because we're going to
         // use it a few times and it's expensive to calculate.
         let patternLength = pattern.count
@@ -64,7 +71,3 @@ extension String {
         return nil
     }
 }
-
-
-let s = "Hello, World"
-let a = s.index(pattern: "World")

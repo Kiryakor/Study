@@ -76,6 +76,8 @@ struct Flight {
         self.countFree = Int(readLine()!)!
         guard self.countFree != -1 else { return false }
         
+        if count < countFree { return false }
+        
         return true
     }
 

@@ -14,6 +14,8 @@
 		ED7D17E0245577670083629A /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17DF245577670083629A /* AVLTree.swift */; };
 		ED7D17E2245577850083629A /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17E1245577850083629A /* HashTable.swift */; };
 		ED7D17E72455794C0083629A /* list.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17E62455794C0083629A /* list.swift */; };
+		ED8217B02458302D007556EA /* Boyer-Moore String Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8217AF2458302D007556EA /* Boyer-Moore String Search.swift */; };
+		ED8217B3245855D0007556EA /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8217B2245855D0007556EA /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +39,8 @@
 		ED7D17DF245577670083629A /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
 		ED7D17E1245577850083629A /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
 		ED7D17E62455794C0083629A /* list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list.swift; sourceTree = "<group>"; };
+		ED8217AF2458302D007556EA /* Boyer-Moore String Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Boyer-Moore String Search.swift"; sourceTree = "<group>"; };
+		ED8217B2245855D0007556EA /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +73,7 @@
 		ED7D17CF245576170083629A /* курсач */ = {
 			isa = PBXGroup;
 			children = (
-				ED7D17E3245577AF0083629A /* Helpers */,
+				ED8217B2245855D0007556EA /* Menu.swift */,
 				ED7D17DE245577520083629A /* Структуры данных */,
 				ED7D17D7245576E30083629A /* Model */,
 				ED7D17D0245576170083629A /* main.swift */,
@@ -93,15 +97,9 @@
 				ED7D17DF245577670083629A /* AVLTree.swift */,
 				ED7D17E1245577850083629A /* HashTable.swift */,
 				ED7D17E62455794C0083629A /* list.swift */,
+				ED8217AF2458302D007556EA /* Boyer-Moore String Search.swift */,
 			);
 			path = "Структуры данных";
-			sourceTree = "<group>";
-		};
-		ED7D17E3245577AF0083629A /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,7 +166,9 @@
 				ED7D17D1245576170083629A /* main.swift in Sources */,
 				ED7D17DD2455773C0083629A /* Tickets.swift in Sources */,
 				ED7D17E2245577850083629A /* HashTable.swift in Sources */,
+				ED8217B3245855D0007556EA /* Menu.swift in Sources */,
 				ED7D17E0245577670083629A /* AVLTree.swift in Sources */,
+				ED8217B02458302D007556EA /* Boyer-Moore String Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

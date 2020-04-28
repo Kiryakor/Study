@@ -23,7 +23,7 @@ class HashTable{
     }
     
     private func hash(newValue:String) -> Int {
-        return abs(newValue.hashValue % data.count)
+        return abs(newValue.hashValue % sizeData)
     }
     
     func newElement(passenger:Passenger){
@@ -56,17 +56,13 @@ class HashTable{
     
     func lookAllPeple() {
         for i in data{
-            if i.passport != nil{
-                print(i)
-            }
+            if i.passport != nil{ print(i) }
         }
     }
     
     func deleteAllPeople() {
         for i in 0..<sizeData {
-            if data[i].passport != nil{
-                data[i] = Passenger()
-            }
+            if data[i].passport != nil{ data[i] = Passenger() }
         }
     }
     
