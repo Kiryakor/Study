@@ -17,6 +17,8 @@ class Menu {
     func menu() {
         var check = true
         while check {
+            print("")
+            print("Меню")
             print("1 - регистрация нового пассажира")
             print("2 - удаление данных о пассажире")
             print("3 - просмотр всех зарегистрированных пассажиров. Результаты поиска – все сведения о найденном пассажире и номерах авиарейсов, на который он купил билет")
@@ -31,6 +33,8 @@ class Menu {
             print("12 - поиск авиарейса по фрагментам названия аэропорта прибытия. Результаты поиска – список найденных авиарейсов с указанием номера авиарейса, аэропорта прибытия, даты отправления, времени отправления;")
             print("13 - регистрация продажи пассажиру авиабилета")
             print("14 - регистрация возврата пассажиром авиабилета")
+            print("15 - выход")
+            print("")
             
             let value = readLine()
             switch value {
@@ -44,7 +48,7 @@ class Menu {
                 lookAllPeople()
                 break
             case "4":
-                deletePeopleData()
+                deleteAllPeople()
                 break
             case "5":
                 findForPassport()
@@ -150,11 +154,13 @@ class Menu {
         guard number != nil, number != "" else { print("Вы ввели неверно данные"); return}
         if Flight.checkNumber(number: number!){
             tree.remove(value: number!)
+            print("Пользователь удален ")
         }else{ print("Вы ввели неверно данные") }
     }
     
     private func lookAllAirFligth(){
         let data:[Flight] = tree.values
+        if data.count == 0 { print("Данных нету") }
         for i in data{
             print(i.number)
             print(i.company)
@@ -166,6 +172,7 @@ class Menu {
     
     private func removeAllAirFligth(){
         tree = AVLTree()
+        print("Все данные об авиарейсах удалены")
     }
     
     private func findForAirFlight(){
@@ -189,6 +196,7 @@ class Menu {
         guard name != "", name != nil else { return }
         
         let result:[Flight] = tree.searchBM(to: name!)
+        if result.count == 0{ print("Данных нету") }
         for i in result{
             i.printData()
             print("")

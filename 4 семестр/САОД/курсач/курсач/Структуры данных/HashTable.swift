@@ -45,7 +45,11 @@ class HashTable{
         var tryCount = 0,check = true
         while check {
             index += c*tryCount + d*(tryCount^2)
-            while index > sizeData { uppendNilData() }
+            if index > sizeData{
+                print("Пользователя с таким паспортом нету")
+                check = false
+                return
+            }
             if data[index].passport == passportNumber{
                 data[index] = Passenger()
                 check = false
@@ -55,8 +59,15 @@ class HashTable{
     }
     
     func lookAllPeple() {
+        var count = 0
         for i in data{
-            if i.passport != nil{ print(i) }
+            if i.passport != nil{
+                count += 1
+                print(i)
+            }
+        }
+        if count == 0{
+            print("Пользователей ещё нету")
         }
     }
     
@@ -64,6 +75,7 @@ class HashTable{
         for i in 0..<sizeData {
             if data[i].passport != nil{ data[i] = Passenger() }
         }
+        print("Все данные о пассажирах удалены")
     }
     
     func returnPeople (passportNumber:String) -> Passenger?{
