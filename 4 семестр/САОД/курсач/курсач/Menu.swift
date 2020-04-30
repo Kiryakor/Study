@@ -90,6 +90,7 @@ class Menu {
         var people = Passenger()
         if people.registerPeople(){
             table.newElement(passenger: people)
+            print("Пользователь упешно добавлен")
         }
     }
     
@@ -205,17 +206,25 @@ class Menu {
     
     private func saleTickets(){
         //2.2.5.12. Регистрация продажи авиабилета на определенный авиарейс должна осуществляться только при наличии свободных мест на этот авиарейс
-        
+        print("Введите номер паспорта")
         let passport = readLine()
-        guard passport != nil, true == Passenger.checkPassport(passport: passport!) else { return }
+        guard passport != nil, true == Passenger.checkPassport(passport: passport!) else {
+            print("некорректные данные")
+            return }
         
+        print("Введите номер авиарейса")
         let airFlight = readLine()
         guard airFlight != nil, true == Flight.checkNumber(number: airFlight!) else {
+            print("некорректные данные")
             return
         }
         
+        print("Введите номер битела")
         let airTickets = readLine()
-        guard airTickets != nil, true == Tickets.checkAirTickets(airTickets: airTickets!) else { return }
+        guard airTickets != nil, true == Tickets.checkAirTickets(airTickets: airTickets!) else {
+            print("некорректные данные")
+            return
+        }
         
         let tickets = Tickets(passport: passport!, airFlight: airFlight!, airTickets: airTickets!)
         
@@ -227,8 +236,12 @@ class Menu {
     }
     
     private func returnTickets(){
+        print("Введите номер билета")
         let airTickets = readLine()
-        guard airTickets != nil, true == Tickets.checkAirTickets(airTickets: airTickets!) else { return }
+        guard airTickets != nil, true == Tickets.checkAirTickets(airTickets: airTickets!) else {
+            print("некорректные данные")
+            return
+        }
         
         list.popItem(data: airTickets!)
     }
