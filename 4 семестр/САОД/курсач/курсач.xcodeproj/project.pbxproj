@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED52913F245F41BC00F43FBD /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52913E245F41BC00F43FBD /* data.swift */; };
 		ED7D17D1245576170083629A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17D0245576170083629A /* main.swift */; };
 		ED7D17D9245576FF0083629A /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17D8245576FF0083629A /* Passenger.swift */; };
 		ED7D17DB245577230083629A /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D17DA245577230083629A /* Flight.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED52913E245F41BC00F43FBD /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
 		ED7D17CD245576170083629A /* курсач */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "курсач"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7D17D0245576170083629A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		ED7D17D8245576FF0083629A /* Passenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
@@ -73,10 +75,11 @@
 		ED7D17CF245576170083629A /* курсач */ = {
 			isa = PBXGroup;
 			children = (
-				ED8217B2245855D0007556EA /* Menu.swift */,
 				ED7D17DE245577520083629A /* Структуры данных */,
 				ED7D17D7245576E30083629A /* Model */,
 				ED7D17D0245576170083629A /* main.swift */,
+				ED8217B2245855D0007556EA /* Menu.swift */,
+				ED52913E245F41BC00F43FBD /* data.swift */,
 			);
 			path = "курсач";
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				ED7D17E2245577850083629A /* HashTable.swift in Sources */,
 				ED8217B3245855D0007556EA /* Menu.swift in Sources */,
 				ED7D17E0245577670083629A /* AVLTree.swift in Sources */,
+				ED52913F245F41BC00F43FBD /* data.swift in Sources */,
 				ED8217B02458302D007556EA /* Boyer-Moore String Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

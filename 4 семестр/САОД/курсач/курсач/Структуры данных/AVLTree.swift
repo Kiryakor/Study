@@ -12,10 +12,8 @@ import Foundation
 // https://github.com/hfutrell/AVLTree/blob/master/AVLTree/AVLTree.swift
 public class AVLTree {
     internal var root: AVLNode?
-    /// creates an empty AVL Tree
     init() { }
-    /// inserts a value into the tree
-    /// - Parameter value: the value to be inserted
+
     func insert(value: Flight) {
         if let root = self.root {
             self.root = root.insert(value)
@@ -24,16 +22,18 @@ public class AVLTree {
         }
     }
     
-    /// removes a single occurrence of a value from the tree
-    /// - Parameter value: the element to be removed
     func remove(value: String) {
         guard let root = self.root else { return } // nothing to do
         self.root = root.remove(value)
     }
     
-    /// A Boolean value that indicates whether the tree is empty
+    func removeAllData(){
+        for i in values{
+            remove(value: i.number)
+        }
+    }
+
     var isEmpty: Bool { return self.root == nil }
-    /// An ordered collection of the entries contained in the tree.
     
     var values: [Flight] {
         guard let root = self.root else { return [] }
@@ -57,6 +57,10 @@ public class AVLTree {
             }
         }
         return false
+    }
+    
+    func minusFreePlace(number:String){
+        self.root?.preorderTraversalFree(number: number)
     }
 }
 
@@ -204,6 +208,15 @@ internal class AVLNode{
         self.right?.preorderTraversal(callback)
         callback(self.value)
     }
+    
+    internal func preorderTraversalFree(number:String) {
+        self.left?.preorderTraversalFree(number: number)
+        self.right?.preorderTraversalFree(number: number)
+        if self.value.number == number{
+            self.value.countFree -= 1
+            return
+        }
+      }
     
     //обратный проход дерева
     internal func preorderTraversalAndSearchBM(to:String,_ callback: (Flight) -> Void) {

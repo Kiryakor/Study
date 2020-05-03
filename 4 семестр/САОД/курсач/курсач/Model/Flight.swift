@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 //MARK: авиарейсы
 struct Flight {
     var number:String //«AAA-NNN», где AAA – код авиакомпании (буквы латиницы), NNN – порядковый номер авиарейса (цифры);

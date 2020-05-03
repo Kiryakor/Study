@@ -6,7 +6,5 @@
 //  Copyright © 2020 Кирилл. All rights reserved.
 //
 
-import Foundation
-
 let a = Menu()
 a.menu()

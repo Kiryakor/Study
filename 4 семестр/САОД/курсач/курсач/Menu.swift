@@ -10,9 +10,9 @@ import Foundation
 
 class Menu {
     
-    var table = HashTable()
-    var tree = AVLTree()
-    var list = CircularLinkedList()
+    var table = UserDefaults.passangerLoad()
+    var tree = UserDefaults.flightLoad()
+    var list = UserDefaults.ticketsLoad()
     
     func menu() {
         var check = true
@@ -33,7 +33,7 @@ class Menu {
             print("12 - поиск авиарейса по фрагментам названия аэропорта прибытия. Результаты поиска – список найденных авиарейсов с указанием номера авиарейса, аэропорта прибытия, даты отправления, времени отправления;")
             print("13 - регистрация продажи пассажиру авиабилета")
             print("14 - регистрация возврата пассажиром авиабилета")
-            print("15 - выход")
+            print("15 - выход и сохранение данных")
             print("")
             
             let value = readLine()
@@ -79,6 +79,11 @@ class Menu {
                 break
             case "14":
                 returnTickets()
+                break
+            case "15":
+                UserDefaults.flightSave(tree: tree)
+                UserDefaults.ticketsSave(list: list)
+                UserDefaults.passangerSave(table: table)
                 break
             default:
                 check = false
@@ -172,7 +177,8 @@ class Menu {
     }
     
     private func removeAllAirFligth(){
-        tree = AVLTree()
+        //tree = AVLTree()
+        tree.removeAllData()
         print("Все данные об авиарейсах удалены")
     }
     
@@ -205,18 +211,26 @@ class Menu {
     }
     
     private func saleTickets(){
-        //2.2.5.12. Регистрация продажи авиабилета на определенный авиарейс должна осуществляться только при наличии свободных мест на этот авиарейс
         print("Введите номер паспорта")
         let passport = readLine()
         guard passport != nil, true == Passenger.checkPassport(passport: passport!) else {
             print("некорректные данные")
-            return }
+            return
+        }
+        if table.returnPeople(passportNumber: passport!) == nil{
+            print("Пользователя с таким паспортом нету")
+            return
+        }
         
         print("Введите номер авиарейса")
         let airFlight = readLine()
         guard airFlight != nil, true == Flight.checkNumber(number: airFlight!) else {
             print("некорректные данные")
             return
+        }
+        
+        if tree.searchBM(to: airFlight!).count == 0{
+            print("Такого авиарейса нету")
         }
         
         print("Введите номер битела")
@@ -230,6 +244,7 @@ class Menu {
         
         if tree.freePlace(company: airFlight!){
             list.addToListEnd(data: tickets)
+            tree.minusFreePlace(number: airFlight!)
         }else{
             print("Нету свободных мест")
         }

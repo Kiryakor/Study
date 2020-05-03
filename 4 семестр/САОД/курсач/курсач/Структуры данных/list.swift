@@ -32,12 +32,9 @@ class CircularLinkedList{
     }
     
     func addToEmptyList(data:Tickets){
-        //Will set the last node
         let temp = Node(data)
         self.last = temp
-        //Creates the link (of one rn)
         self.last?.next = self.last
-        //Sets the turns at the beggining of the list
         self.currentTurn = self.last?.next!
     }
     
@@ -46,7 +43,6 @@ class CircularLinkedList{
             self.addToEmptyList(data: data)
             return
         }
-        //Connecting new node with the first, and setting previus last to link with new value
         let temp = Node(data)
         temp.next = self.last?.next
         self.last!.next! = temp
@@ -79,6 +75,19 @@ class CircularLinkedList{
                 break
             }
         }
+    }
+    
+    func returnAllData() -> [Tickets] {
+        var data:[Tickets] = []
+        var currentNode = self.last?.next
+        while (currentNode != nil){
+            data.append(currentNode!.data)
+            currentNode = currentNode?.next
+            if currentNode == self.last?.next{
+                return data
+            }
+        }
+        return data
     }
     
     func retrieveTurn() -> Tickets{
