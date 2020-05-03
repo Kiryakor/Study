@@ -63,7 +63,7 @@ class HashTable{
         for i in data{
             if i.passport != nil{
                 count += 1
-                print(i)
+                print(i.date!," ",i.fio!," ",i.passport!," ",i.place!)
             }
         }
         if count == 0{
