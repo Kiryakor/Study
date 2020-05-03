@@ -9,7 +9,6 @@
 import Foundation
 
 //MARK: tree
-// https://github.com/hfutrell/AVLTree/blob/master/AVLTree/AVLTree.swift
 public class AVLTree {
     internal var root: AVLNode?
     init() { }
@@ -23,7 +22,7 @@ public class AVLTree {
     }
     
     func remove(value: String) {
-        guard let root = self.root else { return } // nothing to do
+        guard let root = self.root else { return } 
         self.root = root.remove(value)
     }
     

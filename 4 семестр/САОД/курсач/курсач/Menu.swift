@@ -84,6 +84,7 @@ class Menu {
                 UserDefaults.flightSave(tree: tree)
                 UserDefaults.ticketsSave(list: list)
                 UserDefaults.passangerSave(table: table)
+                check = false
                 break
             default:
                 check = false
@@ -177,7 +178,6 @@ class Menu {
     }
     
     private func removeAllAirFligth(){
-        //tree = AVLTree()
         tree.removeAllData()
         print("Все данные об авиарейсах удалены")
     }

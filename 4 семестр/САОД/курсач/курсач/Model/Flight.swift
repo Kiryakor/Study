@@ -68,15 +68,17 @@ struct Flight {
         guard self.time != "" else { return false }
         
         print("Введите кол-во мест")
-        self.count = Int(readLine()!)!
+        let cnt = readLine()!
+        count = Int(cnt) ?? -1
         guard count != -1 else { return false }
         
         print("Введите кол-во свободных мест")
-        self.countFree = Int(readLine()!)!
+        let cntFree = readLine()!
+        countFree = Int(cntFree) ?? -1
         guard self.countFree != -1 else { return false }
         
         if count < countFree { return false }
-        
+         
         return true
     }
 
