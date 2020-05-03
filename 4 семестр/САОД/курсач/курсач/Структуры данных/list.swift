@@ -55,6 +55,7 @@ class CircularLinkedList{
     
     func popItem(data:String){
         var currentNode = self.last
+        if currentNode == nil{ print("Данных нету") }
         while (currentNode != nil){
             if currentNode?.next?.data.airTickets == data{
                 currentNode?.next = currentNode?.next?.next
@@ -63,12 +64,13 @@ class CircularLinkedList{
             currentNode = currentNode?.next
             
             if currentNode == self.last{
-                print("item not in list")
+                print("Данных таких нету")
                 break
             }
         }
     }
-     func traverse(){
+    
+    func traverse(){
         var currentNode = self.last?.next
         while (currentNode != nil){
             print(currentNode!.data)
