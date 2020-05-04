@@ -25,6 +25,9 @@ class Node:Equatable{
 class CircularLinkedList{
     var last:Node?
     var currentTurn:Node?
+    var size: Int {
+        return returnAllData().count
+    }
     
     init() {
         self.last = nil
@@ -111,6 +114,20 @@ class CircularLinkedList{
     }
     
     func sortList(){
-        //сортировка списка
+        var currentNode = self.last?.next
+        while currentNode?.next != self.last?.next {
+            var min = currentNode
+            var newCurrentNode = currentNode?.next
+            while newCurrentNode?.next != self.last?.next {
+                if currentNode!.data.passport < min!.data.passport{
+                    min = newCurrentNode
+                }
+                newCurrentNode = newCurrentNode?.next
+            }
+            let temp = currentNode
+            currentNode?.data = min?.data as! Tickets
+            min?.data = temp?.data as! Tickets
+            currentNode = currentNode?.next
+        }
     }
 }
