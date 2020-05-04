@@ -34,6 +34,7 @@ class Menu {
             print("13 - регистрация продажи пассажиру авиабилета")
             print("14 - регистрация возврата пассажиром авиабилета")
             print("15 - выход и сохранение данных")
+            print("16 - отсортировать список данных")
             print("")
             
             let value = readLine()
@@ -85,6 +86,9 @@ class Menu {
                 UserDefaults.ticketsSave(list: list)
                 UserDefaults.passangerSave(table: table)
                 check = false
+                break
+            case "16":
+                sortList()
                 break
             default:
                 check = false
@@ -259,5 +263,9 @@ class Menu {
         }
         
         list.popItem(data: airTickets!)
+    }
+    
+    private func sortList(){
+        list.sortList()
     }
 }

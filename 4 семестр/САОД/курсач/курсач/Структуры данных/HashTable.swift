@@ -32,6 +32,11 @@ class HashTable{
         while check {
             index += c*tryCount + d*(tryCount^2)
             while index > sizeData { uppendNilData() }
+            if data[index].passport == passenger.passport {
+                print("Пользователь с таким паспортом уже есть")
+                check = false
+                return
+            }
             if data[index].passport == nil{
                 data[index] = passenger
                 check = false

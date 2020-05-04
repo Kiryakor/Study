@@ -109,4 +109,8 @@ class CircularLinkedList{
             }
         }
     }
+    
+    func sortList(){
+        //сортировка списка
+    }
 }
