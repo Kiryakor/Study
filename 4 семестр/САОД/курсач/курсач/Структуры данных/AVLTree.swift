@@ -50,7 +50,7 @@ public class AVLTree {
     
     func freePlace(company:String) -> Bool {
         for i in values{
-            if i.company == company{
+            if i.number == company{
                 if i.countFree > 0 { return true }
                 else { return false }
             }
