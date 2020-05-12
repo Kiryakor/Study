@@ -115,19 +115,66 @@ class CircularLinkedList{
     
     func sortList(){
         var currentNode = self.last?.next
+        var a:[Tickets] = []
         while currentNode?.next != self.last?.next {
-            var min = currentNode
-            var newCurrentNode = currentNode?.next
+            var minPos = currentNode?.next
+            var newCurrentNode = minPos?.next
             while newCurrentNode?.next != self.last?.next {
-                if currentNode!.data.passport < min!.data.passport{
-                    min = newCurrentNode
+                if newCurrentNode!.data.passport < minPos!.data.passport{
+                    minPos = newCurrentNode
                 }
                 newCurrentNode = newCurrentNode?.next
             }
-            let temp = currentNode
-            currentNode?.data = min?.data as! Tickets
-            min?.data = temp?.data as! Tickets
             currentNode = currentNode?.next
+            a.append(minPos!.data)
+            minPos?.data = currentNode?.data as! Tickets
+        }
+        a.append(currentNode!.data)
+        sortHelpers(data: a)
+    }
+    
+    func sortHelpers(data:[Tickets]){
+        print("1 - сохранить список")
+        print("2 - вывести список")
+        print("3 - сохранить и вывести")
+        let a = Int(readLine() ?? "0")
+        switch a {
+        case 1:
+            replaceData(data: data)
+            break
+        case 2:
+            printData()
+            break
+        case 3:
+            replaceData(data: data)
+            printData()
+            break
+        default:
+            break
+        }
+    }
+    
+    func printData(){
+        var currentNode = self.last?.next
+        while (currentNode != nil){
+            print(currentNode!.data.passport)
+            currentNode = currentNode?.next
+            if currentNode == self.last?.next{
+                break
+            }
+        }
+    }
+    
+    func replaceData(data:[Tickets]){
+        var currentNode = self.last?.next
+        var i = 0
+        while (currentNode != nil){
+            currentNode?.data = data[i]
+            i += 1
+            currentNode = currentNode?.next
+            if currentNode == self.last?.next{
+                break
+            }
         }
     }
 }
