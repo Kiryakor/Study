@@ -39,6 +39,7 @@ class HashTable{
             }
             if data[index].passport == nil{
                 data[index] = passenger
+                print("Пользователь упешно добавлен")
                 check = false
             }
             tryCount += 1
@@ -58,6 +59,7 @@ class HashTable{
             if data[index].passport == passportNumber{
                 data[index] = Passenger()
                 check = false
+                print("Пользвователь удален")
             }
             tryCount += 1
         }

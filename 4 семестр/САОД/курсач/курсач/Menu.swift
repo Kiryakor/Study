@@ -21,7 +21,7 @@ class Menu {
             print("Меню")
             print("1 - регистрация нового пассажира")
             print("2 - удаление данных о пассажире")
-            print("3 - просмотр всех зарегистрированных пассажиров. Результаты поиска – все сведения о найденном пассажире и номерах авиарейсов, на который он купил билет")
+            print("3 - просмотр всех зарегистрированных пассажиров.")
             print("4 - очистка данных о пассажирах")
             print("5 - поиск пассажира по его N паспорта")
             print("6 - поиск пассажира по его ФИО")
@@ -33,8 +33,8 @@ class Menu {
             print("12 - поиск авиарейса по фрагментам названия аэропорта прибытия. Результаты поиска – список найденных авиарейсов с указанием номера авиарейса, аэропорта прибытия, даты отправления, времени отправления;")
             print("13 - регистрация продажи пассажиру авиабилета")
             print("14 - регистрация возврата пассажиром авиабилета")
-            print("15 - выход и сохранение данных")
             print("16 - sort")
+            print("15 - выход и сохранение данных")
             print("")
             
             let value = readLine()
@@ -85,6 +85,9 @@ class Menu {
                 UserDefaults.flightSave(tree: tree)
                 UserDefaults.ticketsSave(list: list)
                 UserDefaults.passangerSave(table: table)
+//                UserDefaults.flightSave(tree: AVLTree())
+//                UserDefaults.ticketsSave(list: CircularLinkedList())
+//                UserDefaults.passangerSave(table: HashTable())
                 check = false
                 break
             case "16":
@@ -100,7 +103,6 @@ class Menu {
         var people = Passenger()
         if people.registerPeople(){
             table.newElement(passenger: people)
-            print("Пользователь упешно добавлен")
         }
     }
     
@@ -165,7 +167,7 @@ class Menu {
         guard number != nil, number != "" else { print("Вы ввели неверно данные"); return}
         if Flight.checkNumber(number: number!){
             tree.remove(value: number!)
-            print("Пользователь удален ")
+            print("Авиарейс удален ")
         }else{ print("Вы ввели неверно данные") }
     }
     
@@ -173,10 +175,10 @@ class Menu {
         let data:[Flight] = tree.values
         if data.count == 0 { print("Данных нету") }
         for i in data{
-            print(i.number)
-            print(i.company)
-            print(i.from)
-            print(i.to)
+            print("Номер авиарейса ",i.number)
+            print("Название компании ",i.company)
+            print("Откуда ",i.from)
+            print("Куда ",i.to)
             print("")
         }
     }
@@ -207,7 +209,7 @@ class Menu {
         guard name != "", name != nil else { return }
         
         let result:[Flight] = tree.searchBM(to: name!)
-        if result.count == 0{ print("Данных нету") }
+        if result.count == 0 { print("Данных нету") }
         for i in result{
             i.printData()
             print("")
@@ -249,6 +251,7 @@ class Menu {
         if tree.freePlace(company: airFlight!){
             list.addToListEnd(data: tickets)
             tree.minusFreePlace(number: airFlight!)
+            print("Билет зарегистрирован")
         }else{
             print("Нету свободных мест")
         }
@@ -263,9 +266,10 @@ class Menu {
         }
         
         list.popItem(data: airTickets!)
+        print("Билет сдан")
     }
     
     private func sortList(){
-        list.sortList()
+        list.sort()
     }
 }

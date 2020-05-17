@@ -217,7 +217,6 @@ internal class AVLNode{
         }
       }
     
-    //обратный проход дерева
     internal func preorderTraversalAndSearchBM(to:String,_ callback: (Flight) -> Void) {
         self.left?.preorderTraversal(callback)
         self.right?.preorderTraversal(callback)

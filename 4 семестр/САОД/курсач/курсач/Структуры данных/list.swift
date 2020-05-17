@@ -113,39 +113,31 @@ class CircularLinkedList{
         }
     }
     
-    func sortList(){
-        var currentNode = self.last?.next
-        var a:[Tickets] = []
-        while currentNode?.next != self.last?.next {
-            var minPos = currentNode?.next
-            var newCurrentNode = minPos?.next
-            while newCurrentNode?.next != self.last?.next {
-                if newCurrentNode!.data.passport < minPos!.data.passport{
-                    minPos = newCurrentNode
+    func sort(){
+        var output = returnAllData()
+        for primaryindex in 0..<output.count {
+            let key = output[primaryindex]
+            var secondaryindex = primaryindex
+            while secondaryindex > -1 {
+                if key.passport < output[secondaryindex].passport {
+                    output.remove(at: secondaryindex + 1)
+                    output.insert(key, at: secondaryindex)
                 }
-                newCurrentNode = newCurrentNode?.next
+                secondaryindex -= 1
             }
-            currentNode = currentNode?.next
-            a.append(minPos!.data)
-            minPos?.data = currentNode?.data as! Tickets
         }
-        a.append(currentNode!.data)
-        sortHelpers(data: a)
+        sortHelpers(data: output)
     }
     
     func sortHelpers(data:[Tickets]){
         print("1 - сохранить список")
-        print("2 - вывести список")
-        print("3 - сохранить и вывести")
+        print("2 - сохранить и вывести")
         let a = Int(readLine() ?? "0")
         switch a {
         case 1:
             replaceData(data: data)
             break
         case 2:
-            printData()
-            break
-        case 3:
             replaceData(data: data)
             printData()
             break
