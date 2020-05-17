@@ -42,9 +42,12 @@ public class AVLTree {
     }
         
     func searchBM(to:String) -> [Flight]{
-        guard let root = self.root else { return [] }
         var result: [Flight] = []
-        root.preorderTraversalAndSearchBM(to: to, { result.append($0) })
+        for value in values{
+            if value.to.searchBM(pattern: to) != nil{
+                result.append(value)
+            }
+        }
         return result
     }
     
@@ -220,7 +223,8 @@ internal class AVLNode{
     internal func preorderTraversalAndSearchBM(to:String,_ callback: (Flight) -> Void) {
         self.left?.preorderTraversal(callback)
         self.right?.preorderTraversal(callback)
-        if self.value.to.searchBM(pattern: to) != nil{
+        print(self.value.to.searchBM(pattern: to))
+        if (self.value.to.searchBM(pattern: to) != nil){
             callback(self.value)
         }
     }
