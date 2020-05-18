@@ -223,7 +223,7 @@ internal class AVLNode{
     internal func preorderTraversalAndSearchBM(to:String,_ callback: (Flight) -> Void) {
         self.left?.preorderTraversal(callback)
         self.right?.preorderTraversal(callback)
-        print(self.value.to.searchBM(pattern: to))
+        print(self.value.to.searchBM(pattern: to) ?? "")
         if (self.value.to.searchBM(pattern: to) != nil){
             callback(self.value)
         }
