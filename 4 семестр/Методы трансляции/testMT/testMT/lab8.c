@@ -10,7 +10,8 @@
 #line 1 "bison_lab8.txt"
  
 	#include <stdio.h> 
-	#include <string.h> 
+	#include <string.h>
+    #include <stdlib.h>
 
 	void yyerror(char const* msg); 
 int yylex(void);
@@ -426,7 +427,9 @@ yyparse(YYPARSE_PARAM_ARG)
   YYSTYPE yyval;		/*  the variable used to return		*/
 				/*  semantic values from the action	*/
 				/*  routines				*/
-
+    yyval.c = "";
+    
+    
   int yylen;
 
 #if YYDEBUG != 0
@@ -1014,9 +1017,9 @@ yyerrhandle:
  
 void yyerror(char const* msg) { printf("Syntax error!\n"); } 
 
-int main() { 
-	printf("Enter words:\n"); 
-	while(1) { 
+int main() {
+	while(1) {
+        printf("Enter words:\n"); 
 		yyparse(); 
 	} 
 	return 0; 
