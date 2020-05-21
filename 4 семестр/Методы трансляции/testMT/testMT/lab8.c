@@ -721,9 +721,15 @@ case 8:
     
     char* time = yyval.c;
     yyval.c = malloc(strlen(yyval.c)+strlen("+")+strlen(yyvsp[0].c));
+    printf("yyval.c = %s\n", time);
     strcat(yyval.c,time);
     strcat(yyval.c,"+");
     strcat(yyval.c, yyvsp[0].c);
+    printf("yyval.c = %s\n", yyval.c);
+    
+    //сделать сложнение
+    //yyval.c = yyval.c + yyvsp[0].c;
+    
     break;}
 case 9:
 #line 35 "bison_lab8.txt"
@@ -1080,7 +1086,9 @@ yyerrhandle:
 }
 #line 90 "bison_lab8.txt"
  
-void yyerror(char const* msg) { printf("Syntax error!\n"); } 
+void yyerror(char const* msg) {
+    printf("Syntax error!\n");
+}
 
 int main() {
 	while(1) {
