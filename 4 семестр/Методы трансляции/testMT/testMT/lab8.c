@@ -13,6 +13,7 @@
 	#include <string.h>
     #include <stdlib.h>
 
+
 	void yyerror(char const* msg); 
 int yylex(void);
 int yyparse(void);
@@ -687,54 +688,84 @@ yyreduce:
 
 case 4:
 #line 18 "bison_lab8.txt"
-{ printf("Success!\n"); YYACCEPT; ;
+      { //printf("case 4\n");
+    printf("Success!\n"); YYACCEPT; ;
     break;}
 case 5:
 #line 19 "bison_lab8.txt"
-{ printf("Syntax error!\n"); YYERROR;;
+{//printf("case 5");
+    printf("Syntax error!\n"); YYERROR;;
     break;}
 case 6:
 #line 20 "bison_lab8.txt"
-{ YYABORT;;
+{//printf("case 6\n");
+    YYABORT;;
     break;}
 case 7:
 #line 22 "bison_lab8.txt"
-{ printf("Result: %s", yyvsp[0].c); ;
+      {   //printf("case 7\n");
+    printf("Result: %s\n",yyvsp[0].c);
     break;}
 case 8:
 #line 23 "bison_lab8.txt"
-{ 
-	if (yyvsp[-2].c == "" && yyvsp[0].c == "") 
-		strcpy(yyval.c, "0"); 
-	else if (yyvsp[-2].c == "" && yyvsp[0].c != "") 
-		strcpy(yyval.c, yyvsp[0].c); 
-	else if (yyvsp[-2].c != "" && yyvsp[0].c == "") 
-		strcpy(yyval.c, yyvsp[-2].c); 
-	else 
-		strcpy(yyval.c, yyvsp[-2].c); 
-	strcat(yyval.c, "+"); 
-	strcat(yyval.c, yyvsp[0].c); 
-;
+{
+    if (yyvsp[-2].c == "" && yyvsp[0].c == ""){
+        yyval.c = "0";
+    }else if (yyvsp[-2].c == "" && yyvsp[0].c != ""){
+        yyval.c = yyvsp[0].c;
+    }else if (yyvsp[-2].c != "" && yyvsp[0].c == "") {
+        yyval.c = yyvsp[-2].c;
+    }else{
+        yyval.c = yyvsp[-2].c;
+    }
+    
+    char* time = yyval.c;
+    yyval.c = malloc(strlen(yyval.c)+strlen("+")+strlen(yyvsp[0].c));
+    strcat(yyval.c,time);
+    strcat(yyval.c,"+");
+    strcat(yyval.c, yyvsp[0].c);
     break;}
 case 9:
 #line 35 "bison_lab8.txt"
-{ strcpy(yyval.c, yyvsp[0].c); ;
-    break;}
+{
+    printf("case 9\n");
+    yyval.c = yyvsp[0].c;
+    //printf("case 9 = %s\n", yyval.c);
+    break;
+}
 case 10:
 #line 36 "bison_lab8.txt"
-{ 
-	strcpy(yyval.c, yyvsp[-2].c); 
-	strcat(yyval.c, "*"); 
-	strcat(yyval.c, yyvsp[0].c); 
-	int cntr = 0; 
+{
+    printf("case 10\n");
+    //printf("start yyval.c = %s\n", yyval.c);
+    yyval.c = yyvsp[-2].c;
+    
+    char* time1 = yyval.c;
+    yyval.c = malloc(strlen(yyval.c)+strlen("*") + strlen(yyvsp[0].c));
+    strcat(yyval.c,time1);
+    strcat(yyval.c,"*");
+    strcat(yyval.c, yyvsp[0].c);
+    
+    //printf("finish yyval.c = %s\n", yyval.c);
+	int cntr = 0;
 	for (int i = 0; i < strlen(yyval.c); ++i) { 
 		if (yyval.c[i] == 'x'){ 
 			++cntr; 
 		}
-	} 
-	strcat(yyval.c, "*"); 
-	strcat(yyval.c, cntr + '0'); 
-	int pos = -1; 
+	}
+
+    char* time = yyval.c;
+    char count = cntr + '0';
+    yyval.c = malloc(strlen(yyval.c)+strlen("*") + strlen(&count));
+    char buffer[10];
+    sprintf(buffer, "%d", cntr);
+    strcat(yyval.c, buffer);
+    strcat(yyval.c,"*");
+    strcat(yyval.c,time);
+    //printf("finish yyval.c = %s\n", yyval.c);
+    
+    
+    int pos = -1;
 	for (int i = 0; i < strlen(yyval.c) - 1; ++i) { 
 		if (yyval.c[i] == 'x' && yyval.c[i+1] == '*') { 
 			pos = i; 
@@ -764,37 +795,71 @@ case 10:
 	} 
 	if (pos == -1) { 
 		yyval.c = ""; 
-	} 
+	}
+    
+//    //перемножение
+//    int check = 1;
+//    for (int i = 0; i < strlen(yyval.c) - 2; ++i) {
+//        printf("\n");
+//        if (yyval.c[i] != 'x' && yyval.c[i+2] != 'x' && yyval.c[i+1] == '*') {
+//            int frst = 0;
+//            printf("yyval.c = %s\n", yyval.c);
+//            sscanf(&yyval.c[i+1],"%d",&frst);
+//            printf("frst = %d\n", frst);
+//            int scnd = 0;
+//            sscanf(&yyval.c[i],"%d",&scnd);
+//            printf("scnd = %d\n", scnd);
+//            int rslt = frst * scnd;
+//
+//            char buffer[10];
+//            sprintf(buffer, "%d", rslt);
+//            yyval.c[i] = buffer[0];
+//            check = 0;
+//            printf("test %s\n", yyval.c);
+//        }
+//        if (check == 0){
+//            yyval.c[i+1] = '\0';
+//        }
+//    }
+    
+    //printf(" 10 case yyval.c = %s\n", yyval.c);
 ;
     break;}
 case 11:
 #line 80 "bison_lab8.txt"
-{ strcpy(yyval.c, yyvsp[0].c); ;
+{   printf("case 11\n");
+    //printf(" yyvsp[0].c = %s \n", yyvsp[0].c);
+    yyval.c = yyvsp[0].c;
     break;}
 case 12:
 #line 81 "bison_lab8.txt"
-{ strcpy(yyval.c, "x"); ;
+{   printf("case 12\n");
+    yyval.c = "x"; ;
     break;}
 case 13:
 #line 82 "bison_lab8.txt"
-{ strcpy(yyval.c, "5"); ;
+{   printf("case 13\n");
+    yyval.c = "5"; ;
     break;}
 case 14:
 #line 83 "bison_lab8.txt"
-{ strcpy(yyval.c, "6"); ;
+      {printf("case 14\n");
+          yyval.c = "6";
     break;}
 case 15:
 #line 84 "bison_lab8.txt"
-{ 
-	strcpy(yyval.c, "("); 
-	strcat(yyval.c, yyvsp[-1].c); 
-	strcat(yyval.c, ")"); 
-;
-    break;}
+{
+    printf("case 15/n");
+    char* name = malloc(strlen("(")+strlen(yyvsp[-1].c) + strlen(")"));
+    yyval.c = name;
+    strcat(yyval.c,"(");
+    strcat(yyval.c, yyvsp[-1].c);
+    strcat(yyval.c,")");
+    break;
+}
 }
    /* the action file gets copied in in place of this dollarsign */
 #line 543 "/usr/local/share/bison.simple"
-
   yyvsp -= yylen;
   yyssp -= yylen;
 #ifdef YYLSP_NEEDED
