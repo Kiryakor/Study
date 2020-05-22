@@ -688,28 +688,29 @@ yyreduce:
 
 case 4:
 #line 18 "bison_lab8.txt"
-      { //printf("case 4\n");
+      {
     printf("Success!\n\n"); YYACCEPT; ;
     break;}
 case 5:
 #line 19 "bison_lab8.txt"
-{//printf("case 5");
-    printf("Syntax error!\n"); YYERROR;;
+{
+    printf("Syntax error!\n\n"); YYERROR;;
     break;}
 case 6:
 #line 20 "bison_lab8.txt"
-{//printf("case 6\n");
+{
     YYABORT;;
     break;}
 case 7:
 #line 22 "bison_lab8.txt"
-      {   //printf("case 7\n");
+      {
     printf("Result: %s\n",yyvsp[0].c);
     break;}
 case 8:
 #line 23 "bison_lab8.txt"
 {
-    //MARK: Сложение    
+
+    //MARK: Сложение
     if (yyval.c == "x"){
         yyval.c = "1";
     }
@@ -736,6 +737,11 @@ case 8:
                     char buffer[10];
                     sprintf(buffer, "%d", a);
                     yyval.c = buffer;
+                }else{
+                    int a = *yyvsp[0].c - '0' + *yyval.c - '0';
+                    char buffer[10];
+                    sprintf(buffer, "%d", a);
+                    yyval.c = buffer;
                 }
             }
         }else{
@@ -754,7 +760,6 @@ case 9:
 #line 35 "bison_lab8.txt"
 {
     yyval.c = yyvsp[0].c;
-    //printf("case 9 = %s\n", yyval.c);
     break;
 }
 case 10:
@@ -822,7 +827,6 @@ case 10:
 case 11:
 #line 80 "bison_lab8.txt"
 {
-    //printf(" yyvsp[0].c = %s \n", yyvsp[0].c);
     yyval.c = yyvsp[0].c;
     break;}
 case 12:
@@ -1073,7 +1077,7 @@ yyerrhandle:
 #line 90 "bison_lab8.txt"
  
 void yyerror(char const* msg) {
-    printf("Syntax error!\n");
+    printf("Syntax error!\n\n");
 }
 
 int main() {
