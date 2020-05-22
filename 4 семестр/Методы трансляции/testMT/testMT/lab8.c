@@ -855,12 +855,12 @@ case 14:
 case 15:
 #line 84 "bison_lab8.txt"
 {
-    printf("case 15/n");
+    printf("case 15\n");
     char* name = malloc(strlen("(")+strlen(yyvsp[-1].c) + strlen(")"));
     yyval.c = name;
-    strcat(yyval.c,"(");
+    //strcat(yyval.c,"(");
     strcat(yyval.c, yyvsp[-1].c);
-    strcat(yyval.c,")");
+    //strcat(yyval.c,")");
     break;
 }
 }
