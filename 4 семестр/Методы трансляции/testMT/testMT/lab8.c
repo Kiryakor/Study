@@ -709,11 +709,7 @@ case 7:
 case 8:
 #line 23 "bison_lab8.txt"
 {
-
     //MARK: Сложение
-    if (yyval.c == "x"){
-        yyval.c = "1";
-    }
     if (yyval.c == "5" || yyval.c == "6"){
         if (yyvsp[0].c == "5" || yyvsp[0].c == "6"){
             yyval.c = "0";
@@ -732,16 +728,23 @@ case 8:
                 yyval.c = buffer;
                 strcat(yyval.c,"*x");
             }else{
+                int check = 0;
+                if (yyval.c == "x"){
+                    yyval.c = "1";
+                    check = 1;
+                }
                 if (yyvsp[0].c == "x"){
                     int a = *yyval.c - '0' + 1;
                     char buffer[10];
                     sprintf(buffer, "%d", a);
                     yyval.c = buffer;
                 }else{
-                    int a = *yyvsp[0].c - '0' + *yyval.c - '0';
-                    char buffer[10];
-                    sprintf(buffer, "%d", a);
-                    yyval.c = buffer;
+                    if (check != 1){
+                        int a = *yyvsp[0].c - '0' + *yyval.c - '0';
+                        char buffer[10];
+                        sprintf(buffer, "%d", a);
+                        yyval.c = buffer;
+                    }
                 }
             }
         }else{

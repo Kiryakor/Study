@@ -22,9 +22,7 @@
 	error ident { YYABORT;}; 
 
 S : E { printf("Result: %s", $1); }; 
-E : E'+'T { 
-	if ($$ == "x")
-		strcpy($$, "1"); 
+E : E'+'T {  
 	if ($$ == "5" || $$ == "6"){
 		if ($1 == "5" || $1 =="6"){
 			$$ = "0";
@@ -42,16 +40,26 @@ E : E'+'T {
 				sprintf(buffer, "%d", finish);
 				$$ = buffer;
 				strcat(yyval.c,"*x");
-			}else{
-				int a = -1;
+			}else{	
+				int check = 0;
+				if ($$ == "x"){
+					$$ = "1";
+					check = 1;
+				}
 				if($1 == "x"){
-					a = $$ - '0' + 1;
+					int a = $$ - '0' + 1;
+					char buffer[10];
+                    			sprintf(buffer, "%d", a);
+                    			$$ = buffer;
+
 				}else{
-                    			int a = $$ - '0' + $$ - '0';
+					if (check != 1){
+                    				int a = $$ - '0' + $$ - '0';
+						char buffer[10];
+                    				sprintf(buffer, "%d", a);
+                    				$$ = buffer;
+					}
                 		}
-				char buffer[10];
-                    		sprintf(buffer, "%d", a);
-                    		yyval.c = buffer;
 			}
 		}else{
 			char* data = $$;
