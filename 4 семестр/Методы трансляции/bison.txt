@@ -1,0 +1,133 @@
+%{ 
+	#include <stdio.h> 
+	#include <string.h> 
+	#include <stdlib.h>
+
+
+	void yyerror(char const* msg); 
+	int yylex(); 
+	int yyparse(); 
+%} 
+
+%union{char* c;} 
+%type <c> S E T F 
+%token ident 
+%token badsym 
+
+%% 
+	word: | word line; 
+	line: ident | 
+	S ident { printf("Success!\n\n"); YYACCEPT; } | 
+	badsym { printf("Syntax error!\n"); YYERROR;} | 
+	error ident { YYABORT;}; 
+
+S : E { printf("Result: %s", $1); }; 
+E : E'+'T { 
+	if ($$ == "x")
+		strcpy($$, "1"); 
+	if ($$ == "5" || $$ == "6"){
+		if ($1 == "5" || $1 =="6"){
+			$$ = "0";
+		}else{
+			$$ = $1;		
+		}	 
+	}else{
+		if (strlen($$) == strlen($1){
+			if (strlen($$)>2){
+				char* data = $1;
+				int a = $$ - '0';
+				int b = data - '0';
+				int finish = a*b;
+				char buffer[10];
+				sprintf(buffer, "%d", finish);
+				$$ = buffer;
+				strcat(yyval.c,"*x");
+			}else{
+				if($1 == "x"){
+					$$ = "2";
+				}
+			}
+		}else{
+			char* data = $$;
+            		$$ = malloc(strlen(data)+strlen("+")+strlen($1));
+            		strcat($$, data);
+            		if (!($1 == "5" || $1 == "6")){
+                		strcat($$,"+");
+                		strcat($$,$1);
+            		}	
+		}
+	} 
+}; 
+E : T { strcpy($$, $1); }; 
+T : T'*'F {
+	char* time1 = $$;
+	$$ = malloc(strlen($$)+strlen("*") + strlen($1));
+ 	strcat($$, time1); 
+	strcat($$, "*"); 
+	strcat($$, $1); 
+
+	int cntr = 0; 
+	for (int i = 0; i < strlen($$); ++i) { 
+		if ($$[i] == 'x'){ 
+			++cntr; 
+		}
+	} 
+	if (cntr>0){
+		char* time = $$;
+        	char count = cntr + '0';
+		$$ = malloc(strlen($$)+strlen("*") + strlen(&count));
+        	char buffer[10];
+        	sprintf(buffer, "%d", cntr);
+        	strcat($$, buffer);
+        	strcat($$,"*");
+        	strcat($$,time);
+		
+		int pos = -1; 
+		for (int i = 0; i < strlen($$) - 1; ++i) { 
+			if ($$[i] == 'x' && $$[i+1] == '*') { 
+				pos = i; 
+			} 
+		} 
+		if (pos != -1) { 
+			int i; 
+			for (i = pos; i < strlen($$) - 3; ++i) { 
+				$$[i] = $$[i+2]; 
+			} 
+			$$[i+1] = '\0'; 
+			$$[i+2] = '\0'; 
+		} else { 
+			for (int i = 0; i < strlen($$) - 1; ++i) { 
+				if ($$[i] == '*' && $$[i+1] == 'x') { 
+					pos = i; 
+				} 
+			} 
+			if (pos != -1) { 
+				int i; 
+				for (i = pos; i < strlen($$) - 3; ++i) { 
+					$$[i] = $$[i+2]; 
+				} 
+				$$[i+1] = '\0'; 
+				$$[i+2] = '\0'; 
+			} 
+		} 
+		if (pos == -1) { 
+			$$ = ""; 
+		} 
+}; 
+T : F { strcpy($$, $1); }; 
+F : 'x' { strcpy($$, "x"); }; 
+F : '5' { strcpy($$, "5"); }; 
+F : '6' { strcpy($$, "6"); }; 
+F : '('E')' { strcat($$, $2); }; 
+
+%% 
+
+void yyerror(char const* msg) { printf("Syntax error!\n"); } 
+
+int main() { 
+	while(1) { 
+		printf("Enter words:\n"); 
+		yyparse(); 
+	} 
+	return 0; 
+}

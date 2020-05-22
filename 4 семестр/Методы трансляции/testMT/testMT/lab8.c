@@ -709,9 +709,10 @@ case 7:
 case 8:
 #line 23 "bison_lab8.txt"
 {
+    //MARK: Сложение
 //    printf("case 8\n");
-//    printf(" = %s\n", yyval.c);
-//    printf(" = %s\n", yyvsp[0].c);
+    //printf(" = %s\n", yyval.c);
+    //printf(" = %s\n", yyvsp[0].c);
     
     if (yyval.c == "x"){
         yyval.c = "1";
@@ -728,9 +729,9 @@ case 8:
             if (strlen(yyval.c)>2){
                 char *data = &yyvsp[0].c[0];
                 int a = yyval.c[0] - '0';
-                printf("a = %d\n", a);
+                //printf("a = %d\n", a);
                 int b = *data - '0';
-                printf("b = %d\n", b);
+                //printf("b = %d\n", b);
                 int finish = a*b;
                 char buffer[10];
                 sprintf(buffer, "%d", finish);
@@ -763,8 +764,12 @@ case 9:
 case 10:
 #line 36 "bison_lab8.txt"
 {
+    //MARK: Умножение
+    //printf("1 = %s\n", yyval.c);
+    //printf("2 = %s\n", yyvsp[0].c);
     //printf("case 10\n");
-    yyval.c = yyvsp[-2].c;
+    //yyval.c = yyvsp[-2].c;
+    //printf("1 = %s\n", yyval.c);
     
     char* time1 = yyval.c;
     yyval.c = malloc(strlen(yyval.c)+strlen("*") + strlen(yyvsp[0].c));
@@ -820,9 +825,6 @@ case 10:
         if (pos == -1) {
             yyval.c = "";
         }
-        
-        
-        //MARK: умножение
     }
     break;
 }
