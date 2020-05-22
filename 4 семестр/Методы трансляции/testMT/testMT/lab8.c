@@ -710,16 +710,10 @@ case 8:
 #line 23 "bison_lab8.txt"
 {
     printf("case 8\n");
-    if (yyvsp[-2].c == "" && yyvsp[0].c == ""){
-        yyval.c = "0";
-    }else if (yyvsp[-2].c == "" && yyvsp[0].c != ""){
-        yyval.c = yyvsp[0].c;
-    }else if (yyvsp[-2].c != "" && yyvsp[0].c == "") {
-        yyval.c = yyvsp[-2].c;
-    }else{
-        yyval.c = yyvsp[-2].c;
-    }
     
+    if (yyval.c == "x"){
+        yyval.c = "1";
+    }
     
     if (yyval.c == "5" || yyval.c == "6"){
         if (yyvsp[0].c == "5" || yyvsp[0].c == "6"){
@@ -733,7 +727,6 @@ case 8:
 case 9:
 #line 35 "bison_lab8.txt"
 {
-    printf("case 9\n");
     yyval.c = yyvsp[0].c;
     //printf("case 9 = %s\n", yyval.c);
     break;
@@ -742,7 +735,6 @@ case 10:
 #line 36 "bison_lab8.txt"
 {
     printf("case 10\n");
-    printf("start yyval.c = %s\n", yyval.c);
     yyval.c = yyvsp[-2].c;
     
     char* time1 = yyval.c;
@@ -750,8 +742,7 @@ case 10:
     strcat(yyval.c,time1);
     strcat(yyval.c,"*");
     strcat(yyval.c, yyvsp[0].c);
-    
-    printf("finish yyval.c = %s\n", yyval.c);
+
 	int cntr = 0;
 	for (int i = 0; i < strlen(yyval.c); ++i) { 
 		if (yyval.c[i] == 'x'){ 
@@ -800,41 +791,40 @@ case 10:
         if (pos == -1) {
             yyval.c = "";
         }
+        
+        
+        //MARK: умножение
     }
-
-    printf(" 10 case yyval.c = %s\n", yyval.c);
     break;
 }
 case 11:
 #line 80 "bison_lab8.txt"
-{   printf("case 11\n");
+{
     //printf(" yyvsp[0].c = %s \n", yyvsp[0].c);
     yyval.c = yyvsp[0].c;
     break;}
 case 12:
 #line 81 "bison_lab8.txt"
-{   printf("case 12\n");
+{
     yyval.c = "x"; ;
     break;}
 case 13:
 #line 82 "bison_lab8.txt"
-{   printf("case 13\n");
+{
     yyval.c = "5"; ;
     break;}
 case 14:
 #line 83 "bison_lab8.txt"
-      {printf("case 14\n");
+      {
           yyval.c = "6";
     break;}
 case 15:
 #line 84 "bison_lab8.txt"
 {
-    printf("case 15\n");
+   
     char* name = malloc(strlen("(")+strlen(yyvsp[-1].c) + strlen(")"));
     yyval.c = name;
-    //strcat(yyval.c,"(");
     strcat(yyval.c, yyvsp[-1].c);
-    //strcat(yyval.c,")");
     break;
 }
 }
