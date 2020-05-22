@@ -709,15 +709,10 @@ case 7:
 case 8:
 #line 23 "bison_lab8.txt"
 {
-    //MARK: Сложение
-//    printf("case 8\n");
-    //printf(" = %s\n", yyval.c);
-    //printf(" = %s\n", yyvsp[0].c);
-    
+    //MARK: Сложение    
     if (yyval.c == "x"){
         yyval.c = "1";
     }
-    
     if (yyval.c == "5" || yyval.c == "6"){
         if (yyvsp[0].c == "5" || yyvsp[0].c == "6"){
             yyval.c = "0";
@@ -729,9 +724,7 @@ case 8:
             if (strlen(yyval.c)>2){
                 char *data = &yyvsp[0].c[0];
                 int a = yyval.c[0] - '0';
-                //printf("a = %d\n", a);
                 int b = *data - '0';
-                //printf("b = %d\n", b);
                 int finish = a*b;
                 char buffer[10];
                 sprintf(buffer, "%d", finish);
@@ -739,7 +732,10 @@ case 8:
                 strcat(yyval.c,"*x");
             }else{
                 if (yyvsp[0].c == "x"){
-                    yyval.c = "2";
+                    int a = *yyval.c - '0' + 1;
+                    char buffer[10];
+                    sprintf(buffer, "%d", a);
+                    yyval.c = buffer;
                 }
             }
         }else{
@@ -765,18 +761,11 @@ case 10:
 #line 36 "bison_lab8.txt"
 {
     //MARK: Умножение
-    //printf("1 = %s\n", yyval.c);
-    //printf("2 = %s\n", yyvsp[0].c);
-    //printf("case 10\n");
-    //yyval.c = yyvsp[-2].c;
-    //printf("1 = %s\n", yyval.c);
-    
     char* time1 = yyval.c;
     yyval.c = malloc(strlen(yyval.c)+strlen("*") + strlen(yyvsp[0].c));
     strcat(yyval.c,time1);
     strcat(yyval.c,"*");
     strcat(yyval.c, yyvsp[0].c);
-
 	int cntr = 0;
 	for (int i = 0; i < strlen(yyval.c); ++i) { 
 		if (yyval.c[i] == 'x'){ 
@@ -788,12 +777,13 @@ case 10:
         char* time = yyval.c;
         char count = cntr + '0';
         yyval.c = malloc(strlen(yyval.c)+strlen("*") + strlen(&count));
-        char buffer[10];
-        sprintf(buffer, "%d", cntr);
-        strcat(yyval.c, buffer);
-        strcat(yyval.c,"*");
+        if (cntr>1){
+            char buffer[10];
+            sprintf(buffer, "%d", cntr);
+            strcat(yyval.c, buffer);
+            strcat(yyval.c,"*");
+        }
         strcat(yyval.c,time);
-        
         int pos = -1;
         for (int i = 0; i < strlen(yyval.c) - 1; ++i) {
             if (yyval.c[i] == 'x' && yyval.c[i+1] == '*') {
@@ -820,6 +810,7 @@ case 10:
                 }
                 yyval.c[i+1] = '\0';
                 yyval.c[i+2] = '\0';
+                yyval.c[i] = '\0';
             }
         }
         if (pos == -1) {
