@@ -689,7 +689,7 @@ yyreduce:
 case 4:
 #line 18 "bison_lab8.txt"
       { //printf("case 4\n");
-    printf("Success!\n"); YYACCEPT; ;
+    printf("Success!\n\n"); YYACCEPT; ;
     break;}
 case 5:
 #line 19 "bison_lab8.txt"
@@ -709,9 +709,9 @@ case 7:
 case 8:
 #line 23 "bison_lab8.txt"
 {
-    printf("case 8\n");
-    printf(" = %s\n", yyval.c);
-    printf(" = %s\n", yyvsp[0].c);
+//    printf("case 8\n");
+//    printf(" = %s\n", yyval.c);
+//    printf(" = %s\n", yyvsp[0].c);
     
     if (yyval.c == "x"){
         yyval.c = "1";
@@ -745,8 +745,10 @@ case 8:
             char* data = yyval.c;
             yyval.c = malloc(strlen(data)+strlen("+")+strlen(yyvsp[0].c));
             strcat(yyval.c, data);
-            strcat(yyval.c,"+");
-            strcat(yyval.c,yyvsp[0].c);
+            if (!(yyvsp[0].c == "5" || yyvsp[0].c == "6")){
+                strcat(yyval.c,"+");
+                strcat(yyval.c,yyvsp[0].c);
+            }
         }
     }
     break;
@@ -761,7 +763,7 @@ case 9:
 case 10:
 #line 36 "bison_lab8.txt"
 {
-    printf("case 10\n");
+    //printf("case 10\n");
     yyval.c = yyvsp[-2].c;
     
     char* time1 = yyval.c;
