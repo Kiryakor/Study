@@ -710,6 +710,8 @@ case 8:
 #line 23 "bison_lab8.txt"
 {
     printf("case 8\n");
+    printf(" = %s\n", yyval.c);
+    printf(" = %s\n", yyvsp[0].c);
     
     if (yyval.c == "x"){
         yyval.c = "1";
@@ -720,6 +722,31 @@ case 8:
             yyval.c = "0";
         }else{
             yyval.c = yyvsp[0].c;
+        }
+    }else{
+        if (strlen(yyvsp[0].c) == strlen(yyval.c)){
+            if (strlen(yyval.c)>2){
+                char *data = &yyvsp[0].c[0];
+                int a = yyval.c[0] - '0';
+                printf("a = %d\n", a);
+                int b = *data - '0';
+                printf("b = %d\n", b);
+                int finish = a*b;
+                char buffer[10];
+                sprintf(buffer, "%d", finish);
+                yyval.c = buffer;
+                strcat(yyval.c,"*x");
+            }else{
+                if (yyvsp[0].c == "x"){
+                    yyval.c = "2";
+                }
+            }
+        }else{
+            char* data = yyval.c;
+            yyval.c = malloc(strlen(data)+strlen("+")+strlen(yyvsp[0].c));
+            strcat(yyval.c, data);
+            strcat(yyval.c,"+");
+            strcat(yyval.c,yyvsp[0].c);
         }
     }
     break;
