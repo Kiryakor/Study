@@ -709,6 +709,7 @@ case 7:
 case 8:
 #line 23 "bison_lab8.txt"
 {
+    printf("case 8\n");
     if (yyvsp[-2].c == "" && yyvsp[0].c == ""){
         yyval.c = "0";
     }else if (yyvsp[-2].c == "" && yyvsp[0].c != ""){
@@ -719,18 +720,16 @@ case 8:
         yyval.c = yyvsp[-2].c;
     }
     
-    char* time = yyval.c;
-    yyval.c = malloc(strlen(yyval.c)+strlen("+")+strlen(yyvsp[0].c));
-    printf("yyval.c = %s\n", time);
-    strcat(yyval.c,time);
-    strcat(yyval.c,"+");
-    strcat(yyval.c, yyvsp[0].c);
-    printf("yyval.c = %s\n", yyval.c);
     
-    //сделать сложнение
-    //yyval.c = yyval.c + yyvsp[0].c;
-    
-    break;}
+    if (yyval.c == "5" || yyval.c == "6"){
+        if (yyvsp[0].c == "5" || yyvsp[0].c == "6"){
+            yyval.c = "0";
+        }else{
+            yyval.c = yyvsp[0].c;
+        }
+    }
+    break;
+}
 case 9:
 #line 35 "bison_lab8.txt"
 {
@@ -743,7 +742,7 @@ case 10:
 #line 36 "bison_lab8.txt"
 {
     printf("case 10\n");
-    //printf("start yyval.c = %s\n", yyval.c);
+    printf("start yyval.c = %s\n", yyval.c);
     yyval.c = yyvsp[-2].c;
     
     char* time1 = yyval.c;
@@ -752,85 +751,60 @@ case 10:
     strcat(yyval.c,"*");
     strcat(yyval.c, yyvsp[0].c);
     
-    //printf("finish yyval.c = %s\n", yyval.c);
+    printf("finish yyval.c = %s\n", yyval.c);
 	int cntr = 0;
 	for (int i = 0; i < strlen(yyval.c); ++i) { 
 		if (yyval.c[i] == 'x'){ 
 			++cntr; 
 		}
 	}
+    
+    if (cntr > 0) {
+        char* time = yyval.c;
+        char count = cntr + '0';
+        yyval.c = malloc(strlen(yyval.c)+strlen("*") + strlen(&count));
+        char buffer[10];
+        sprintf(buffer, "%d", cntr);
+        strcat(yyval.c, buffer);
+        strcat(yyval.c,"*");
+        strcat(yyval.c,time);
+        
+        int pos = -1;
+        for (int i = 0; i < strlen(yyval.c) - 1; ++i) {
+            if (yyval.c[i] == 'x' && yyval.c[i+1] == '*') {
+                pos = i;
+            }
+        }
+        if (pos != -1) {
+            int i;
+            for (i = pos; i < strlen(yyval.c) - 3; ++i) {
+                yyval.c[i] = yyval.c[i+2];
+            }
+            yyval.c[i+1] = '\0';
+        yyval.c[i+2] = '\0';
+        } else {
+            for (int i = 0; i < strlen(yyval.c) - 1; ++i) {
+                if (yyval.c[i] == '*' && yyval.c[i+1] == 'x') {
+                    pos = i;
+                }
+            }
+            if (pos != -1) {
+                int i;
+                for (i = pos; i < strlen(yyval.c) - 3; ++i) {
+                    yyval.c[i] = yyval.c[i+2];
+                }
+                yyval.c[i+1] = '\0';
+                yyval.c[i+2] = '\0';
+            }
+        }
+        if (pos == -1) {
+            yyval.c = "";
+        }
+    }
 
-    char* time = yyval.c;
-    char count = cntr + '0';
-    yyval.c = malloc(strlen(yyval.c)+strlen("*") + strlen(&count));
-    char buffer[10];
-    sprintf(buffer, "%d", cntr);
-    strcat(yyval.c, buffer);
-    strcat(yyval.c,"*");
-    strcat(yyval.c,time);
-    //printf("finish yyval.c = %s\n", yyval.c);
-    
-    
-    int pos = -1;
-	for (int i = 0; i < strlen(yyval.c) - 1; ++i) { 
-		if (yyval.c[i] == 'x' && yyval.c[i+1] == '*') { 
-			pos = i; 
-		} 
-	} 
-	if (pos != -1) { 
-		int i; 
-		for (i = pos; i < strlen(yyval.c) - 3; ++i) { 
-			yyval.c[i] = yyval.c[i+2]; 
-		} 
-		yyval.c[i+1] = '\0'; 
-	yyval.c[i+2] = '\0'; 
-	} else { 
-		for (int i = 0; i < strlen(yyval.c) - 1; ++i) { 
-			if (yyval.c[i] == '*' && yyval.c[i+1] == 'x') { 
-				pos = i; 
-			} 
-		} 
-		if (pos != -1) { 
-			int i; 
-			for (i = pos; i < strlen(yyval.c) - 3; ++i) { 
-				yyval.c[i] = yyval.c[i+2]; 
-			} 
-			yyval.c[i+1] = '\0'; 
-			yyval.c[i+2] = '\0'; 
-		} 
-	} 
-	if (pos == -1) { 
-		yyval.c = ""; 
-	}
-    
-//    //перемножение
-//    int check = 1;
-//    for (int i = 0; i < strlen(yyval.c) - 2; ++i) {
-//        printf("\n");
-//        if (yyval.c[i] != 'x' && yyval.c[i+2] != 'x' && yyval.c[i+1] == '*') {
-//            int frst = 0;
-//            printf("yyval.c = %s\n", yyval.c);
-//            sscanf(&yyval.c[i+1],"%d",&frst);
-//            printf("frst = %d\n", frst);
-//            int scnd = 0;
-//            sscanf(&yyval.c[i],"%d",&scnd);
-//            printf("scnd = %d\n", scnd);
-//            int rslt = frst * scnd;
-//
-//            char buffer[10];
-//            sprintf(buffer, "%d", rslt);
-//            yyval.c[i] = buffer[0];
-//            check = 0;
-//            printf("test %s\n", yyval.c);
-//        }
-//        if (check == 0){
-//            yyval.c[i+1] = '\0';
-//        }
-//    }
-    
-    //printf(" 10 case yyval.c = %s\n", yyval.c);
-;
-    break;}
+    printf(" 10 case yyval.c = %s\n", yyval.c);
+    break;
+}
 case 11:
 #line 80 "bison_lab8.txt"
 {   printf("case 11\n");
