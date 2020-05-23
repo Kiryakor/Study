@@ -1,1 +1,15 @@
-%option noyywrap   %{  #include <stdio.h>  #include "lab.h"  %}    BadSymbol [^+*x56()\n]   %%  [+] {return '+';}  [*] {return '*';}  [(] {return '(';}  [)] {return ')';}  [x] {return 'x';}  [5] {return '5';}  [6] {return '6';}  {BadSymbol} { return badsym; }  \n { return ident; }  %%
+%{ 
+#include <stdio.h> 
+#include "lab8.h" 
+%} 
+
+Identifier [-+*x56()] 
+BadSymbol [^-+*x56()\n] 
+
+%% 
+{Identifier} { return *yytext; } 
+{BadSymbol} { return badsym; } 
+\n { return ident; } 
+%%
+
+(x*x-5)+(6*x-5*x*x)

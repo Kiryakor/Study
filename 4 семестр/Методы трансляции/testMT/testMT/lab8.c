@@ -709,7 +709,6 @@ case 7:
 case 8:
 #line 23 "bison_lab8.txt"
 {
-    //MARK: Сложение
     if (yyval.c == "5" || yyval.c == "6"){
         if (yyvsp[0].c == "5" || yyvsp[0].c == "6"){
             yyval.c = "0";
