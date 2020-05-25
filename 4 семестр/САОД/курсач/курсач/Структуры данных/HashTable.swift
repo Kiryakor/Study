@@ -12,9 +12,6 @@ import Foundation
 class HashTable{
     var data:[Passenger] = []
     private let c = 2, d = 5
-    private var sizeData:Int{
-        get{ return data.count }
-    }
     
     init() { uppendNilData() }
     
@@ -23,7 +20,7 @@ class HashTable{
     }
     
     private func hash(newValue:String) -> Int {
-        return abs(newValue.hashValue % sizeData)
+        return abs(newValue.hashValue % data.count)
     }
     
     func newElement(passenger:Passenger){
@@ -31,7 +28,7 @@ class HashTable{
         var tryCount = 0,check = true
         while check {
             index += c*tryCount + d*(tryCount^2)
-            while index > sizeData { uppendNilData() }
+            while index > data.count { uppendNilData() }
             if data[index].passport == passenger.passport {
                 print("Пользователь с таким паспортом уже есть")
                 check = false
@@ -50,7 +47,7 @@ class HashTable{
         var tryCount = 0,check = true
         while check {
             index += c*tryCount + d*(tryCount^2)
-            if index > sizeData{
+            if index > data.count {
                 print("Пользователя с таким паспортом нету")
                 check = false
                 return
@@ -78,7 +75,7 @@ class HashTable{
     }
     
     func deleteAllPeople() {
-        for i in 0..<sizeData {
+        for i in 0..<data.count {
             if data[i].passport != nil{ data[i] = Passenger() }
         }
         print("Все данные о пассажирах удалены")
@@ -89,7 +86,7 @@ class HashTable{
         var tryCount = 0,check = true
         while check {
             index += c*tryCount + d*(tryCount^2)
-            if index > sizeData { return nil }
+            if index > data.count { return nil }
             if data[index].passport == passportNumber{
                 check = false
                 return data[index]
