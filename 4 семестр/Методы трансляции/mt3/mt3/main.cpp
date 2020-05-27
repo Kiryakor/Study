@@ -13,7 +13,7 @@
 
 using namespace std;
 
-string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","^","^" }; // грамматика
+string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика (вообще "" это степень
 string table_left = "SEZTHFx56+*()#"; // строки таблицы (терминалы + нетерминалы + символ конца строки)
 string table_top = "x56+*()#"; // столбцы таблицы (терминалы + символ конца строки)
 
@@ -47,6 +47,7 @@ bool check(string str){
     for (int i = 1; !str.empty(); i++){
         char symb = str.front(); // обращение к 1 элементу строки
         char stack_state = stack.back(); // обращение к последнему элементу строки
+
         unsigned long int index_top = table_top.find(symb);
         unsigned long int index_left = table_left.find(stack_state);
        
@@ -63,10 +64,11 @@ bool check(string str){
                 return true; // верное
             case 88:{
                 //тут надо действия делать
-                //MARK: мб надо что-то с X сделать
                 if (symb == '5' || symb == '6')
                     stack_digit.push_back(symb - '0');
-                if (symb == '*' || symb == '+' || symb == 'x' || symb == '(' || symb == ')')
+                if (symb == 'x') //вместо x добавляем x
+                    stack_digit.push_back(0);
+                if (symb == '*' || symb == '+' || symb == '(' || symb == ')')
                     stack_operation.push_back(symb);
                 str.erase(0, 1); // удаляем 0 элемент строки
                 stack.pop_back();
@@ -84,7 +86,9 @@ bool check(string str){
 int Ans(){
     int c = 0;
     unsigned long int s = stack_operation.size();
-    //сначала делаем умножение
+    //делаем скобки
+    
+    //потом делаем умножение
     for (int i = 0; i < s; ){
         if (stack_operation[i] == '*'){
             stack_digit[i] = stack_digit[i] * stack_digit[i + 1];
