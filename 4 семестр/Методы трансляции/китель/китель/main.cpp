@@ -168,7 +168,7 @@ case -2:
         while (true)
 
         {
-
+            cout << "цикл" << endl;
         string str;
 
         cout << "Введите выражение: \t"; cin >> str;
