@@ -14,7 +14,7 @@
 using namespace std;
 
 string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","^","^" }; // грамматика
-string table_left = "SEZTHFx56+**()#"; // строки таблицы (терминалы + нетерминалы + символ конца строки)
+string table_left = "SEZTHFx56+*()#"; // строки таблицы (терминалы + нетерминалы + символ конца строки)
 string table_top = "x56+*()#"; // столбцы таблицы (терминалы + символ конца строки)
 
 int table[14][8] = {
@@ -39,6 +39,7 @@ vector<int> stack_digit; //стек символов
 vector<char> stack_operation; //стек операций
 
 //MARK: под мою грамматику
+//проверяем подходит ли слово под нашу грматику и заполяем наш стек операций и стек символов
 bool check(string str){
     string stack = "#S";
     str += '#'; //добавление аксиомы и символа конца строки
@@ -53,17 +54,21 @@ bool check(string str){
             return false;
 
         int command = table[index_left][index_top];
+        cout << "command " << command << endl;
+        cout << stack_state << endl;
         switch (command){
             case 0:
-                return true;
-            case -2:
-                return false;
-            case -1:{
-                if (symb == '2' || symb == '3' || symb == '4')
+                return false; // ошибка
+            case 100:
+                return true; // верное
+            case 88:{
+                //тут надо действия делать
+                //MARK: мб надо что-то с X сделать
+                if (symb == '5' || symb == '6')
                     stack_digit.push_back(symb - '0');
-                if (symb == '*' || symb == '+')
+                if (symb == '*' || symb == '+' || symb == 'x' || symb == '(' || symb == ')')
                     stack_operation.push_back(symb);
-                str.erase(0, 1);
+                str.erase(0, 1); // удаляем 0 элемент строки
                 stack.pop_back();
                 continue;
             }
@@ -79,6 +84,7 @@ bool check(string str){
 int Ans(){
     int c = 0;
     unsigned long int s = stack_operation.size();
+    //сначала делаем умножение
     for (int i = 0; i < s; ){
         if (stack_operation[i] == '*'){
             stack_digit[i] = stack_digit[i] * stack_digit[i + 1];
@@ -92,6 +98,7 @@ int Ans(){
     }
     
     cout << "\nОтвет: ";
+    //потом сумму
     for (int i = 0; i < stack_digit.size(); i++){
         c += stack_digit[i];
     }
@@ -120,7 +127,7 @@ int main(){
             cout << stack_operation[i] << " ";
         }
 
-        cout << Ans() << endl;
+        //cout << Ans() << endl;
         stack_digit.clear();
         stack_operation.clear();
         cout << "\n";
