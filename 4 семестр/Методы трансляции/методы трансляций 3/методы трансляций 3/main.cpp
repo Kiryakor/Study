@@ -10,31 +10,7 @@
 #include <string>
 #include <vector>
 
-//MARK: умножение запилить
-//5*(6+x*x*x+5)
 using namespace std;
-
-string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика (вообще "" это степень
-string table_left = "SEZTHFx56+*()#"; // строки таблицы (терминалы + нетерминалы + символ конца строки)
-string table_top = "x56+*()#"; // столбцы таблицы (терминалы + символ конца строки)
-
-int table[14][8] = {
-    // x 5 6 + * ( ) #
-    { 1, 1, 1, 0, 0, 1, 0, 0 }, //S
-    { 2, 2, 2, 0, 0, 2, 0, 0 }, //E
-    { 0, 0, 0, 3, 0, 0, 10, 10 }, //Z
-    { 4, 4, 4, 0, 0, 4, 0, 0 }, // T
-    { 0, 0, 0, 11, 5, 0, 11, 11}, // H
-    { 6, 7, 8, 0, 0, 9, 0, 0 }, // F
-    { 88, 0, 0, 0, 0, 0, 0, 0 }, // x
-    { 0, 88, 0, 0, 0, 0, 0, 0 }, // 5
-    { 0, 0, 88, 0, 0, 0, 0, 0 }, // 6
-    { 0, 0, 0, 88, 0, 0, 0, 0 }, // +
-    { 0, 0, 0, 0, 88, 0, 0, 0 }, // *
-    { 0, 0, 0, 0, 0, 88, 0, 0 }, // (
-    { 0, 0, 0, 0, 0, 0, 88, 0 }, // )
-    { 0, 0, 0, 0, 0, 0, 0, 100 }  // $
-};
 
 vector<int> stack_digit; //стек символов
 vector<char> stack_operation; //стек операций
@@ -42,6 +18,28 @@ vector<char> stack_operation; //стек операций
 //MARK: Сheck
 //проверяем подходит ли слово под нашу грматику и заполяем наш стек операций и стек символов
 bool check(string str){
+    string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика (вообще "" это степень
+    string table_left = "SEZTHFx56+*()#"; // строки таблицы (терминалы + нетерминалы + символ конца строки)
+    string table_top = "x56+*()#"; // столбцы таблицы (терминалы + символ конца строки)
+
+    int table[14][8] = {
+        // x 5 6 + * ( ) #
+        { 1, 1, 1, 0, 0, 1, 0, 0 }, //S
+        { 2, 2, 2, 0, 0, 2, 0, 0 }, //E
+        { 0, 0, 0, 3, 0, 0, 10, 10 }, //Z
+        { 4, 4, 4, 0, 0, 4, 0, 0 }, // T
+        { 0, 0, 0, 11, 5, 0, 11, 11}, // H
+        { 6, 7, 8, 0, 0, 9, 0, 0 }, // F
+        { 88, 0, 0, 0, 0, 0, 0, 0 }, // x
+        { 0, 88, 0, 0, 0, 0, 0, 0 }, // 5
+        { 0, 0, 88, 0, 0, 0, 0, 0 }, // 6
+        { 0, 0, 0, 88, 0, 0, 0, 0 }, // +
+        { 0, 0, 0, 0, 88, 0, 0, 0 }, // *
+        { 0, 0, 0, 0, 0, 88, 0, 0 }, // (
+        { 0, 0, 0, 0, 0, 0, 88, 0 }, // )
+        { 0, 0, 0, 0, 0, 0, 0, 100 }  // $
+    };
+    
     string stack = "#S";
     str += '#'; //добавление аксиомы и символа конца строки
 
@@ -51,9 +49,7 @@ bool check(string str){
 
         unsigned long int index_top = table_top.find(symb);
         unsigned long int index_left = table_left.find(stack_state);
-       
-        if (index_top == string::npos) //проверка на несуществующую позицию
-            return false;
+        if (index_top == string::npos) return false; //проверка на несуществующую позицию
 
         int command = table[index_left][index_top];
         switch (command){
@@ -62,7 +58,6 @@ bool check(string str){
             case 100:
                 return true; // верное
             case 88:{
-                //тут надо действия делать
                 if (symb == '5' || symb == '6')
                     stack_digit.push_back(symb - '0');
                 if (symb == 'x') //вместо x добавляем x
@@ -71,10 +66,8 @@ bool check(string str){
                     stack_operation.push_back(symb);
                 str.erase(0, 1); // удаляем 0 элемент строки
                 stack.pop_back();
-                continue;
             }
         }
-        
         string state = gramm[command];
         stack.pop_back();
         stack += string(state.rbegin(), state.rend());;
@@ -83,7 +76,7 @@ bool check(string str){
 }
 
 //MARK: Преобразования Name
-pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
+pair<vector<int>,vector<char>> name(vector<int> digit,vector<char> operation){
     unsigned long int size = operation.size();
     for (auto index=0;index<size;index++){
         if (digit[index] != -1){ //!= x
@@ -107,7 +100,6 @@ pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
                 index++;
                 continue;
             }else{
-                //MARK:  что-то не так с размером
                 int count = 1;
                 for(auto j=index;j<size;j++){
                     if (digit[j] == -1 && operation[j] == '*' && digit[j+1] == -1){
@@ -125,7 +117,6 @@ pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
                             digit.insert(digit.begin() + index + 1, -1);
                             operation.insert(operation.begin() + index + 1, '^');
                             digit.insert(digit.begin() + index + 2, count - 1);
-                            //index = -1;
                             size = operation.size();
                             break;
                         }
@@ -177,7 +168,7 @@ string Ans(){
                 checkData = true;
             }
             //получаем пару значение
-            auto p = name(stackDigit,stackOperation);//MARK: умножение на скобку
+            auto p = name(stackDigit,stackOperation);
             //удаляем все значения из скобок в исходном векторе
             stack_digit.erase(stack_digit.begin()+index,stack_digit.begin()+i);
             stack_operation.erase(stack_operation.begin()+index,stack_operation.begin()+i+1);
@@ -246,4 +237,3 @@ int main(){
     }
     return 0;
 }
-
