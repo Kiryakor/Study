@@ -11,8 +11,9 @@
 #include <vector>
 #include <iosfwd>
 
+//MARK: разобраться с X и числом в конце
 //5*(6+x*x*x+5)
-
+//x
 using namespace std;
 
 string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика (вообще "" это степень
