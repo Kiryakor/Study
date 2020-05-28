@@ -10,9 +10,8 @@
 #include <string>
 #include <vector>
 
-//MARK: разобраться с X и числом в конце
+//MARK: умножение запилить
 //5*(6+x*x*x+5)
-//x
 using namespace std;
 
 string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика (вообще "" это степень
@@ -202,7 +201,6 @@ string Ans(){
             c += to_string(stack_digit[i]);
         c += stack_operation[i]; //в теории тут можно проверку добавить на digite i+1 != числу
     }
-    //костыль
     if (stack_digit[stack_digit.size()-1] == -1)
         c += "1";
     else
