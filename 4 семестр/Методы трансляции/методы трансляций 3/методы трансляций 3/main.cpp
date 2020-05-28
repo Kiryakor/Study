@@ -182,6 +182,10 @@ string Ans(){
     auto p = name(stack_digit,stack_operation);
     stack_digit = p.first;
     stack_operation = p.second;
+    //2 раз для ситуации типо 6*5*x*x, иначе он конвертирует в 30*2*x^1, а так в 60*x^1
+    p = name(stack_digit,stack_operation);
+    stack_digit = p.first;
+    stack_operation = p.second;
     
 //MARK: Convert data from Vector to String
     string c = "";
