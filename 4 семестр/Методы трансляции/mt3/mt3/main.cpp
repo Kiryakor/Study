@@ -65,7 +65,7 @@ bool check(string str){
                 if (symb == '5' || symb == '6')
                     stack_digit.push_back(symb - '0');
                 if (symb == 'x') //вместо x добавляем x
-                    stack_digit.push_back(0);
+                    stack_digit.push_back(-1);
                 if (symb == '*' || symb == '+' || symb == '(' || symb == ')')
                     stack_operation.push_back(symb);
                 str.erase(0, 1); // удаляем 0 элемент строки
@@ -81,16 +81,66 @@ bool check(string str){
     return false;
 }
 
+void name(vector<int> digit,vector<char> operation){
+    unsigned long int size = operation.size();
+    bool check = true;
+    for (int i=0;i<size;i++){
+        check = true;
+        if (digit[i] != -1){ //!= x
+            if (operation[i] == '+'){
+                digit.erase(digit.begin() + i);
+                operation.erase(operation.begin() + i);
+                check = false;
+                size = operation.size();
+                i = 0;
+            }else if (operation[i] == '*' && digit[i+1] != -1){
+                digit[i] = digit[i] * digit[i + 1];
+                digit.erase(digit.begin() + i + 1);
+                operation.erase(operation.begin() + i);
+                i = 0;
+                check = false;
+                size = operation.size();
+            }
+        }else{ //==x
+            int count = 1;
+            for(int j=i;j<size;j++){
+                if (digit[j] == -1 && operation[j] == '*' && digit[j+1] == -1){
+                    count++;
+                }else{
+                    digit.erase(digit.begin() + i + count);
+                    int count2 = count;
+                    while (count2>0) {
+                        digit.erase(digit.begin() + i + count2 - 1);
+                        operation.erase(operation.begin() + i + count2 - 1);
+                        count2--;
+                    }
+                    digit.insert(digit.begin() + i, count);
+                    operation.insert(operation.begin() + i, '*');
+                    digit.insert(digit.begin() + i + 1, -1);
+                    operation.insert(operation.begin() + i + 1, '^');
+                    digit.insert(digit.begin() + i + 2, count - 1);
+                    i = 0;
+                    size = operation.size();
+                    check = false;
+                }
+            }
+        }
+        if (check){
+            for (int i = 0; i < digit.size(); i++) {
+                cout << digit[i] << " ";
+            }
+            cout << "\nОперации: ";
+            for (int i = 0; i < operation.size(); i++) {
+                cout << operation[i] << " ";
+            }
+            break;
+        }
+    }
+}
+
 int Ans(){
     int c = 0;
     unsigned long int s = stack_operation.size();
-    //делаем скобки
-    //5 6 () x + *
-    //5*(5+6*5)
-    //001122334
-    //иду по циклу, пока не найду скобку "("
-    //затем нахожу выражение между скобками  ")"
-    //ЭТО ВЫНЕСТИ МБ В ФУНКЦИЮ, ибо эти действия будут повторяться (входные пааметры 2 вектора)
     //нахожу кол-во max x идущих подряд и делаю степень
     //потом умножение
     //потом сложение
@@ -104,34 +154,15 @@ int Ans(){
             stackOperation.clear();
             stackDigit.push_back(stack_digit[i]);
         }else if (stack_operation[i] == ')'){
+            name(stackDigit,stackOperation);
             check = false;
         }else if (check){
             stackDigit.push_back(stack_digit[i]);
             stackOperation.push_back(stack_operation[i]);
         }
     }
+    //надо удалить мусор из стеков
     //вызов функции - параметры вектор, которая перемножает и складывает и степень делает
-        
-    //потом делаем умножение
-//    s = stack_operation.size();
-//    for (int i = 0; i < s; ){
-//        if (stack_operation[i] == '*'){
-//            stack_digit[i] = stack_digit[i] * stack_digit[i + 1];
-//            stack_digit.erase(stack_digit.begin() + i + 1);
-//            stack_operation.erase(stack_operation.begin() + i);
-//            i = 0;
-//            s = stack_operation.size();
-//        }else{
-//            i++;
-//        }
-//    }
-    
-    cout << "\nОтвет: ";
-    //потом сумму
-//    for (int i = 0; i < stack_digit.size(); i++){
-//        c += stack_digit[i];
-//    }
-    
     return c;
 }
 
