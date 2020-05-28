@@ -88,7 +88,7 @@
 		ED6D1ED1247982CF0042DD4D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Кирилл";
 				TargetAttributes = {
 					ED6D1ED8247982CF0042DD4D = {
@@ -238,6 +238,7 @@
 		ED6D1EE1247982CF0042DD4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZQ27S689GF;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -248,6 +249,7 @@
 		ED6D1EE2247982CF0042DD4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZQ27S689GF;
 				ENABLE_HARDENED_RUNTIME = YES;

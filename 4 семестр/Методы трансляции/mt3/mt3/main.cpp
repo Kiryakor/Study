@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  mt3
+//  mt35*(6+x*x*x+5)
 //
 //  Created by Кирилл on 23.05.2020.
 //  Copyright © 2020 Кирилл. All rights reserved.
@@ -10,6 +10,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
+//5*(6+x*x*x+5)
 
 using namespace std;
 
@@ -83,46 +85,51 @@ bool check(string str){
 
 void name(vector<int> digit,vector<char> operation){
     unsigned long int size = operation.size();
-    bool check = true;
-    int index = 0;
-    for (int index=0;index<size;index++){
-        check = true;
+    for (auto index=0;index<size;index++){
+        bool check = true;
         if (digit[index] != -1){ //!= x
             if (operation[index] == '+'){
                 digit.erase(digit.begin() + index);
                 operation.erase(operation.begin() + index);
                 check = false;
                 size = operation.size();
-                index = 0;
+                index = -1;
             }else if (operation[index] == '*' && digit[index+1] != -1){
                 digit[index] = digit[index] * digit[index + 1];
                 digit.erase(digit.begin() + index + 1);
                 operation.erase(operation.begin() + index);
-                index = 0;
+                index = -1;
                 check = false;
                 size = operation.size();
+            }else if (operation[index] == '*' && digit[index+1] == -1){
+                check = false;
             }
         }else{ //==x
-            int count = 1;
-            for(int j=index;j<size;j++){
-                if (digit[j] == -1 && operation[j] == '*' && digit[j+1] == -1){
-                    count++;
-                }else{
-                    digit.erase(digit.begin() + index + count);
-                    int count2 = count;
-                    while (count2>0) {
-                        digit.erase(digit.begin() + index + count2 - 1);
-                        operation.erase(operation.begin() + index + count2 - 1);
-                        count2--;
+            if (digit[index] == -1 && operation[index] == '^'){
+                index++;
+                
+            }else{
+                int count = 1;
+                for(auto j=index;j<size;j++){
+                    if (digit[j] == -1 && operation[j] == '*' && digit[j+1] == -1){
+                        count++;
+                    }else{
+                        digit.erase(digit.begin() + index + count);
+                        int count2 = count;
+                        while (count2>0) {
+                            digit.erase(digit.begin() + index + count2 - 1);
+                            operation.erase(operation.begin() + index + count2 - 1);
+                            count2--;
+                        }
+                        digit.insert(digit.begin() + index, count);
+                        operation.insert(operation.begin() + index, '*');
+                        digit.insert(digit.begin() + index + 1, -1);
+                        operation.insert(operation.begin() + index + 1, '^');
+                        digit.insert(digit.begin() + index + 2, count - 1);
+                        index = -1;
+                        size = operation.size();
+                        check = false;
                     }
-                    digit.insert(digit.begin() + index, count);
-                    operation.insert(operation.begin() + index, '*');
-                    digit.insert(digit.begin() + index + 1, -1);
-                    operation.insert(operation.begin() + index + 1, '^');
-                    digit.insert(digit.begin() + index + 2, count - 1);
-                    index = 0;
-                    size = operation.size();
-                    check = false;
                 }
             }
         }
