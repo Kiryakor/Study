@@ -1,10 +1,9 @@
 //
 //  main.cpp
-//  mt35*(6+x*x*x+5)
+//  laba3
 //
-//  Created by Кирилл on 23.05.2020.
+//  Created by Кирилл on 28.05.2020.
 //  Copyright © 2020 Кирилл. All rights reserved.
-//
 //
 
 #include <iostream>
@@ -83,6 +82,7 @@ bool check(string str){
     return false;
 }
 
+//MARK: Преобразования
 pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
     unsigned long int size = operation.size();
     for (auto index=0;index<size;index++){
@@ -148,19 +148,11 @@ pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
             }
         }
     }
-//    for (int i = 0; i < digit.size(); i++) {
-//        cout << digit[i] << " ";
-//    }
-//    cout << "\nОперации: ";
-//    for (int i = 0; i < operation.size(); i++) {
-//        cout << operation[i] << " ";
-//    }
-//    cout << endl;
     return pair<vector<int>,vector<char>>(digit,operation);
 }
 
-int Ans(){
-    int c = 0;
+string Ans(){
+    string c = "";
     unsigned long int s = stack_operation.size();
     //нахожу кол-во max x идущих подряд и делаю степень
     //потом умножение
@@ -178,24 +170,17 @@ int Ans(){
             stackDigit.push_back(stack_digit[i]);
         }else if (stack_operation[i] == ')'){
             //получаем пару значение
-            auto p =  name(stackDigit,stackOperation);
+            auto p = name(stackDigit,stackOperation);
             //удаляем все значения из скобок в исходном векторе
             stack_digit.erase(stack_digit.begin()+index,stack_digit.begin()+i);
             stack_operation.erase(stack_operation.begin()+index,stack_operation.begin()+i+1);
             //добавляем преобразованные данные
-            for (int i=0; i<p.first.size(); i++)
+            for (int i=0; i<p.first.size(); i++){
                 stack_digit.insert(stack_digit.begin()+index+i, p.first[i]);
-            for (int i=0; i<p.second.size(); i++)
+            }
+            for (int i=0; i<p.second.size(); i++){
                 stack_operation.insert(stack_operation.begin()+index+i, p.second[i]);
-            
-//            for (int i = 0; i < stack_digit.size(); i++) {
-//                cout << stack_digit[i] << " ";
-//            }
-//            cout << "\nОперации: ";
-//            for (int i = 0; i < stack_operation.size(); i++) {
-//                cout << stack_operation[i] << " ";
-//            }
-//            cout << endl;
+            }
             //надо вставить значения
             i = -1;
             s = stack_operation.size();
@@ -205,8 +190,9 @@ int Ans(){
             stackOperation.push_back(stack_operation[i]);
         }
     }
-    //надо удалить мусор из стеков
-    //вызов функции - параметры вектор, которая перемножает и складывает и степень делает
+    auto p = name(stack_digit,stack_operation);
+
+    
     return c;
 }
 

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:mt3.xcodeproj">
+      location = "self:laba3.xcodeproj">
    </FileRef>
 </Workspace>
