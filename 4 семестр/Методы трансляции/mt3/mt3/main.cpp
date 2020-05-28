@@ -84,42 +84,43 @@ bool check(string str){
 void name(vector<int> digit,vector<char> operation){
     unsigned long int size = operation.size();
     bool check = true;
-    for (int i=0;i<size;i++){
+    int index = 0;
+    for (int index=0;index<size;index++){
         check = true;
-        if (digit[i] != -1){ //!= x
-            if (operation[i] == '+'){
-                digit.erase(digit.begin() + i);
-                operation.erase(operation.begin() + i);
+        if (digit[index] != -1){ //!= x
+            if (operation[index] == '+'){
+                digit.erase(digit.begin() + index);
+                operation.erase(operation.begin() + index);
                 check = false;
                 size = operation.size();
-                i = 0;
-            }else if (operation[i] == '*' && digit[i+1] != -1){
-                digit[i] = digit[i] * digit[i + 1];
-                digit.erase(digit.begin() + i + 1);
-                operation.erase(operation.begin() + i);
-                i = 0;
+                index = 0;
+            }else if (operation[index] == '*' && digit[index+1] != -1){
+                digit[index] = digit[index] * digit[index + 1];
+                digit.erase(digit.begin() + index + 1);
+                operation.erase(operation.begin() + index);
+                index = 0;
                 check = false;
                 size = operation.size();
             }
         }else{ //==x
             int count = 1;
-            for(int j=i;j<size;j++){
+            for(int j=index;j<size;j++){
                 if (digit[j] == -1 && operation[j] == '*' && digit[j+1] == -1){
                     count++;
                 }else{
-                    digit.erase(digit.begin() + i + count);
+                    digit.erase(digit.begin() + index + count);
                     int count2 = count;
                     while (count2>0) {
-                        digit.erase(digit.begin() + i + count2 - 1);
-                        operation.erase(operation.begin() + i + count2 - 1);
+                        digit.erase(digit.begin() + index + count2 - 1);
+                        operation.erase(operation.begin() + index + count2 - 1);
                         count2--;
                     }
-                    digit.insert(digit.begin() + i, count);
-                    operation.insert(operation.begin() + i, '*');
-                    digit.insert(digit.begin() + i + 1, -1);
-                    operation.insert(operation.begin() + i + 1, '^');
-                    digit.insert(digit.begin() + i + 2, count - 1);
-                    i = 0;
+                    digit.insert(digit.begin() + index, count);
+                    operation.insert(operation.begin() + index, '*');
+                    digit.insert(digit.begin() + index + 1, -1);
+                    operation.insert(operation.begin() + index + 1, '^');
+                    digit.insert(digit.begin() + index + 2, count - 1);
+                    index = 0;
                     size = operation.size();
                     check = false;
                 }
