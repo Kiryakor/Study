@@ -169,16 +169,33 @@ string Ans(){
             stackOperation.clear();
             stackDigit.push_back(stack_digit[i]);
         }else if (stack_operation[i] == ')'){
+            int data = 1;
+            bool checkData = false;
+            if (index != 0 && stack_operation[index-1] == '*'){
+                data = stack_digit[index - 1];
+                index--;
+                checkData = true;
+            }
             //получаем пару значение
-            auto p = name(stackDigit,stackOperation);
+            auto p = name(stackDigit,stackOperation);//MARK: умножение на скобку
             //удаляем все значения из скобок в исходном векторе
             stack_digit.erase(stack_digit.begin()+index,stack_digit.begin()+i);
             stack_operation.erase(stack_operation.begin()+index,stack_operation.begin()+i+1);
+            
             //добавляем преобразованные данные
-            for (int i=0; i<p.first.size(); i++)
-                stack_digit.insert(stack_digit.begin()+index+i, p.first[i]);
-            for (int i=0; i<p.second.size(); i++)
+            for (int i=0; i<p.first.size(); i++){
+                if (checkData){
+                    stack_digit.insert(stack_digit.begin()+index+i, p.first[i]*data);
+                    checkData = false;
+                }else{
+                    stack_digit.insert(stack_digit.begin()+index+i, p.first[i]);
+                    if (p.second[i] == '+')
+                        checkData = true;
+                }
+            }
+            for (int i=0; i<p.second.size(); i++){
                 stack_operation.insert(stack_operation.begin()+index+i, p.second[i]);
+            }
             i = -1;
             s = stack_operation.size();
             check = false;
