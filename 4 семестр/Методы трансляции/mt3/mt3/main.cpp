@@ -197,6 +197,8 @@ int Ans(){
 //            }
 //            cout << endl;
             //надо вставить значения
+            i = -1;
+            s = stack_operation.size();
             check = false;
         }else if (check){
             stackDigit.push_back(stack_digit[i]);
