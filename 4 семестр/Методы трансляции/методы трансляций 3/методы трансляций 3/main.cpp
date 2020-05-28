@@ -202,7 +202,12 @@ string Ans(){
             c += to_string(stack_digit[i]);
         c += stack_operation[i]; //в теории тут можно проверку добавить на digite i+1 != числу
     }
-    c += to_string(stack_digit[stack_digit.size()-1]);
+    //костыль
+    if (stack_digit[stack_digit.size()-1] == -1)
+        c += "1";
+    else
+        c += to_string(stack_digit[stack_digit.size()-1]);
+    
     return c;
 }
 
