@@ -83,7 +83,7 @@ bool check(string str){
     return false;
 }
 
-void name(vector<int> digit,vector<char> operation){
+pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
     unsigned long int size = operation.size();
     for (auto index=0;index<size;index++){
         if (digit[index] != -1){ //!= x
@@ -148,13 +148,15 @@ void name(vector<int> digit,vector<char> operation){
             }
         }
     }
-    for (int i = 0; i < digit.size(); i++) {
-        cout << digit[i] << " ";
-    }
-    cout << "\nОперации: ";
-    for (int i = 0; i < operation.size(); i++) {
-        cout << operation[i] << " ";
-    }
+//    for (int i = 0; i < digit.size(); i++) {
+//        cout << digit[i] << " ";
+//    }
+//    cout << "\nОперации: ";
+//    for (int i = 0; i < operation.size(); i++) {
+//        cout << operation[i] << " ";
+//    }
+//    cout << endl;
+    return pair<vector<int>,vector<char>>(digit,operation);
 }
 
 int Ans(){
@@ -166,14 +168,35 @@ int Ans(){
     bool check = false;
     vector<int> stackDigit; //стек символов
     vector<char> stackOperation; //стек операций
+    int index = 0;
     for (int i=0;i<s;i++){
         if (stack_operation[i] == '('){
+            index = i;
             check = true;
             stackDigit.clear();
             stackOperation.clear();
             stackDigit.push_back(stack_digit[i]);
         }else if (stack_operation[i] == ')'){
-            name(stackDigit,stackOperation);
+            //получаем пару значение
+            auto p =  name(stackDigit,stackOperation);
+            //удаляем все значения из скобок в исходном векторе
+            stack_digit.erase(stack_digit.begin()+index,stack_digit.begin()+i);
+            stack_operation.erase(stack_operation.begin()+index,stack_operation.begin()+i+1);
+            //добавляем преобразованные данные
+            for (int i=0; i<p.first.size(); i++)
+                stack_digit.insert(stack_digit.begin()+index+i, p.first[i]);
+            for (int i=0; i<p.second.size(); i++)
+                stack_operation.insert(stack_operation.begin()+index+i, p.second[i]);
+            
+//            for (int i = 0; i < stack_digit.size(); i++) {
+//                cout << stack_digit[i] << " ";
+//            }
+//            cout << "\nОперации: ";
+//            for (int i = 0; i < stack_operation.size(); i++) {
+//                cout << stack_operation[i] << " ";
+//            }
+//            cout << endl;
+            //надо вставить значения
             check = false;
         }else if (check){
             stackDigit.push_back(stack_digit[i]);
