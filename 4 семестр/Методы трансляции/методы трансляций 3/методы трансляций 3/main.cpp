@@ -107,7 +107,9 @@ pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
         }else{ //==x
             if (digit[index] == -1 && operation[index] == '^'){
                 index++;
+                continue;
             }else{
+                //MARK:  что-то не так с размером
                 int count = 1;
                 for(auto j=index;j<size;j++){
                     if (digit[j] == -1 && operation[j] == '*' && digit[j+1] == -1){
@@ -125,14 +127,14 @@ pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
                             digit.insert(digit.begin() + index + 1, -1);
                             operation.insert(operation.begin() + index + 1, '^');
                             digit.insert(digit.begin() + index + 2, count - 1);
-                            index = -1;
+                            //index = -1;
                             size = operation.size();
                             break;
                         }
                     }else{
                         int count2 = count - 1;
                         digit.erase(digit.begin() + index + count2);
-                        while (count2>0) {
+                        while (count2!=0) {
                             digit.erase(digit.begin() + index + count2 - 1);
                             operation.erase(operation.begin() + index + count2 - 1);
                             count2--;
@@ -142,8 +144,9 @@ pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
                         digit.insert(digit.begin() + index + 1, -1);
                         operation.insert(operation.begin() + index + 1, '^');
                         digit.insert(digit.begin() + index + 2, count - 1);
-                        index = -1;
                         size = operation.size();
+                        index = -1;
+                        break;
                     }
                 }
             }
@@ -198,19 +201,25 @@ string Ans(){
     string xLine = "x";
     for (int i=0;i<stack_operation.size();i++){
         if (stack_digit[i] == -1){
-            c += xLine + stack_operation[i];
+            c += xLine;
         }else{
-            c += to_string(stack_digit[i]) + stack_operation[i];
+            c += to_string(stack_digit[i]);
         }
+        c += stack_operation[i]; //в теории тут можно проверку добавить на digite i+1 != числу
     }
     c += to_string(stack_digit[stack_digit.size()-1]);
-    
+    //MARK: костыль, как избавиться от X
+//    if (stack_digit[stack_digit.size()-1] == -1){
+//        c += "1";
+//    }else{
+//        c += to_string(stack_digit[stack_digit.size()-1]);
+//    }
     return c;
 }
 
 int main(){
     while (true){
-        string str;
+        string str = "x*x+5";
         cout << "Введите выражение: \t";
         cin >> str;
         if (check(str)){
