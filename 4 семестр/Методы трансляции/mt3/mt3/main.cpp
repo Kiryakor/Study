@@ -113,6 +113,23 @@ void name(vector<int> digit,vector<char> operation){
                 for(auto j=index;j<size;j++){
                     if (digit[j] == -1 && operation[j] == '*' && digit[j+1] == -1){
                         count++;
+                        if (j == size - 1){
+                            int count2 = count - 1;
+                            digit.erase(digit.begin() + index + count2);
+                            while (count2>0) {
+                                digit.erase(digit.begin() + index + count2 - 1);
+                                operation.erase(operation.begin() + index + count2 - 1);
+                                count2--;
+                            }
+                            digit.push_back(count);
+                            operation.push_back('*');
+                            digit.push_back(-1);
+                            operation.push_back('^');
+                            digit.push_back(count - 1);
+                            index = -1;
+                            size = operation.size();
+                            check = false;
+                        }
                     }else{
                         digit.erase(digit.begin() + index + count);
                         int count2 = count;
