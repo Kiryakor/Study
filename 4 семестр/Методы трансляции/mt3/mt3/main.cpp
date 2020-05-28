@@ -55,8 +55,6 @@ bool check(string str){
             return false;
 
         int command = table[index_left][index_top];
-        cout << "command " << command << endl;
-        cout << stack_state << endl;
         switch (command){
             case 0:
                 return false; // ошибка
@@ -87,25 +85,52 @@ int Ans(){
     int c = 0;
     unsigned long int s = stack_operation.size();
     //делаем скобки
-    
-    //потом делаем умножение
-    for (int i = 0; i < s; ){
-        if (stack_operation[i] == '*'){
-            stack_digit[i] = stack_digit[i] * stack_digit[i + 1];
-            stack_digit.erase(stack_digit.begin() + i + 1);
-            stack_operation.erase(stack_operation.begin() + i);
-            i = 0;
-            s = stack_operation.size();
-        }else{
-            i++;
+    //5 6 () x + *
+    //5*(5+6*5)
+    //001122334
+    //иду по циклу, пока не найду скобку "("
+    //затем нахожу выражение между скобками  ")"
+    //ЭТО ВЫНЕСТИ МБ В ФУНКЦИЮ, ибо эти действия будут повторяться (входные пааметры 2 вектора)
+    //нахожу кол-во max x идущих подряд и делаю степень
+    //потом умножение
+    //потом сложение
+    bool check = false;
+    vector<int> stackDigit; //стек символов
+    vector<char> stackOperation; //стек операций
+    for (int i=0;i<s;i++){
+        if (stack_operation[i] == '('){
+            check = true;
+            stackDigit.clear();
+            stackOperation.clear();
+            stackDigit.push_back(stack_digit[i]);
+        }else if (stack_operation[i] == ')'){
+            check = false;
+        }else if (check){
+            stackDigit.push_back(stack_digit[i]);
+            stackOperation.push_back(stack_operation[i]);
         }
     }
+    //вызов функции - параметры вектор, которая перемножает и складывает и степень делает
+        
+    //потом делаем умножение
+//    s = stack_operation.size();
+//    for (int i = 0; i < s; ){
+//        if (stack_operation[i] == '*'){
+//            stack_digit[i] = stack_digit[i] * stack_digit[i + 1];
+//            stack_digit.erase(stack_digit.begin() + i + 1);
+//            stack_operation.erase(stack_operation.begin() + i);
+//            i = 0;
+//            s = stack_operation.size();
+//        }else{
+//            i++;
+//        }
+//    }
     
     cout << "\nОтвет: ";
     //потом сумму
-    for (int i = 0; i < stack_digit.size(); i++){
-        c += stack_digit[i];
-    }
+//    for (int i = 0; i < stack_digit.size(); i++){
+//        c += stack_digit[i];
+//    }
     
     return c;
 }
@@ -117,21 +142,11 @@ int main(){
         cin >> str;
         if (check(str)){
             cout << "Выражение соответствует грамматике.\n";
+            cout << Ans() << endl;
         }else{
-            cout << "\nНекорректный ввод!\n";
-        }
-        
-        cout << "\nЦифры: ";
-        for (int i = 0; i < stack_digit.size(); i++) {
-            cout << stack_digit[i] << " ";
+            cout << "Некорректный ввод!\n";
         }
 
-        cout << "\nОперации: ";
-        for (int i = 0; i < stack_operation.size(); i++) {
-            cout << stack_operation[i] << " ";
-        }
-
-        //cout << Ans() << endl;
         stack_digit.clear();
         stack_operation.clear();
         cout << "\n";
