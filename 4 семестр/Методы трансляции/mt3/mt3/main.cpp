@@ -86,12 +86,10 @@ bool check(string str){
 void name(vector<int> digit,vector<char> operation){
     unsigned long int size = operation.size();
     for (auto index=0;index<size;index++){
-        bool check = true;
         if (digit[index] != -1){ //!= x
             if (operation[index] == '+'){
                 digit.erase(digit.begin() + index);
                 operation.erase(operation.begin() + index);
-                check = false;
                 size = operation.size();
                 index = -1;
             }else if (operation[index] == '*' && digit[index+1] != -1){
@@ -99,10 +97,10 @@ void name(vector<int> digit,vector<char> operation){
                 digit.erase(digit.begin() + index + 1);
                 operation.erase(operation.begin() + index);
                 index = -1;
-                check = false;
                 size = operation.size();
-            }else if (operation[index] == '*' && digit[index+1] == -1){
-                check = false;
+            }
+            if (index == size - 1){
+                break;
             }
         }else{ //==x
             if (digit[index] == -1 && operation[index] == '^'){
@@ -121,18 +119,18 @@ void name(vector<int> digit,vector<char> operation){
                                 operation.erase(operation.begin() + index + count2 - 1);
                                 count2--;
                             }
-                            digit.push_back(count);
-                            operation.push_back('*');
-                            digit.push_back(-1);
-                            operation.push_back('^');
-                            digit.push_back(count - 1);
+                            digit.insert(digit.begin() + index, count);
+                            operation.insert(operation.begin() + index, '*');
+                            digit.insert(digit.begin() + index + 1, -1);
+                            operation.insert(operation.begin() + index + 1, '^');
+                            digit.insert(digit.begin() + index + 2, count - 1);
                             index = -1;
                             size = operation.size();
-                            check = false;
+                            break;
                         }
                     }else{
-                        digit.erase(digit.begin() + index + count);
-                        int count2 = count;
+                        int count2 = count - 1;
+                        digit.erase(digit.begin() + index + count2);
                         while (count2>0) {
                             digit.erase(digit.begin() + index + count2 - 1);
                             operation.erase(operation.begin() + index + count2 - 1);
@@ -145,21 +143,17 @@ void name(vector<int> digit,vector<char> operation){
                         digit.insert(digit.begin() + index + 2, count - 1);
                         index = -1;
                         size = operation.size();
-                        check = false;
                     }
                 }
             }
         }
-        if (check){
-            for (int i = 0; i < digit.size(); i++) {
-                cout << digit[i] << " ";
-            }
-            cout << "\nОперации: ";
-            for (int i = 0; i < operation.size(); i++) {
-                cout << operation[i] << " ";
-            }
-            break;
-        }
+    }
+    for (int i = 0; i < digit.size(); i++) {
+        cout << digit[i] << " ";
+    }
+    cout << "\nОперации: ";
+    for (int i = 0; i < operation.size(); i++) {
+        cout << operation[i] << " ";
     }
 }
 
