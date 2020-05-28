@@ -9,7 +9,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <iosfwd>
 
 //MARK: разобраться с X и числом в конце
 //5*(6+x*x*x+5)
@@ -41,7 +40,7 @@ int table[14][8] = {
 vector<int> stack_digit; //стек символов
 vector<char> stack_operation; //стек операций
 
-//MARK: под мою грамматику
+//MARK: Сheck
 //проверяем подходит ли слово под нашу грматику и заполяем наш стек операций и стек символов
 bool check(string str){
     string stack = "#S";
@@ -84,7 +83,7 @@ bool check(string str){
     return false;
 }
 
-//MARK: Преобразования
+//MARK: Преобразования Name
 pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
     unsigned long int size = operation.size();
     for (auto index=0;index<size;index++){
@@ -155,16 +154,14 @@ pair<vector<int>, vector<char>> name(vector<int> digit,vector<char> operation){
     return pair<vector<int>,vector<char>>(digit,operation);
 }
 
+//MARK: Ans
 string Ans(){
-    string c = "";
     unsigned long int s = stack_operation.size();
-    //нахожу кол-во max x идущих подряд и делаю степень
-    //потом умножение
-    //потом сложение
     bool check = false;
     vector<int> stackDigit; //стек символов
     vector<char> stackOperation; //стек операций
     int index = 0;
+    //избавляемся от скобок
     for (int i=0;i<s;i++){
         if (stack_operation[i] == '('){
             index = i;
@@ -179,13 +176,10 @@ string Ans(){
             stack_digit.erase(stack_digit.begin()+index,stack_digit.begin()+i);
             stack_operation.erase(stack_operation.begin()+index,stack_operation.begin()+i+1);
             //добавляем преобразованные данные
-            for (int i=0; i<p.first.size(); i++){
+            for (int i=0; i<p.first.size(); i++)
                 stack_digit.insert(stack_digit.begin()+index+i, p.first[i]);
-            }
-            for (int i=0; i<p.second.size(); i++){
+            for (int i=0; i<p.second.size(); i++)
                 stack_operation.insert(stack_operation.begin()+index+i, p.second[i]);
-            }
-            //надо вставить значения
             i = -1;
             s = stack_operation.size();
             check = false;
@@ -198,37 +192,34 @@ string Ans(){
     stack_digit = p.first;
     stack_operation = p.second;
     
+//MARK: Convert data from Vector to String
+    string c = "";
     string xLine = "x";
     for (int i=0;i<stack_operation.size();i++){
-        if (stack_digit[i] == -1){
+        if (stack_digit[i] == -1)
             c += xLine;
-        }else{
+        else
             c += to_string(stack_digit[i]);
-        }
         c += stack_operation[i]; //в теории тут можно проверку добавить на digite i+1 != числу
     }
     c += to_string(stack_digit[stack_digit.size()-1]);
-    //MARK: костыль, как избавиться от X
-//    if (stack_digit[stack_digit.size()-1] == -1){
-//        c += "1";
-//    }else{
-//        c += to_string(stack_digit[stack_digit.size()-1]);
-//    }
     return c;
 }
 
+//MARK:Main
 int main(){
     while (true){
-        string str = "x*x+5";
+        string str;
         cout << "Введите выражение: \t";
         cin >> str;
+        
         if (check(str)){
             cout << "Выражение соответствует грамматике.\n";
             cout << Ans() << endl;
         }else{
             cout << "Некорректный ввод!\n";
         }
-
+        
         stack_digit.clear();
         stack_operation.clear();
         cout << "\n";
