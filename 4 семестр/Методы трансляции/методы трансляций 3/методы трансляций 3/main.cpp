@@ -6,7 +6,7 @@
 //  Copyright © 2020 Кирилл. All rights reserved.
 //
 
-//MARK: мб суммы допилить и попробывать сложные варианты
+//MARK: разобраться с последней цифрой 
 #include <iostream>
 #include <string>
 #include <vector>
