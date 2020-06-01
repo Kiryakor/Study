@@ -173,6 +173,7 @@ class CircularLinkedList{
     func passportInfo(numberAirFlight:String,table:HashTable){
         var currentNode = self.last
         if currentNode == nil{ print("Данных нету") }
+        currentNode = self.last?.next
         while (currentNode != nil){
             if currentNode?.data.airFlight == numberAirFlight{
                 table.findForPassport(passport: currentNode?.data.passport ?? "")

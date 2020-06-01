@@ -64,6 +64,10 @@ public class AVLTree {
     func minusFreePlace(number:String){
         self.root?.preorderTraversalFree(number: number)
     }
+    
+    func plusFreePlace(number:String){
+        self.root?.PluspreorderTraversalFree(number: number)
+    }
 }
 
 internal class AVLNode{
@@ -219,6 +223,15 @@ internal class AVLNode{
             return
         }
       }
+
+    internal func PluspreorderTraversalFree(number:String) {
+      self.left?.preorderTraversalFree(number: number)
+      self.right?.preorderTraversalFree(number: number)
+      if self.value.number == number{
+          self.value.countFree += 1
+          return
+      }
+    }
     
     internal func preorderTraversalAndSearchBM(to:String,_ callback: (Flight) -> Void) {
         self.left?.preorderTraversal(callback)

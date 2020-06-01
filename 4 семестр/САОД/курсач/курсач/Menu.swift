@@ -232,34 +232,34 @@ class Menu {
         if table.returnPeople(passportNumber: passport!) == nil{
             print("Пользователя с таким паспортом нету")
             return
-        }
-        
-        print("Введите номер авиарейса")
-        let airFlight = readLine()
-        guard airFlight != nil, true == Flight.checkNumber(number: airFlight!) else {
-            print("некорректные данные")
-            return
-        }
-        
-        if tree.searchBM(to: airFlight!).count == 0{
-            print("Такого авиарейса нету")
-        }
-        
-        print("Введите номер битела")
-        let airTickets = readLine()
-        guard airTickets != nil, true == Tickets.checkAirTickets(airTickets: airTickets!) else {
-            print("некорректные данные")
-            return
-        }
-        
-        let tickets = Tickets(passport: passport!, airFlight: airFlight!, airTickets: airTickets!)
-        
-        if tree.freePlace(company: airFlight!){
-            list.addToListEnd(data: tickets)
-            tree.minusFreePlace(number: airFlight!)
-            print("Билет зарегистрирован")
         }else{
-            print("Нету свободных мест")
+            print("Введите номер авиарейса")
+            let airFlight = readLine()
+            guard airFlight != nil, true == Flight.checkNumber(number: airFlight!) else {
+                print("некорректные данные")
+                return
+            }
+            
+            if tree.values.filter({ $0.number == airFlight! }).count == 0{
+                print("Такого авиарейса нету")
+            }else{
+                print("Введите номер битела")
+                let airTickets = readLine()
+                guard airTickets != nil, true == Tickets.checkAirTickets(airTickets: airTickets!) else {
+                    print("некорректные данные")
+                    return
+                }
+                
+                let tickets = Tickets(passport: passport!, airFlight: airFlight!, airTickets: airTickets!)
+                
+                if tree.freePlace(company: airFlight!){
+                    list.addToListEnd(data: tickets)
+                    tree.minusFreePlace(number: airFlight!)
+                    print("Билет зарегистрирован")
+                }else{
+                    print("Нету свободных мест")
+                }
+            }
         }
     }
     
@@ -272,6 +272,7 @@ class Menu {
         }
         
         list.popItem(data: airTickets!)
+        tree.plusFreePlace(number: airTickets!)
         print("Билет сдан")
     }
     
