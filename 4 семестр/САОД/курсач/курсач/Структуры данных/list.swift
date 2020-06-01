@@ -169,4 +169,19 @@ class CircularLinkedList{
             }
         }
     }
+    
+    func passportInfo(numberAirFlight:String,table:HashTable){
+        var currentNode = self.last
+        if currentNode == nil{ print("Данных нету") }
+        while (currentNode != nil){
+            if currentNode?.data.airFlight == numberAirFlight{
+                table.findForPassport(passport: currentNode?.data.passport ?? "")
+            }
+            currentNode = currentNode?.next
+            
+            if currentNode == self.last?.next{
+                break
+            }
+        }
+    }
 }

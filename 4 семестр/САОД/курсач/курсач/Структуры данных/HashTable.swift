@@ -105,4 +105,12 @@ class HashTable{
         }
         return check
     }
+    
+    func findForPassport(passport:String){
+        for i in data{
+            if i.passport == passport{
+                print("ФИО - \(i.fio!)   номер паспорта - \(i.passport!)")
+            }
+        }
+    }
 }
