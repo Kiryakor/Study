@@ -139,7 +139,7 @@ class Menu {
         print("Дата и место получения - \(people.date!)")
         print("Место получения - \(people.place!)")
         
-        list.printAirFlightNumber(passport: people.passport!)
+        //list.printAirFlightNumber(passport: people.passport!)
     }
     
     private func findForFio(){
