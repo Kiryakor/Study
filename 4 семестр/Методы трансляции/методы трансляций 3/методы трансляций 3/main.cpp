@@ -77,7 +77,7 @@ bool checkData(string str){
     return false;
 }
 
-//MARK: Преобразования в строку
+//MARK: Преобразования подданных
 pair<vector<int>,vector<char>> conversionData(vector<int> symbol,vector<char> operation){
     unsigned long int size = operation.size();
     for (auto index=0;index<size;index++){
