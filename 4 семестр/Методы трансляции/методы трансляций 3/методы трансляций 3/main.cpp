@@ -167,6 +167,12 @@ string conversionDataToString(vector<char> operationVector, vector<int> stackDig
 
 //MARK: Разделение даты на подчасти
 string separationData(){
+    
+    if (symbolVector[symbolVector.size()-1] == 5 || symbolVector[symbolVector.size()-1] == 6){
+        symbolVector.pop_back();
+        operationVector.pop_back();
+    }
+    
     unsigned long int s = operationVector.size();
     bool check = false;
     //стеки для обработки строк между ()
@@ -251,5 +257,4 @@ int main(){
         operationVector.clear();
         cout << "\n";
     }
-    return 0;
 }
