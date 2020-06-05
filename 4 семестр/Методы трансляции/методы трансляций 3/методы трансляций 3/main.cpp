@@ -6,7 +6,6 @@
 //  Copyright © 2020 Кирилл. All rights reserved.
 //
 
-//MARK: разобраться с последней цифрой 
 #include <iostream>
 #include <string>
 #include <vector>
@@ -19,12 +18,12 @@ vector<char> operationVector; //стек операций
 //MARK: Сheck
 //проверяем подходит ли слово под нашу грматику и заполяем наш стек операций и стек символов
 bool checkData(string str){
-    string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика (вообще "" это степень
+    string gramm[] = { "", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика
     string tableLeft = "SEZTHFx56+*()#"; // строки таблицы (терминалы + нетерминалы + символ конца строки)
     string tableTop = "x56+*()#"; // столбцы таблицы (терминалы + символ конца строки)
 
     int table[14][8] = {
-        // x 5 6 + * ( ) #
+        //x  5  6  +  *  (  )  #
         { 1, 1, 1, 0, 0, 1, 0, 0 }, //S
         { 2, 2, 2, 0, 0, 2, 0, 0 }, //E
         { 0, 0, 0, 3, 0, 0, 10, 10 }, //Z
@@ -172,7 +171,6 @@ string separationData(){
         symbolVector.pop_back();
         operationVector.pop_back();
     }
-    
     unsigned long int s = operationVector.size();
     bool check = false;
     //стеки для обработки строк между ()
