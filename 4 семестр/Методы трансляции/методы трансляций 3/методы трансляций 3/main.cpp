@@ -16,7 +16,6 @@ vector<int> symbolVector; //стек символов
 vector<char> operationVector; //стек операций
 
 //MARK: Сheck
-//проверяем подходит ли слово под нашу грматику и заполяем наш стек операций и стек символов
 bool checkData(string str){
     string gramm[] = { "", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика
     string tableLeft = "SEZTHFx56+*()#"; // строки таблицы (терминалы + нетерминалы + символ конца строки)
@@ -71,7 +70,7 @@ bool checkData(string str){
         }
         string state = gramm[command];
         stack.pop_back();
-        stack += string(state.rbegin(), state.rend());;
+        stack += string(state.rbegin(), state.rend());
     }
     return false;
 }
@@ -156,6 +155,7 @@ string conversionDataToString(vector<char> operationVector, vector<int> stackDig
             returnDataLine += to_string(symbolVector[i]);
         returnDataLine += operationVector[i]; //в теории тут можно проверку добавить на digite i+1 != числу
     }
+    
     if (symbolVector[symbolVector.size()-1] == -1)
         returnDataLine += "1";
     else
@@ -166,11 +166,11 @@ string conversionDataToString(vector<char> operationVector, vector<int> stackDig
 
 //MARK: Разделение даты на подчасти
 string separationData(){
-    
     if (symbolVector[symbolVector.size()-1] == 5 || symbolVector[symbolVector.size()-1] == 6){
         symbolVector.pop_back();
         operationVector.pop_back();
     }
+    
     unsigned long int s = operationVector.size();
     bool check = false;
     //стеки для обработки строк между ()
@@ -211,7 +211,8 @@ string separationData(){
             }
             for (int i=0; i<p.second.size(); i++){
                 operationVector.insert(operationVector.begin()+index+i, p.second[i]);
-            }            i = -1;
+            }
+            i = -1;
             s = operationVector.size();
             check = false;
         }else if (check){
@@ -219,6 +220,7 @@ string separationData(){
             stackOperation.push_back(operationVector[i]);
         }
     }
+    
     //обработка финальной строки
     auto p = conversionData(symbolVector,operationVector);
     symbolVector = p.first;
