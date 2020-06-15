@@ -6,7 +6,6 @@
 //  Copyright © 2020 Кирилл. All rights reserved.
 //
 
-//MARK: разобраться с последней цифрой 
 #include <iostream>
 #include <string>
 #include <vector>
@@ -17,27 +16,26 @@ vector<int> symbolVector; //стек символов
 vector<char> operationVector; //стек операций
 
 //MARK: Сheck
-//проверяем подходит ли слово под нашу грматику и заполяем наш стек операций и стек символов
 bool checkData(string str){
-    string gramm[] = { "Blanket", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика (вообще "" это степень
+    string gramm[] = { "", "E","TZ","+TZ","FH","*FH","x","5","6","(E)","","" }; // грамматика
     string tableLeft = "SEZTHFx56+*()#"; // строки таблицы (терминалы + нетерминалы + символ конца строки)
     string tableTop = "x56+*()#"; // столбцы таблицы (терминалы + символ конца строки)
 
     int table[14][8] = {
-        // x 5 6 + * ( ) #
+        //x  5  6  +  *  (  )  #
         { 1, 1, 1, 0, 0, 1, 0, 0 }, //S
         { 2, 2, 2, 0, 0, 2, 0, 0 }, //E
         { 0, 0, 0, 3, 0, 0, 10, 10 }, //Z
         { 4, 4, 4, 0, 0, 4, 0, 0 }, // T
         { 0, 0, 0, 11, 5, 0, 11, 11}, // H
         { 6, 7, 8, 0, 0, 9, 0, 0 }, // F
-        { 88, 0, 0, 0, 0, 0, 0, 0 }, // x
-        { 0, 88, 0, 0, 0, 0, 0, 0 }, // 5
-        { 0, 0, 88, 0, 0, 0, 0, 0 }, // 6
-        { 0, 0, 0, 88, 0, 0, 0, 0 }, // +
-        { 0, 0, 0, 0, 88, 0, 0, 0 }, // *
-        { 0, 0, 0, 0, 0, 88, 0, 0 }, // (
-        { 0, 0, 0, 0, 0, 0, 88, 0 }, // )
+        { 99, 0, 0, 0, 0, 0, 0, 0 }, // x
+        { 0, 99, 0, 0, 0, 0, 0, 0 }, // 5
+        { 0, 0, 99, 0, 0, 0, 0, 0 }, // 6
+        { 0, 0, 0, 99, 0, 0, 0, 0 }, // +
+        { 0, 0, 0, 0, 99, 0, 0, 0 }, // *
+        { 0, 0, 0, 0, 0, 99, 0, 0 }, // (
+        { 0, 0, 0, 0, 0, 0, 99, 0 }, // )
         { 0, 0, 0, 0, 0, 0, 0, 100 }  // $
     };
     
@@ -58,7 +56,7 @@ bool checkData(string str){
                 return false; // ошибка
             case 100:
                 return true; // верное
-            case 88:{
+            case 99:{
                 if (symb == '5' || symb == '6')
                     symbolVector.push_back(symb - '0');
                 if (symb == 'x') //вместо x добавляем x
@@ -72,7 +70,7 @@ bool checkData(string str){
         }
         string state = gramm[command];
         stack.pop_back();
-        stack += string(state.rbegin(), state.rend());;
+        stack += string(state.rbegin(), state.rend());
     }
     return false;
 }
@@ -157,6 +155,7 @@ string conversionDataToString(vector<char> operationVector, vector<int> stackDig
             returnDataLine += to_string(symbolVector[i]);
         returnDataLine += operationVector[i]; //в теории тут можно проверку добавить на digite i+1 != числу
     }
+    
     if (symbolVector[symbolVector.size()-1] == -1)
         returnDataLine += "1";
     else
@@ -167,6 +166,11 @@ string conversionDataToString(vector<char> operationVector, vector<int> stackDig
 
 //MARK: Разделение даты на подчасти
 string separationData(){
+    if (symbolVector[symbolVector.size()-1] == 5 || symbolVector[symbolVector.size()-1] == 6){
+        symbolVector.pop_back();
+        operationVector.pop_back();
+    }
+    
     unsigned long int s = operationVector.size();
     bool check = false;
     //стеки для обработки строк между ()
@@ -207,7 +211,8 @@ string separationData(){
             }
             for (int i=0; i<p.second.size(); i++){
                 operationVector.insert(operationVector.begin()+index+i, p.second[i]);
-            }            i = -1;
+            }
+            i = -1;
             s = operationVector.size();
             check = false;
         }else if (check){
@@ -215,6 +220,7 @@ string separationData(){
             stackOperation.push_back(operationVector[i]);
         }
     }
+    
     //обработка финальной строки
     auto p = conversionData(symbolVector,operationVector);
     symbolVector = p.first;
@@ -251,5 +257,4 @@ int main(){
         operationVector.clear();
         cout << "\n";
     }
-    return 0;
 }

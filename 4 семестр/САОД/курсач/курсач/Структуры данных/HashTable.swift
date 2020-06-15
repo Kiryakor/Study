@@ -51,8 +51,7 @@ class HashTable{
                 print("Пользователя с таким паспортом нету")
                 check = false
                 return
-            }
-            if data[index].passport == passportNumber{
+            }else if data[index].passport == passportNumber{
                 data[index] = Passenger()
                 check = false
                 print("Пользвователь удален")
