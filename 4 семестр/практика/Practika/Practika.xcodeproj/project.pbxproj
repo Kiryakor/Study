@@ -1,0 +1,373 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDF435D824B7390900A4CBE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF435D724B7390900A4CBE9 /* AppDelegate.swift */; };
+		EDF435DA24B7390900A4CBE9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF435D924B7390900A4CBE9 /* SceneDelegate.swift */; };
+		EDF435DC24B7390900A4CBE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF435DB24B7390900A4CBE9 /* ViewController.swift */; };
+		EDF435DF24B7390900A4CBE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF435DD24B7390900A4CBE9 /* Main.storyboard */; };
+		EDF435E124B7390B00A4CBE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDF435E024B7390B00A4CBE9 /* Assets.xcassets */; };
+		EDF435E424B7390B00A4CBE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF435E224B7390B00A4CBE9 /* LaunchScreen.storyboard */; };
+		EDF435F124B7567800A4CBE9 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF435F024B7567800A4CBE9 /* Sharing.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EDF435D424B7390900A4CBE9 /* Practika.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practika.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDF435D724B7390900A4CBE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
+		EDF435D924B7390900A4CBE9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../SceneDelegate.swift; sourceTree = "<group>"; };
+		EDF435DB24B7390900A4CBE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDF435DE24B7390900A4CBE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDF435E024B7390B00A4CBE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDF435E324B7390B00A4CBE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDF435E524B7390B00A4CBE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDF435F024B7567800A4CBE9 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharing.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDF435D124B7390900A4CBE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDF435CB24B7390900A4CBE9 = {
+			isa = PBXGroup;
+			children = (
+				EDF435D624B7390900A4CBE9 /* Practika */,
+				EDF435D524B7390900A4CBE9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDF435D524B7390900A4CBE9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDF435D424B7390900A4CBE9 /* Practika.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDF435D624B7390900A4CBE9 /* Practika */ = {
+			isa = PBXGroup;
+			children = (
+				EDF435F024B7567800A4CBE9 /* Sharing.swift */,
+				EDF435DB24B7390900A4CBE9 /* ViewController.swift */,
+				EDF435DD24B7390900A4CBE9 /* Main.storyboard */,
+				EDF435EC24B73C3400A4CBE9 /* Extention */,
+				EDF435EB24B7395F00A4CBE9 /* Support */,
+				EDF435E524B7390B00A4CBE9 /* Info.plist */,
+				EDF435E224B7390B00A4CBE9 /* LaunchScreen.storyboard */,
+				EDF435E024B7390B00A4CBE9 /* Assets.xcassets */,
+			);
+			path = Practika;
+			sourceTree = "<group>";
+		};
+		EDF435EB24B7395F00A4CBE9 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				EDF435D724B7390900A4CBE9 /* AppDelegate.swift */,
+				EDF435D924B7390900A4CBE9 /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		EDF435EC24B73C3400A4CBE9 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				EDF435ED24B73C3E00A4CBE9 /* UIKit */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		EDF435ED24B73C3E00A4CBE9 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDF435D324B7390900A4CBE9 /* Practika */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDF435E824B7390B00A4CBE9 /* Build configuration list for PBXNativeTarget "Practika" */;
+			buildPhases = (
+				EDF435D024B7390900A4CBE9 /* Sources */,
+				EDF435D124B7390900A4CBE9 /* Frameworks */,
+				EDF435D224B7390900A4CBE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Practika;
+			productName = Practika;
+			productReference = EDF435D424B7390900A4CBE9 /* Practika.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDF435CC24B7390900A4CBE9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Кирилл";
+				TargetAttributes = {
+					EDF435D324B7390900A4CBE9 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = EDF435CF24B7390900A4CBE9 /* Build configuration list for PBXProject "Practika" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDF435CB24B7390900A4CBE9;
+			productRefGroup = EDF435D524B7390900A4CBE9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDF435D324B7390900A4CBE9 /* Practika */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDF435D224B7390900A4CBE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDF435E424B7390B00A4CBE9 /* LaunchScreen.storyboard in Resources */,
+				EDF435E124B7390B00A4CBE9 /* Assets.xcassets in Resources */,
+				EDF435DF24B7390900A4CBE9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDF435D024B7390900A4CBE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDF435F124B7567800A4CBE9 /* Sharing.swift in Sources */,
+				EDF435DC24B7390900A4CBE9 /* ViewController.swift in Sources */,
+				EDF435D824B7390900A4CBE9 /* AppDelegate.swift in Sources */,
+				EDF435DA24B7390900A4CBE9 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EDF435DD24B7390900A4CBE9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDF435DE24B7390900A4CBE9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EDF435E224B7390B00A4CBE9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDF435E324B7390B00A4CBE9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDF435E624B7390B00A4CBE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDF435E724B7390B00A4CBE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDF435E924B7390B00A4CBE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZQ27S689GF;
+				INFOPLIST_FILE = Practika/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kiraykor-project.Practika";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EDF435EA24B7390B00A4CBE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZQ27S689GF;
+				INFOPLIST_FILE = Practika/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kiraykor-project.Practika";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDF435CF24B7390900A4CBE9 /* Build configuration list for PBXProject "Practika" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDF435E624B7390B00A4CBE9 /* Debug */,
+				EDF435E724B7390B00A4CBE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDF435E824B7390B00A4CBE9 /* Build configuration list for PBXNativeTarget "Practika" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDF435E924B7390B00A4CBE9 /* Debug */,
+				EDF435EA24B7390B00A4CBE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDF435CC24B7390900A4CBE9 /* Project object */;
+}
