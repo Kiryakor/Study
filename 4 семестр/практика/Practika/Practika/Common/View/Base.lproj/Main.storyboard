@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="yuE-LA-y3C">
-                                <rect key="frame" x="8" y="563" width="398" height="30"/>
+                                <rect key="frame" x="8" y="535" width="398" height="30"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="oLl-uI-DTj">
                                         <rect key="frame" x="-2" y="0.0" width="333" height="31"/>
@@ -37,14 +37,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxt-ST-PWV">
-                                <rect key="frame" x="190" y="693" width="34" height="30"/>
+                                <rect key="frame" x="190" y="665" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x7Z-Lt-yU2"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XJq-jy-zPu">
-                                <rect key="frame" x="8" y="150" width="398" height="395.5"/>
+                                <rect key="frame" x="75" y="192" width="264" height="261.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XJq-jy-zPu" secondAttribute="height" multiplier="1:1" id="KGJ-I1-WMa"/>
                                 </constraints>
@@ -55,11 +55,11 @@
                             <constraint firstItem="Bxt-ST-PWV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dhs-gQ-shs"/>
                             <constraint firstItem="Bxt-ST-PWV" firstAttribute="top" secondItem="yuE-LA-y3C" secondAttribute="bottom" constant="100" id="Edm-GC-xjX"/>
                             <constraint firstAttribute="trailing" secondItem="yuE-LA-y3C" secondAttribute="trailing" constant="8" id="aNX-nX-WDw"/>
-                            <constraint firstItem="XJq-jy-zPu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ddh-9Z-zaB"/>
-                            <constraint firstItem="XJq-jy-zPu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="goo-s5-lmI"/>
+                            <constraint firstItem="XJq-jy-zPu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="ddh-9Z-zaB"/>
+                            <constraint firstItem="XJq-jy-zPu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-125" id="goo-s5-lmI"/>
                             <constraint firstItem="yuE-LA-y3C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="mxh-xb-ZfE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XJq-jy-zPu" secondAttribute="trailing" constant="8" id="sWP-5w-7hE"/>
-                            <constraint firstItem="yuE-LA-y3C" firstAttribute="top" secondItem="XJq-jy-zPu" secondAttribute="bottom" constant="16" id="w82-NT-g12"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XJq-jy-zPu" secondAttribute="trailing" constant="75" id="sWP-5w-7hE"/>
+                            <constraint firstItem="yuE-LA-y3C" firstAttribute="top" secondItem="XJq-jy-zPu" secondAttribute="bottom" constant="80" id="w82-NT-g12"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

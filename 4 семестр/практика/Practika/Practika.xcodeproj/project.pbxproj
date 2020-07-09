@@ -58,13 +58,10 @@
 		EDF435D624B7390900A4CBE9 /* Practika */ = {
 			isa = PBXGroup;
 			children = (
-				EDF435F024B7567800A4CBE9 /* Sharing.swift */,
-				EDF435DB24B7390900A4CBE9 /* ViewController.swift */,
-				EDF435DD24B7390900A4CBE9 /* Main.storyboard */,
-				EDF435EC24B73C3400A4CBE9 /* Extention */,
+				EDF435F524B759D800A4CBE9 /* Common */,
+				EDF435F424B759C400A4CBE9 /* Controller */,
 				EDF435EB24B7395F00A4CBE9 /* Support */,
 				EDF435E524B7390B00A4CBE9 /* Info.plist */,
-				EDF435E224B7390B00A4CBE9 /* LaunchScreen.storyboard */,
 				EDF435E024B7390B00A4CBE9 /* Assets.xcassets */,
 			);
 			path = Practika;
@@ -79,19 +76,38 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		EDF435EC24B73C3400A4CBE9 /* Extention */ = {
+		EDF435F224B759A300A4CBE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EDF435ED24B73C3E00A4CBE9 /* UIKit */,
+				EDF435DD24B7390900A4CBE9 /* Main.storyboard */,
+				EDF435E224B7390B00A4CBE9 /* LaunchScreen.storyboard */,
 			);
-			path = Extention;
+			path = View;
 			sourceTree = "<group>";
 		};
-		EDF435ED24B73C3E00A4CBE9 /* UIKit */ = {
+		EDF435F324B759B400A4CBE9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EDF435DB24B7390900A4CBE9 /* ViewController.swift */,
 			);
-			path = UIKit;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EDF435F424B759C400A4CBE9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EDF435F024B7567800A4CBE9 /* Sharing.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EDF435F524B759D800A4CBE9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EDF435F224B759A300A4CBE9 /* View */,
+				EDF435F324B759B400A4CBE9 /* ViewController */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

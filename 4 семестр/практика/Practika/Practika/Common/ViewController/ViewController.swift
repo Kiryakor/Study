@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var degreeLabel: UILabel!
     var mainImageTapGestureRecognizer:UITapGestureRecognizer!
-
+    
     //MARK:Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +25,19 @@ class ViewController: UIViewController {
     
     //MARL:Action
     @IBAction func saveButton(_ sender: UIButton) {
-        Sharing.share(on: self,image: mainImageView.image)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: view.bounds.width,height: view.bounds.width),false,0)
+        self.view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+
+        UIGraphicsEndImageContext()
+        Sharing.share(on: self,image: image)
     }
     
-    @objc func didChangeSlider(){
+    @objc func EndChangeSlider(){
+        mainImageView.transform = mainImageView.transform.rotated(by: CGFloat(degreeSlider.value) * .pi / 180 )
+    }
+
+    @objc func ChangeSlider(){
         degreeLabel.text = String(Int(degreeSlider.value))
     }
     
@@ -40,7 +49,8 @@ class ViewController: UIViewController {
 extension ViewController{
     private func setup(){
         degreeLabel.text = "\(Int(degreeSlider.value))"
-        degreeSlider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
+        degreeSlider.addTarget(self, action: #selector(EndChangeSlider), for: .touchUpInside)
+        degreeSlider.addTarget(self, action: #selector(ChangeSlider), for: .valueChanged)
         
         mainImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapMainImageView))
         mainImageView.addGestureRecognizer(mainImageTapGestureRecognizer)
@@ -51,13 +61,13 @@ extension ViewController{
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     private func alertImage(){
         let alert = UIAlertController(title: nil, message: "Выберите способ загрузки израбражения", preferredStyle: .alert)
-        let cameraAction = UIAlertAction(title: "camera", style: .default) { (action) in
+        let cameraAction = UIAlertAction(title: "Сamera", style: .default) { (action) in
             self.chooseImage(sourse: .camera)
         }
-        let photoLibAction = UIAlertAction(title: "photo", style: .default) { (action) in
+        let photoLibAction = UIAlertAction(title: "Photo", style: .default) { (action) in
             self.chooseImage(sourse: .photoLibrary)
         }
-        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cameraAction)
         alert.addAction(photoLibAction)
         alert.addAction(cancelAction)
