@@ -13,7 +13,13 @@ class ViewController: UIViewController {
     //MARK:Var
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var degreeSlider: UISlider!
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!{
+        didSet{
+            saveButton.layer.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+            saveButton.layer.cornerRadius = saveButton.bounds.height / 2
+            saveButton.clipsToBounds = true
+        }
+    }
     @IBOutlet weak var degreeLabel: UILabel!
     var mainImageTapGestureRecognizer:UITapGestureRecognizer!
     
@@ -28,13 +34,15 @@ class ViewController: UIViewController {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: view.bounds.width,height: view.bounds.width),false,0)
         self.view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-
         UIGraphicsEndImageContext()
+      
         Sharing.share(on: self,image: image)
     }
     
     @objc func EndChangeSlider(){
-        mainImageView.transform = mainImageView.transform.rotated(by: CGFloat(degreeSlider.value) * .pi / 180 )
+        UIImageView.animate(withDuration: 1, animations: {
+            self.mainImageView.transform = self.mainImageView.transform.rotated(by: CGFloat(self.degreeSlider.value) * .pi / 180 )
+        })
     }
 
     @objc func ChangeSlider(){
