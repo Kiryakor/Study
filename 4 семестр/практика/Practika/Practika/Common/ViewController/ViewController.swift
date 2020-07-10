@@ -13,13 +13,7 @@ class ViewController: UIViewController {
     //MARK:Var
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var degreeSlider: UISlider!
-    @IBOutlet weak var saveButton: UIButton!{
-        didSet{
-            saveButton.layer.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-            saveButton.layer.cornerRadius = saveButton.bounds.height / 2
-            saveButton.clipsToBounds = true
-        }
-    }
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var degreeLabel: UILabel!
     var mainImageTapGestureRecognizer:UITapGestureRecognizer!
     

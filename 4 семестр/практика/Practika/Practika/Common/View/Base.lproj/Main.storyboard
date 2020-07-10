@@ -37,11 +37,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxt-ST-PWV">
-                                <rect key="frame" x="177" y="665" width="60" height="30"/>
+                                <rect key="frame" x="177" y="665" width="60" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="kXb-Fz-haV"/>
                                 </constraints>
-                                <state key="normal" title="Save"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="24"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x7Z-Lt-yU2"/>
                                 </connections>
