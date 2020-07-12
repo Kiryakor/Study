@@ -59,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				EDF435F524B759D800A4CBE9 /* Common */,
-				EDF435F424B759C400A4CBE9 /* Controller */,
+				EDF435F424B759C400A4CBE9 /* Helpers Controllers */,
 				EDF435EB24B7395F00A4CBE9 /* Support */,
 				EDF435E524B7390B00A4CBE9 /* Info.plist */,
 				EDF435E024B7390B00A4CBE9 /* Assets.xcassets */,
@@ -93,12 +93,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		EDF435F424B759C400A4CBE9 /* Controller */ = {
+		EDF435F424B759C400A4CBE9 /* Helpers Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				EDF435F024B7567800A4CBE9 /* Sharing.swift */,
 			);
-			path = Controller;
+			path = "Helpers Controllers";
 			sourceTree = "<group>";
 		};
 		EDF435F524B759D800A4CBE9 /* Common */ = {

@@ -23,13 +23,9 @@ class ViewController: UIViewController {
         setup()
     }
     
-    //MARL:Action
+    //MARK:Action
     @IBAction func saveButton(_ sender: UIButton) {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: view.bounds.width,height: view.bounds.width),false,0)
-        self.view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-      
+        let image = makeScreenshot()
         Sharing.share(on: self,image: image)
     }
     
@@ -48,6 +44,7 @@ class ViewController: UIViewController {
     }
 }
 
+//MARK: Helpers func
 extension ViewController{
     private func setup(){
         degreeLabel.text = "\(Int(degreeSlider.value))"
@@ -56,6 +53,15 @@ extension ViewController{
         
         mainImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapMainImageView))
         mainImageView.addGestureRecognizer(mainImageTapGestureRecognizer)
+    }
+    
+    private func makeScreenshot() -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: view.bounds.width,height: view.bounds.width),false,0)
+        self.view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return image
     }
 }
 
@@ -77,16 +83,15 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     private func chooseImage(sourse:UIImagePickerController.SourceType){
-         if UIImagePickerController.isSourceTypeAvailable(sourse){
+        if UIImagePickerController.isSourceTypeAvailable(sourse){
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
             imagePicker.sourceType = sourse
             self.present(imagePicker,animated: true,completion: nil)
-         }
-     }
+        }
+    }
     
-    //для установление фото из загруженной фото
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         mainImageView.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         mainImageView.contentMode = .scaleAspectFill
