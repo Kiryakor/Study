@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var degreeLabel: UILabel!
     var mainImageTapGestureRecognizer:UITapGestureRecognizer!
+    var startPossitionImageView:CGAffineTransform = CGAffineTransform()
+    var flagImageStart:Bool = false
     
     //MARK:Lifecycle
     override func viewDidLoad() {
@@ -40,7 +42,21 @@ class ViewController: UIViewController {
     }
     
     @objc func tapMainImageView(){
-        alertImage()
+        if flagImageStart{
+            UIImageView.animate(withDuration: 1, animations: {
+                self.mainImageView.transform = self.startPossitionImageView
+            })
+            UISlider.animate(withDuration: 1) {
+                self.degreeSlider.value = 0
+            }
+            degreeLabel.text = "0"
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.alertImage()
+            }
+        }else{
+            alertImage()
+            flagImageStart = true
+        }
     }
 }
 
@@ -53,6 +69,11 @@ extension ViewController{
         
         mainImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapMainImageView))
         mainImageView.addGestureRecognizer(mainImageTapGestureRecognizer)
+        
+        startPossitionImageView = self.mainImageView.transform
+        
+        saveButton.alpha = 0
+        saveButton.isHidden = false
     }
     
     private func makeScreenshot() -> UIImage{
@@ -94,8 +115,15 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         mainImageView.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-        mainImageView.contentMode = .scaleAspectFill
+        mainImageView.contentMode = .scaleAspectFit
         mainImageView.clipsToBounds = true
         dismiss(animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            UIButton.animate(withDuration: 1) {
+                self.saveButton.alpha = 1
+                self.saveButton.isHidden = false
+            }
+        }
     }
 }
