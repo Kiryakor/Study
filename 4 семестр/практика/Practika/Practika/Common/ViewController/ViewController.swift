@@ -68,6 +68,7 @@ extension ViewController{
         degreeSlider.addTarget(self, action: #selector(ChangeSlider), for: .valueChanged)
         
         mainImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapMainImageView))
+        mainImageTapGestureRecognizer.numberOfTapsRequired = 2
         mainImageView.addGestureRecognizer(mainImageTapGestureRecognizer)
         
         startPossitionImageView = self.mainImageView.transform
@@ -93,7 +94,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let cameraAction = UIAlertAction(title: "Сamera", style: .default) { (action) in
             self.chooseImage(sourse: .camera)
         }
-        let photoLibAction = UIAlertAction(title: "Gallary", style: .default) { (action) in
+
+        let photoLibAction = UIAlertAction(title: "Галерея ", style: .default) { (action) in
             self.chooseImage(sourse: .photoLibrary)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

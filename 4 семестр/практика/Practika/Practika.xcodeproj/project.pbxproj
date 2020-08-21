@@ -18,8 +18,8 @@
 
 /* Begin PBXFileReference section */
 		EDF435D424B7390900A4CBE9 /* Practika.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practika.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDF435D724B7390900A4CBE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
-		EDF435D924B7390900A4CBE9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../SceneDelegate.swift; sourceTree = "<group>"; };
+		EDF435D724B7390900A4CBE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDF435D924B7390900A4CBE9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EDF435DB24B7390900A4CBE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EDF435DE24B7390900A4CBE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDF435E024B7390B00A4CBE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,20 +60,12 @@
 			children = (
 				EDF435F524B759D800A4CBE9 /* Common */,
 				EDF435F424B759C400A4CBE9 /* Helpers Controllers */,
-				EDF435EB24B7395F00A4CBE9 /* Support */,
 				EDF435E524B7390B00A4CBE9 /* Info.plist */,
-				EDF435E024B7390B00A4CBE9 /* Assets.xcassets */,
-			);
-			path = Practika;
-			sourceTree = "<group>";
-		};
-		EDF435EB24B7395F00A4CBE9 /* Support */ = {
-			isa = PBXGroup;
-			children = (
 				EDF435D724B7390900A4CBE9 /* AppDelegate.swift */,
+				EDF435E024B7390B00A4CBE9 /* Assets.xcassets */,
 				EDF435D924B7390900A4CBE9 /* SceneDelegate.swift */,
 			);
-			path = Support;
+			path = Practika;
 			sourceTree = "<group>";
 		};
 		EDF435F224B759A300A4CBE9 /* View */ = {
