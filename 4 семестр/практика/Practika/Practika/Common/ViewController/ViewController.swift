@@ -93,7 +93,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let cameraAction = UIAlertAction(title: "Сamera", style: .default) { (action) in
             self.chooseImage(sourse: .camera)
         }
-        let photoLibAction = UIAlertAction(title: "Photo", style: .default) { (action) in
+        let photoLibAction = UIAlertAction(title: "Gallary", style: .default) { (action) in
             self.chooseImage(sourse: .photoLibrary)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -118,7 +118,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         mainImageView.contentMode = .scaleAspectFit
         mainImageView.clipsToBounds = true
         dismiss(animated: true, completion: nil)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             UIButton.animate(withDuration: 1) {
                 self.saveButton.alpha = 1
