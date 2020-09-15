@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Коллекционирование (нумизматика, филателия и пр).</title>
+        <style>
+            table {
+                border-spacing: 0 10px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: bold;
+            }
+            th {
+                padding: 10px 20px;
+                background: #56433D;
+                color: #F9C941;
+                border-right: 2px solid;
+                font-size: 0.9em;
+            }
+            th:first-child {
+                text-align: left;
+            }
+            th:last-child {
+                border-right: none;
+            }
+            td {
+                vertical-align: middle;
+                padding: 10px;
+                font-size: 14px;
+                text-align: center;
+                border-top: 2px solid #56433D;
+                border-bottom: 2px solid #56433D;
+                border-right: 2px solid #56433D;
+            }
+            td:first-child {
+                border-left: 2px solid #56433D;
+                border-right: none;
+            }
+            td:nth-child(2){
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div align="center">
+            <h1>Коллекционирование монет</h1>
+
+            <table>
+                <tr>
+                    <th colspan="2">Монета</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Цена коллекции</th>
+                </tr>
+                <tr>
+                    <td><img src="https://upload.wikimedia.org/wikipedia/ru/9/9d/1_euro._New_design.gif" width="100" height="100" alt="Евро"></td>
+                    <td></td>
+                    <td>80</td>
+                    <td>1</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td><img src="https://c7.hotpng.com/preview/577/876/953/united-states-dollar-presidential-1-coin-program-dollar-coin-dollar.jpg" width="100" height="100" alt="Доллар"></td>
+                    <td></td>
+                    <td>75</td>
+                    <td>1</td>
+                    <td>75</td>
+                </tr>
+            </table>
+
+            <form action="/" method="post">
+                <input type="text" name="title" placeholder="Ссылка на фотографию"><br>
+                <input type="text" name="title" placeholder="Цена"><br>
+                <input type="text" name="title" placeholder="Количество"><br>
+                <button type="submit">Добавить новую монету в коллекцию</button>
+            </form>
+        </div>
+    </body>
+</html>
