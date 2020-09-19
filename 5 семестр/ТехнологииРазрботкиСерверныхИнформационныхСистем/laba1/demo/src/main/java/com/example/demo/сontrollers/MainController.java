@@ -3,7 +3,6 @@ package com.example.demo.сontrollers;
 import com.example.demo.common.helpers.ConvertData;
 import com.example.demo.model.MainModel;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +17,15 @@ public class MainController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         processRequest(resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         String button = req.getParameter("button");
 
-        System.out.println(button);
         if ("delete".equals(button)) {
             data.removeData(req.getParameter("remove"));
         } else if ("add".equals(button)) {
@@ -109,15 +107,14 @@ public class MainController extends HttpServlet {
             out.println("</tr>");
             for (MainModel.DataMoney i : data.getData()) {
                 out.println("<tr>");
-                out.println("<td><img src=" + i.href + " width=100 height=100</td>");
+                out.println("<td><img src=" + i.getHref() + " width=100 height=100</td>");
                 out.println("<td></td>");
-                out.println("<td>" + i.price + "</td>");
-                out.println("<td>" + i.count + "</td>");
-                out.println("<td>" + i.name + "</td>");
+                out.println("<td>" + i.getPrice() + "</td>");
+                out.println("<td>" + i.getCount() + "</td>");
+                out.println("<td>" + i.getName() + "</td>");
                 out.println("</tr>");
             }
             out.println("</table>");
-
             out.println("<table>");
             out.println("<tr>");
             out.println("<td>");
@@ -131,6 +128,7 @@ public class MainController extends HttpServlet {
             out.println("</td>");
             out.println("<td>");
             out.println("</td>");
+
             //MARK: - Удаление данных
             out.println("<td>");
             out.print("<form action=\"/\" method=\"post\">");
@@ -139,7 +137,12 @@ public class MainController extends HttpServlet {
             out.print("</form>");
             out.println("</td>");
             out.println("</tr>");
-            out.println("</table>");
+            out.println("</table><br>");
+
+            //MARK: - контактная информация
+            out.println("<h4>Контактная информация</h2>");
+            out.println("<a href=\"https://github.com/Kiryakor\">github</a>");
+            out.println("<a href=\"https://www.linkedin.com/in/kirill-kornushchenkov-516b5b1a9/\">linkedin</a>");
 
             out.println("</body>");
             out.println("</html>");

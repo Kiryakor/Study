@@ -5,16 +5,32 @@ import java.util.ArrayList;
 public class MainModel {
 
     public static class DataMoney {
-        public String href;
-        public int price;
-        public int count;
-        public String name;
+        String href;
+        int price;
+        int count;
+        String name;
 
         public DataMoney(String href, int price, int count, String name) {
             this.href = href;
             this.price = price;
             this.count = count;
             this.name = name;
+        }
+
+        public String getHref() {
+            return href;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+
+        public int getCount() {
+            return count;
+        }
+
+        public String getName() {
+            return name;
         }
     }
 
@@ -31,10 +47,6 @@ public class MainModel {
 
     public void removeData(String name){
         dataMoneis.removeIf( i -> i.name.equals(name));
-    }
-
-    public int dataSize(){
-        return dataMoneis.size();
     }
 
     public ArrayList<DataMoney> getData(){
