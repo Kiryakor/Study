@@ -45,8 +45,15 @@ public class Model {
         dataMoneis.add(data);
     }
 
-    public void removeData(String name) {
-        dataMoneis.removeIf(i -> i.name.equals(name));
+    public boolean removeData(String name) {
+        for (int i=0;i<dataMoneis.size();i++){
+            if (dataMoneis.get(i).name.equals(name)){
+                dataMoneis.remove(i);
+                return true;
+            }
+        }
+        //dataMoneis.removeIf(i -> i.name.equals(name));
+        return  false;
     }
 
     public ArrayList<DataMoney> getData() {

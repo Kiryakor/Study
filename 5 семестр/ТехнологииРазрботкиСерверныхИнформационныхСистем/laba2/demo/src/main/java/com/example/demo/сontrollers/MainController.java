@@ -1,8 +1,9 @@
 package com.example.demo.сontrollers;
 
-import com.example.demo.HTML.HTMLFile;
 import com.example.demo.helpers.ConvertData;
+import com.example.demo.helpers.JsonParser;
 import com.example.demo.model.Model;
+import org.json.JSONException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,48 +16,34 @@ public class MainController {
         data = new Model();
     }
 
-    //MARK: -  Main
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public String getMain() {
-        return HTMLFile.mainHTML();
-    }
-
     //MARK: - Add
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String getAdd() {
-        return HTMLFile.addHTML();
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String postAdd(@RequestParam("href") String href,
-                          @RequestParam("price") String price,
-                          @RequestParam("count") String count,
+    @RequestMapping(value = "/money", method = RequestMethod.POST)
+    public String postAdd(@RequestParam(value = "href",required = false) String href,
+                          @RequestParam(value = "price",required = false) String price,
+                          @RequestParam(value = "count",required = false,defaultValue = "1") String count,
                           @RequestParam("name") String name) {
         data.addData(new Model.DataMoney(href, ConvertData.convertStringToInt(price),ConvertData.convertStringToInt(count),name));
-        return HTMLFile.addHTML();
+        return "Success";
     }
 
-    //MARK: - Remove
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String getDelete() {
-        return HTMLFile.deleteHTML();
+    //MARK: - Remove - параметр для удаления какой-нибудь добавить
+    @RequestMapping(value = "/money", method = RequestMethod.DELETE)
+    public String getDelete(@RequestParam String name) {
+        if (data.removeData(name))
+            return "Success";
+        else
+            return "No success";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String postDelete(@RequestParam("remove") String remove) {
-        data.removeData(remove);
-        return HTMLFile.deleteHTML();
-    }
-
-    //MARK: - All money
+    //MARK: - All money view
     @RequestMapping(value = "/money", method = RequestMethod.GET)
-    public String getMoneyInfo() {
-        return HTMLFile.allMoneyHTML(data);
+    public String getMoneyInfo() throws JSONException {
+        return JsonParser.getAllMoney(data.getData()).toString();
     }
 
-    //MARK: - Detail money
+    //MARK: - Detail money view
     @RequestMapping(value = "/money/{id}", method = RequestMethod.GET)
-    public String getMoneyInfo(@PathVariable("id") int id) {
-        return HTMLFile.moneyHTML(data.getData().get(id));
+    public String getMoneyInfo(@PathVariable("id") int id) throws JSONException {
+        return JsonParser.getMoney(data.getData().get(id)).toString();
     }
 }
