@@ -1,9 +1,9 @@
 package com.example.demo.сontrollers;
 
-import com.example.demo.helpers.ConvertData;
 import com.example.demo.helpers.JsonParser;
 import com.example.demo.model.Model;
 import org.json.JSONException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,32 +16,28 @@ public class MainController {
         data = new Model();
     }
 
-    //MARK: - Add
+    @ResponseBody
     @RequestMapping(value = "/money", method = RequestMethod.POST)
-    public String postAdd(@RequestParam(value = "href",required = false) String href,
-                          @RequestParam(value = "price",required = false) String price,
-                          @RequestParam(value = "count",required = false,defaultValue = "1") String count,
-                          @RequestParam("name") String name) {
-        data.addData(new Model.DataMoney(href, ConvertData.convertStringToInt(price),ConvertData.convertStringToInt(count),name));
-        return "Success";
+    public HttpStatus postAdd(@RequestBody String myModel) throws JSONException {
+        Model.DataMoney data = JsonParser.postMoney(myModel);
+        this.data.addData(data);
+        return HttpStatus.OK;
     }
 
-    //MARK: - Remove - параметр для удаления какой-нибудь добавить
+    @ResponseBody
     @RequestMapping(value = "/money", method = RequestMethod.DELETE)
-    public String getDelete(@RequestParam String name) {
+    public HttpStatus getDelete(@RequestBody String name) throws JSONException {
         if (data.removeData(name))
-            return "Success";
+            return HttpStatus.FOUND;
         else
-            return "No success";
+            return HttpStatus.NOT_FOUND;
     }
 
-    //MARK: - All money view
     @RequestMapping(value = "/money", method = RequestMethod.GET)
     public String getMoneyInfo() throws JSONException {
         return JsonParser.getAllMoney(data.getData()).toString();
     }
 
-    //MARK: - Detail money view
     @RequestMapping(value = "/money/{id}", method = RequestMethod.GET)
     public String getMoneyInfo(@PathVariable("id") int id) throws JSONException {
         return JsonParser.getMoney(data.getData().get(id)).toString();
