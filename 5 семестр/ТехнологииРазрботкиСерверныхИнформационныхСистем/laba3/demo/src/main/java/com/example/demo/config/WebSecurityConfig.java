@@ -11,7 +11,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/home", "/", "/css/**", "/js/**", "/images/**", "/public/rest/**")
-                .permitAll().and().exceptionHandling().accessDeniedPage("/403").and().csrf().disable();
+        http.authorizeRequests()
+                    .antMatchers("/home", "/", "/static/css/**", "/js/**", "/images/**", "/public/rest/**")
+                    .permitAll()
+                .and()
+                    .exceptionHandling()
+                    .accessDeniedPage("/403")
+                .and()
+                    .csrf()
+                    .disable();
     }
 }

@@ -2,25 +2,19 @@ var app = angular.module('money', []);
 
 app.controller("MoneyController", function ($scope, $http) {
 
+    //Get func
     $scope.getMoney = function () {
-        $http.get('/public/rest/money').then($scope.successGetMoneyCallback, $scope.errorGetMoneyCallback);
+        $http.get('/public/rest/money').then($scope.successGetMoneyCallback, $scope.errorCallback);
     };
 
     $scope.successGetMoneyCallback = function (response) {
         $scope.moneyList = response.data;
     };
 
-    $scope.errorGetMoneyCallback = function (error) {
-        console.log(error);
-    };
-
+    //Delete func
     $scope.deleteMoney = function (id) {
         $scope.deletedId = id;
-        $http.delete('/public/rest/money/' + id).then($scope.successDeleteMoneyCallback, $scope.errorDeleteMoneyCallback);
-    };
-
-    $scope.errorDeleteMoneyCallback = function (error) {
-        console.log(error);
+        $http.delete('/public/rest/money/' + id).then($scope.successDeleteMoneyCallback, $scope.errorCallback);
     };
 
     $scope.successDeleteMoneyCallback = function (response) {
@@ -33,18 +27,17 @@ app.controller("MoneyController", function ($scope, $http) {
         }
     };
 
-    $scope.addMoney = function () {
-//        $scope.name = "12"
-//        $scope.price = 0
-//        $scope.count = 1
-        $http.post('/public/rest/money/' + $scope.name + "/" + $scope.price + "/" + $scope.count).then($scope.successAddMoneyCallback, $scope.errorAddMoneyCallback);
+    //Post func
+    $scope.addMoney = function (price,count,name) {
+        $http.post('/public/rest/money/' + name + "/" + price + "/" + count).then($scope.successAddMoneyCallback, $scope.errorCallback);
     };
 
     $scope.successAddMoneyCallback = function (response) {
-        $http.get('/public/rest/money/').then($scope.successGetMoneyCallback, $scope.errorGetMoneyCallback);
+        $http.get('/public/rest/money/').then($scope.successGetMoneyCallback, $scope.errorCallback);
     };
 
-    $scope.errorAddMoneyCallback = function (error) {
+    //Error callback
+    $scope.errorCallback = function (error) {
         console.log(error);
     };
 });

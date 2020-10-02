@@ -3,49 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-           table {
-                border-spacing: 0 10px;
-                font-family: 'Open Sans', sans-serif;
-                font-weight: bold;
-                }
-           th {
-                padding: 10px 20px;
-                background: #56433D;
-                color: #F9C941;
-                border-right: 2px solid;
-                font-size: 0.9em;
-           }
-           th:first-child {
-                text-align: left;
-           }
-           th:last-child {
-                border-right: none;
-           }
-           td {
-                vertical-align: middle;
-                padding: 10px;
-                font-size: 14px;
-                text-align: center;
-                border-top: 2px solid #56433D;
-                border-bottom: 2px solid #56433D;
-                border-right: 2px solid #56433D;
-           }
-           td:first-child {
-                border-left: 2px solid #56433D;
-                border-right: none;
-           }
-           td:nth-child(2){
-                text-align: left;
-           }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"> </script>
     <script src="js/money.js"></script>
 </head>
 <body ng-app="money" ng-controller="MoneyController">
-    <div class="alert alert-danger" role="alert" ng-show="errormessage">{{errormessage}}</div>
     <div align="center" ng-controller="getMoney" ng-show="moneyList.length > 0">
         <h1>Коллекционирование монет</h1>
+
         <table>
             <tr>
                 <th colspan="2">Монета</th>
@@ -62,25 +27,13 @@
             </tr>
         </table>
 
-        <table>
-            <tr>
-                <td>
-                    <form ng-submit="addMoney()">
-                        <div>
-                            <input type="number" placeholder="Цена" ng-model="price"/><br><br>
-                        </div>
-                        <div>
-                            <input type="number" placeholder="Количество" ng-model="count"/><br><br>
-                        </div>
-                        <div>
-                            <input type="text"  placeholder="Название" ng-model="name"/><br><br>
-                        </div>
-                        <button type="submit">Submit</button>
-                    </form>
-                </td>
-                <td></td>
-            </tr>
-        </table>
+        <h2>Добавление данных</h2>
+        <form ng-submit="addMoney(price,count,name)">
+            <input type="number" placeholder="Цена" ng-model="price"/><br><br>
+            <input type="number" placeholder="Количество" ng-model="count"/><br><br>
+            <input type="text"  placeholder="Название" ng-model="name"/><br><br>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 </body>
 </html>
