@@ -62,7 +62,7 @@ def parse3(data):
     return 0
 
 #Путь к файлу для чтения с расширением .docx
-doc_result = docx2python('/Users/kirill/Desktop/Study/5 семестр/МетодыТрансляций/test/MT.docx')
+doc_result = docx2python('MT.docx')
 parseData = []
 parseState = ParseEnum.notGood
 for j in doc_result.body:
