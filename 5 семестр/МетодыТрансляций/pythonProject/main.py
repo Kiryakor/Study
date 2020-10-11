@@ -52,8 +52,7 @@ def parse1(data, header):
         header.alpha = data[b+13:].strip()
     elif "Исполнитель:" in data:
         header.author = data[12:].strip()
-    else:
-        print("Error in parse1 def")
+
 
 def parse3(data):
     """Метод для парсинг 2 и 3 таблицы"""
@@ -62,7 +61,7 @@ def parse3(data):
     return 0
 
 #Путь к файлу для чтения с расширением .docx
-doc_result = docx2python('MT.docx')
+doc_result = docx2python('mt.docx')
 parseData = []
 parseState = ParseEnum.notGood
 for j in doc_result.body:
@@ -99,7 +98,7 @@ for j in doc_result.body:
         else:
             print("Error in parseState")
 
-    if header.water != "":
+    if header.author != "":
         parseData.append(Data(header, body, bottom))
 
 #MARK: - записать в файл .csv
