@@ -7,8 +7,7 @@ class Solution {
     
     func isPathCrossing(_ path: String) -> Bool {
         var point = Point(x: 0, y: 0)
-        for i in path{
-        }
+        for i in path{}
         return true
     }
 }
