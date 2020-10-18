@@ -14,56 +14,56 @@
 int rot_x = 0;
 int rot_y = 0;
 
-void firstCube(){
-    
-    glBegin(GL_POLYGON);
-    glColor3f(.3, .2, .0);
-    glVertex3f(.5, -.5, -.5);
-    glVertex3f(.5, .5, -.5);
-    glVertex3f(-.5, .5, -.5);
-    glVertex3f(-.5, -.5, -.5);
-    glEnd();
-    
-    glBegin(GL_POLYGON);
-    glColor3f(.0, .0, 1.);
-    glVertex3f(.5, -.5, .5);
-    glVertex3f(.5, .5, .5);
-    glVertex3f(-.5, .5, .5);
-    glVertex3f(-.5, -.5, .5);
-    glEnd();
-    
-    glBegin(GL_POLYGON);
-    glColor3f(.4, .5, .3);
-    glVertex3f(.5, -.5, -.5);
-    glVertex3f(.5, .5, -.5);
-    glVertex3f(.5, .5, .5);
-    glVertex3f(.5, -.5, .5);
-    glEnd();
-    
-    glBegin(GL_POLYGON);
-    glColor3f(.0, 1., .0);
-    glVertex3f(-.5, -.5, .5);
-    glVertex3f(-.5, .5, .5);
-    glVertex3f(-.5, .5, -.5);
-    glVertex3f(-.5, -.5, -.5);
-    glEnd();
-    
-    glBegin(GL_POLYGON);
-    glColor3f(0.4, 0.0, 1.0);
-    glVertex3f(0.5, 0.5, 0.5);
-    glVertex3f(0.5, 0.5, -0.5);
-    glVertex3f(-0.5, 0.5, -0.5);
-    glVertex3f(-0.5, 0.5, 0.5);
-    glEnd();
-    
-    glBegin(GL_POLYGON);
-    glColor3f(1.0, 0.0, 0.0);
-    glVertex3f(0.5, -0.5, -0.5);
-    glVertex3f(0.5, -0.5, 0.5);
-    glVertex3f(-0.5, -0.5, 0.5);
-    glVertex3f(-0.5, -0.5, -0.5);
-    glEnd();
-}
+//void firstCube(){
+//    
+//    glBegin(GL_POLYGON);
+//    glColor3f(.3, .2, .0);
+//    glVertex3f(.5, -.5, -.5);
+//    glVertex3f(.5, .5, -.5);
+//    glVertex3f(-.5, .5, -.5);
+//    glVertex3f(-.5, -.5, -.5);
+//    glEnd();
+//    
+//    glBegin(GL_POLYGON);
+//    glColor3f(.0, .0, 1.);
+//    glVertex3f(.5, -.5, .5);
+//    glVertex3f(.5, .5, .5);
+//    glVertex3f(-.5, .5, .5);
+//    glVertex3f(-.5, -.5, .5);
+//    glEnd();
+//    
+//    glBegin(GL_POLYGON);
+//    glColor3f(.4, .5, .3);
+//    glVertex3f(.5, -.5, -.5);
+//    glVertex3f(.5, .5, -.5);
+//    glVertex3f(.5, .5, .5);
+//    glVertex3f(.5, -.5, .5);
+//    glEnd();
+//    
+//    glBegin(GL_POLYGON);
+//    glColor3f(.0, 1., .0);
+//    glVertex3f(-.5, -.5, .5);
+//    glVertex3f(-.5, .5, .5);
+//    glVertex3f(-.5, .5, -.5);
+//    glVertex3f(-.5, -.5, -.5);
+//    glEnd();
+//    
+//    glBegin(GL_POLYGON);
+//    glColor3f(0.4, 0.0, 1.0);
+//    glVertex3f(0.5, 0.5, 0.5);
+//    glVertex3f(0.5, 0.5, -0.5);
+//    glVertex3f(-0.5, 0.5, -0.5);
+//    glVertex3f(-0.5, 0.5, 0.5);
+//    glEnd();
+//    
+//    glBegin(GL_POLYGON);
+//    glColor3f(1.0, 0.0, 0.0);
+//    glVertex3f(0.5, -0.5, -0.5);
+//    glVertex3f(0.5, -0.5, 0.5);
+//    glVertex3f(-0.5, -0.5, 0.5);
+//    glVertex3f(-0.5, -0.5, -0.5);
+//    glEnd();
+//}
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -75,15 +75,12 @@ void display(){
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); // см. выше
     
     glBegin(GL_TRIANGLES);
-    glColor3d(5,0,0);
-    glVertex3d(-4,2,0);
-    glVertex3d(-3,2.9,0);
-    glVertex3d(-2,2,0);
-    glLineWidth(2);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(.0, .5, .5, .5, -.5, .5);
     glutSolidSphere(0.3, 50, 40);
+    float col[] = {1.0,0.0,0.0,1.0};
+    glMaterialfv(GL_FRONT, GL_DIFFUSE,  col);
     glEnd();
     
     
@@ -93,6 +90,8 @@ void display(){
     glVertex3f(.5, .5, -.5);
     glVertex3f(-.5, .5, -.5);
     glVertex3f(-.5, -.5, -.5);
+    float coll[] = {1.0,1.0,1.0,1.0};
+    glMaterialfv(GL_FRONT, GL_SPECULAR,  coll);
     glEnd();
     glFlush();
     glutSwapBuffers();
