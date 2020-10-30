@@ -10,13 +10,22 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <GLUT/glut.h>
+<<<<<<< HEAD
 #include <math.h>
  
 #define PI 3.141592653
+=======
+>>>>>>> 22f7e5728b8e9ba36ff498404b9e93a97aee71e4
 
 int rot_x = 0;
 int rot_y = 0;
 
+<<<<<<< HEAD
+=======
+
+//MARK: - Сделать лабу мне надо как-то
+
+>>>>>>> 22f7e5728b8e9ba36ff498404b9e93a97aee71e4
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
@@ -73,6 +82,7 @@ void controlls(int k, int x, int y) {
 }
 
 void Light() {
+<<<<<<< HEAD
 //    glEnable(GL_LIGHT0);
 //    glEnable(GL_LIGHTING);
 //    glEnable(GL_DEPTH_TEST);
@@ -105,12 +115,24 @@ void Light() {
     glLightf(GL_LIGHT7, GL_CONSTANT_ATTENUATION, 0.0);
     glLightf(GL_LIGHT7, GL_LINEAR_ATTENUATION, 0.4);
     glLightf(GL_LIGHT7, GL_QUADRATIC_ATTENUATION, 0.8);
+=======
+    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_DEPTH_TEST);
+    GLfloat col[]={1.0, 0.0, 0.0, 1.0};
+    glLightfv(GL_LIGHT0, GL_SPECULAR, col);
+    GLfloat pos[]={1.0, 0.0, 1.0, 0.0};
+    glLightfv(GL_LIGHT0, GL_POSITION, pos);
+>>>>>>> 22f7e5728b8e9ba36ff498404b9e93a97aee71e4
 }
 
 int main(int argc, char* argv[]) {
     glutInit(&argc, argv);
+<<<<<<< HEAD
     
     
+=======
+>>>>>>> 22f7e5728b8e9ba36ff498404b9e93a97aee71e4
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(1000, 1000);
     glutCreateWindow("Куб");
