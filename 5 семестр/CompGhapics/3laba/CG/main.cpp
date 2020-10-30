@@ -10,6 +10,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <GLUT/glut.h>
+#include <math.h>
+ 
+#define PI 3.141592653
 
 int rot_x = 0;
 int rot_y = 0;
@@ -70,13 +73,38 @@ void controlls(int k, int x, int y) {
 }
 
 void Light() {
-    glEnable(GL_LIGHT0);
-    glEnable(GL_LIGHTING);
-    glEnable(GL_DEPTH_TEST);
-    GLfloat col[]={1.0, 0.0, 0.0, 1.0};
-    glLightfv(GL_LIGHT0, GL_SPECULAR, col);
-    GLfloat pos[]={1.0, 0.0, 1.0, 0.0};
-    glLightfv(GL_LIGHT0, GL_POSITION, pos);
+//    glEnable(GL_LIGHT0);
+//    glEnable(GL_LIGHTING);
+//    glEnable(GL_DEPTH_TEST);
+//    GLfloat col[]={1.0, 0.0, 0.0, 1.0};
+//    glLightfv(GL_LIGHT0, GL_SPECULAR, col);
+//    GLfloat pos[]={1.0, 0.0, 1.0, 0.0};
+//    glLightfv(GL_LIGHT0, GL_POSITION, pos);
+    // несколько источников света
+    GLfloat light5_diffuse[] = {1.0, 0.0, 0.0};
+    GLfloat light5_position[] = {0.5 , 0.5 , 1.0, 1.0};
+    glEnable(GL_LIGHT5);
+    glLightfv(GL_LIGHT5, GL_DIFFUSE, light5_diffuse);
+    glLightfv(GL_LIGHT5, GL_POSITION, light5_position);
+    glLightf(GL_LIGHT5, GL_CONSTANT_ATTENUATION, 0.0);
+    glLightf(GL_LIGHT5, GL_LINEAR_ATTENUATION, 0.4);
+    glLightf(GL_LIGHT5, GL_QUADRATIC_ATTENUATION, 0.8);
+    GLfloat light6_diffuse[] = {0.0, 1.0, 0.0};
+    GLfloat light6_position[] = {static_cast<GLfloat>(0.5 * cos(2 * PI / 3)), static_cast<GLfloat>(0.5 * sin(2 * PI / 3)), 1.0, 1.0};
+    glEnable(GL_LIGHT6);
+    glLightfv(GL_LIGHT6, GL_DIFFUSE, light6_diffuse);
+    glLightfv(GL_LIGHT6, GL_POSITION, light6_position);
+    glLightf(GL_LIGHT6, GL_CONSTANT_ATTENUATION, 0.0);
+    glLightf(GL_LIGHT6, GL_LINEAR_ATTENUATION, 0.4);
+    glLightf(GL_LIGHT6, GL_QUADRATIC_ATTENUATION, 0.8);
+    GLfloat light7_diffuse[] = {0.0, 0.0, 1.0};
+    GLfloat light7_position[] = {static_cast<GLfloat>(0.5 * cos(4 * PI / 3)), static_cast<GLfloat>(0.5 * sin(4 * PI / 3)), 1.0, 1.0};
+    glEnable(GL_LIGHT7);
+    glLightfv(GL_LIGHT7, GL_DIFFUSE, light7_diffuse);
+    glLightfv(GL_LIGHT7, GL_POSITION, light7_position);
+    glLightf(GL_LIGHT7, GL_CONSTANT_ATTENUATION, 0.0);
+    glLightf(GL_LIGHT7, GL_LINEAR_ATTENUATION, 0.4);
+    glLightf(GL_LIGHT7, GL_QUADRATIC_ATTENUATION, 0.8);
 }
 
 int main(int argc, char* argv[]) {

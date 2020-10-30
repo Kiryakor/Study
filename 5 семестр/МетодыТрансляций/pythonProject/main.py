@@ -29,98 +29,110 @@ class Takson:
         self.percentCounter = percentCounter
         self.percentBioMassa = percentBioMassa
 
-class Data:
+class Content:
     """Класс для ханения данных одной полной таблицы"""
     def __init__(self, head, body, bottom):
         self.head = head
         self.body = body
         self.bottom = bottom
 
-def parse1(data, header):
-    """Метод для парсинг первой таблицы"""
-    if "Водоем:" in data:
-        a = data.find("Дата")
-        b = data.find("Станция")
-        header.water = data[7:a].strip()
-        header.date = data[a+5:b].strip()
-        header.station = data[b+8:].strip()
-    elif "Глубина:" in data:
-        a = data.find("Температура")
-        b = data.find("Прозрачность")
-        header.depth = data[8:a].strip()
-        header.temperature = data[a+12:b].strip()
-        header.alpha = data[b+13:].strip()
-    elif "Исполнитель:" in data:
-        header.author = data[12:].strip()
+class ParseSecondBlock:
 
+    def __init__(self, path):
+        self.path = path
+        self.parseData = []
+        self.parseState = ParseEnum.notGood
+        self.doc_result = docx2python('mt.docx')
 
-def parse3(data):
-    """Метод для парсинг 2 и 3 таблицы"""
-    if i[0][0] != "Отдел" and i[0][0] != "Таксон":
-        return Takson(data[0][0], data[1][0], data[2][0], data[3][0], data[4][0])
-    return 0
+        self.startParse()
 
-#Путь к файлу для чтения с расширением .docx
-doc_result = docx2python('mt.docx')
-parseData = []
-parseState = ParseEnum.notGood
-for j in doc_result.body:
-    header = Header()
-    bottom = []
-    body = []
+    def parse1(self, content, header):
+        """Метод для парсинг первой таблицы"""
+        if "Водоем:" in content:
+            a = content.find("Дата")
+            b = content.find("Станция")
+            header.water = content[7:a].strip()
+            header.date = content[a + 5:b].strip()
+            header.station = content[b + 8:].strip()
+        elif "Глубина:" in content:
+            a = content.find("Температура")
+            b = content.find("Прозрачность")
+            header.depth = content[8:a].strip()
+            header.temperature = content[a + 12:b].strip()
+            header.alpha = content[b + 13:].strip()
+        elif "Исполнитель:" in content:
+            header.author = content[12:].strip()
 
-    for i in j:
-        if i[0][0] == "":
-            continue
+    def parse3(self, content):
+        """Метод для парсинг 2 и 3 таблицы"""
+        if content[0][0] != "Отдел" and content[0][0] != "Таксон":
+            return Takson(content[0][0], content[1][0], content[2][0], content[3][0], content[4][0])
+        return 0
 
-        if "Водоем:" in i[0][0]:
-            parseState = ParseEnum.header
-        elif "Таксон" == i[0][0]:
-            parseState = ParseEnum.body
-        elif "Отдел" == i[0][0]:
-            parseState = ParseEnum.bottom
-        elif "Всего" == i[0][0]:
-            takson = parse3(i)
-            if takson != 0:
-                bottom.append(takson)
-            parseState = ParseEnum.notGood
+    def saveData(self):
+        with open('header.tsv', 'wt') as out_file:
+            tsv_writer = csv.writer(out_file, delimiter='\t')
+            counter = 0
+            for i in self.parseData:
+                tsv_writer.writerow(
+                    [counter, i.head.water, i.head.date, i.head.station, i.head.depth, i.head.temperature, i.head.alpha,
+                     i.head.author])
+                counter += 1
 
-        if parseState == ParseEnum.header:
-            parse1(i[0][0], header)
-        elif parseState == ParseEnum.body or parseState == ParseEnum.bottom:
-            takson = parse3(i)
-            if takson != 0 and parseState == ParseEnum.body:
-                body.append(takson)
-            elif takson != 0 and parseState == ParseEnum.bottom:
-                bottom.append(takson)
-        elif parseState == ParseEnum.notGood:
-            pass
-        else:
-            print("Error in parseState")
+        with open('body.tsv', 'wt') as out_file:
+            tsv_writer = csv.writer(out_file, delimiter='\t')
+            counter = 0
+            for i in self.parseData:
+                for j in i.body:
+                    tsv_writer.writerow([counter, j.takson, j.counter, j.bioMassa, j.percentCounter, j.percentBioMassa])
+                counter += 1
 
-    if header.author != "":
-        parseData.append(Data(header, body, bottom))
+        with open('bottom.tsv', 'wt') as out_file:
+            tsv_writer = csv.writer(out_file, delimiter='\t')
+            counter = 0
+            for i in self.parseData:
+                for j in i.bottom:
+                    tsv_writer.writerow([counter, j.takson, j.counter, j.bioMassa, j.percentCounter, j.percentBioMassa])
+                counter += 1
 
-#MARK: - записать в файл .csv
-with open('header.tsv', 'wt') as out_file:
-    tsv_writer = csv.writer(out_file, delimiter='\t')
-    counter = 0
-    for i in parseData:
-        tsv_writer.writerow([counter, i.head.water, i.head.date, i.head.station, i.head.depth, i.head.temperature, i.head.alpha, i.head.author])
-        counter += 1
+    def startParse(self):
+        for j in self.doc_result.body:
+            header = Header()
+            bottom = []
+            body = []
 
-with open('body.tsv', 'wt') as out_file:
-    tsv_writer = csv.writer(out_file, delimiter='\t')
-    counter = 0
-    for i in parseData:
-        for j in i.body:
-            tsv_writer.writerow([counter, j.takson, j.counter, j.bioMassa, j.percentCounter, j.percentBioMassa])
-        counter += 1
+            for i in j:
+                if i[0][0] == "":
+                    continue
 
-with open('bottom.tsv', 'wt') as out_file:
-    tsv_writer = csv.writer(out_file, delimiter='\t')
-    counter = 0
-    for i in parseData:
-        for j in i.bottom:
-            tsv_writer.writerow([counter, j.takson, j.counter, j.bioMassa, j.percentCounter, j.percentBioMassa])
-        counter += 1
+                if "Водоем:" in i[0][0]:
+                    self.parseState = ParseEnum.header
+                elif "Таксон" == i[0][0]:
+                    self.parseState = ParseEnum.body
+                elif "Отдел" == i[0][0]:
+                    self.parseState = ParseEnum.bottom
+                elif "Всего" == i[0][0]:
+                    takson = self.parse3(i)
+                    if takson != 0:
+                        bottom.append(takson)
+                    self.parseState = ParseEnum.notGood
+
+                if self.parseState == ParseEnum.header:
+                    self.parse1(i[0][0], header)
+                elif self.parseState == ParseEnum.body or self.parseState == ParseEnum.bottom:
+                    takson = self.parse3(i)
+                    if takson != 0 and self.parseState == ParseEnum.body:
+                        body.append(takson)
+                    elif takson != 0 and self.parseState == ParseEnum.bottom:
+                        bottom.append(takson)
+                elif self.parseState == ParseEnum.notGood:
+                    pass
+                else:
+                    print("Error in parseState")
+
+            if header.author != "":
+                self.parseData.append(Content(header, body, bottom))
+
+            self.saveData()
+
+ParseSecondBlock('mt.docx')
