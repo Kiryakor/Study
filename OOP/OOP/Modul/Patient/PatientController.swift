@@ -1,5 +1,5 @@
 //
-//  DoctorsViewController.swift
+//  ViewController.swift
 //  OOP
 //
 //  Created by Кирилл on 25.10.2020.
@@ -8,39 +8,38 @@
 
 import UIKit
 
-enum StateData {
-    case base
-    case find
-}
+class PatientController: UIViewController {
 
-class DoctorsController: UIViewController {
-
+    var tableView: UITableView!{
+        didSet{
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.register(BasicCell.self, forCellReuseIdentifier: Constant.Cell.cellId(.dostors)())
+            tableView.tableFooterView = UIView()
+            tableView.rowHeight = 80
+        }
+    }
     
-    var doctorSingelton = DoctorsSingelton.share
+    var patientSingelton = PatientSingelton.share
     var stateData:StateData = .base
     var findData:[PeopleModel] = []
-    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTable()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(BasicCell.self, forCellReuseIdentifier: Constant.Cell.cellId(.dostors)())
-        tableView.tableFooterView = UIView()
-        tableView.rowHeight = 80
-    }
-    
-    @IBAction func searchDoctors(_ sender: UIBarButtonItem) {
+    @IBAction func searchPatient(_ sender: Any) {
         findData.removeAll()
         let searchAlert = UIAlertController(title: "Поиск", message: nil, preferredStyle: .alert)
         searchAlert.addTextField(configurationHandler: nil)
         searchAlert.addAction(UIAlertAction(title: "Поиск по профессии", style: .default, handler: { [unowned self] (alert) in
             let textField = searchAlert.textFields!.first
-            for i in self.doctorSingelton.data{
+            for i in self.patientSingelton.data{
                 if i.profession.contains(textField!.text!){
                     self.findData.append(i)
                 }
@@ -50,7 +49,7 @@ class DoctorsController: UIViewController {
         }))
         searchAlert.addAction(UIAlertAction(title: "Поиск по имени", style: .default, handler: { [unowned self] (alert) in
             let textField = searchAlert.textFields!.first
-            for i in self.doctorSingelton.data{
+            for i in self.patientSingelton.data{
                 if i.fullName.contains(textField!.text!){
                     self.findData.append(i)
                 }
@@ -66,22 +65,27 @@ class DoctorsController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "doctorId"{
+        if segue.identifier == "patientId"{
             if let nextViewController = segue.destination as? AddNewPeopleController {
-                nextViewController.stateAddPeople = .doctor
+                nextViewController.stateAddPeople = .patient
             }
         }
     }
 }
 
-extension DoctorsController: UITableViewDelegate, UITableViewDataSource{
+extension PatientController: UITableViewDelegate, UITableViewDataSource{
+    
+    func setupTable() {
+        tableView = UITableView(frame: view.frame)
+        view.addSubview(tableView)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch stateData {
+        case .base:
+            return patientSingelton.data.count
         case .find:
             return findData.count
-        case .base:
-            return doctorSingelton.data.count
         }
     }
     
@@ -89,7 +93,7 @@ extension DoctorsController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Cell.cellId(.dostors)(), for: indexPath) as! BasicCell
         switch stateData {
         case .base:
-            cell.setValue(data: doctorSingelton.data[indexPath.row])
+            cell.setValue(data: patientSingelton.data[indexPath.row])
         case .find:
             cell.setValue(data: findData[indexPath.row])
         }
@@ -97,16 +101,15 @@ extension DoctorsController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete, stateData == .base{
-            doctorSingelton.data.remove(at: indexPath.row)
+        if editingStyle == .delete{
+            patientSingelton.data.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "detailVC") as! DetailDoctorsController
-        vc.index = indexPath.row
+        let vc = storyboard.instantiateViewController(withIdentifier: "detailPacientVC") as! DetailPersonController
         navigationController?.pushViewController(vc,animated: true)
     }
 }

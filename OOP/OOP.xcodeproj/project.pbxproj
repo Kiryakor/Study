@@ -7,25 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED2E75AC254E9F140020775D /* DetailDoctorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2E75AB254E9F140020775D /* DetailDoctorsController.swift */; };
+		ED2E75AE254EB5C80020775D /* DetailPersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2E75AD254EB5C80020775D /* DetailPersonController.swift */; };
+		ED5E8624254D963D008BE23A /* DoctorsSingelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E8623254D963D008BE23A /* DoctorsSingelton.swift */; };
+		ED5E8626254D9661008BE23A /* PatientSingelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E8625254D9661008BE23A /* PatientSingelton.swift */; };
 		ED6A3A6E25458E1A002D6512 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A6D25458E1A002D6512 /* AppDelegate.swift */; };
 		ED6A3A7025458E1A002D6512 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A6F25458E1A002D6512 /* SceneDelegate.swift */; };
-		ED6A3A7225458E1A002D6512 /* PatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A7125458E1A002D6512 /* PatientViewController.swift */; };
+		ED6A3A7225458E1A002D6512 /* PatientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A7125458E1A002D6512 /* PatientController.swift */; };
 		ED6A3A7525458E1A002D6512 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6A3A7325458E1A002D6512 /* Main.storyboard */; };
 		ED6A3A7725458E1E002D6512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED6A3A7625458E1E002D6512 /* Assets.xcassets */; };
 		ED6A3A7A25458E1E002D6512 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6A3A7825458E1E002D6512 /* LaunchScreen.storyboard */; };
 		ED6A3A8625458FDB002D6512 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8525458FDB002D6512 /* StatisticViewController.swift */; };
 		ED6A3A8825458FE6002D6512 /* DoctorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8725458FE6002D6512 /* DoctorsController.swift */; };
 		ED6A3A8D25459165002D6512 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8C25459165002D6512 /* Constant.swift */; };
-		ED6A3A8F254594B2002D6512 /* DoctorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8E254594B2002D6512 /* DoctorsModel.swift */; };
-		ED6A3A9325459637002D6512 /* DoctorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A9225459637002D6512 /* DoctorsCell.swift */; };
+		ED6A3A8F254594B2002D6512 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8E254594B2002D6512 /* PeopleModel.swift */; };
+		ED6A3A9325459637002D6512 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A9225459637002D6512 /* BasicCell.swift */; };
 		ED6A3A9525459A29002D6512 /* UILabel + extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A9425459A29002D6512 /* UILabel + extention.swift */; };
+		EDF8FB1E254D48B300E9F08E /* AddNewPeopleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8FB1D254D48B300E9F08E /* AddNewPeopleController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED2E75AB254E9F140020775D /* DetailDoctorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDoctorsController.swift; sourceTree = "<group>"; };
+		ED2E75AD254EB5C80020775D /* DetailPersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersonController.swift; sourceTree = "<group>"; };
+		ED5E8623254D963D008BE23A /* DoctorsSingelton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsSingelton.swift; sourceTree = "<group>"; };
+		ED5E8625254D9661008BE23A /* PatientSingelton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSingelton.swift; sourceTree = "<group>"; };
 		ED6A3A6A25458E1A002D6512 /* OOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6A3A6D25458E1A002D6512 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED6A3A6F25458E1A002D6512 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED6A3A7125458E1A002D6512 /* PatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewController.swift; sourceTree = "<group>"; };
+		ED6A3A7125458E1A002D6512 /* PatientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientController.swift; sourceTree = "<group>"; };
 		ED6A3A7425458E1A002D6512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED6A3A7625458E1E002D6512 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED6A3A7925458E1E002D6512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,9 +42,10 @@
 		ED6A3A8525458FDB002D6512 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		ED6A3A8725458FE6002D6512 /* DoctorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsController.swift; sourceTree = "<group>"; };
 		ED6A3A8C25459165002D6512 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		ED6A3A8E254594B2002D6512 /* DoctorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsModel.swift; sourceTree = "<group>"; };
-		ED6A3A9225459637002D6512 /* DoctorsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsCell.swift; sourceTree = "<group>"; };
+		ED6A3A8E254594B2002D6512 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
+		ED6A3A9225459637002D6512 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		ED6A3A9425459A29002D6512 /* UILabel + extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extention.swift"; sourceTree = "<group>"; };
+		EDF8FB1D254D48B300E9F08E /* AddNewPeopleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPeopleController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +59,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED2E75AA254E9EFB0020775D /* DetailDoctors */ = {
+			isa = PBXGroup;
+			children = (
+				ED2E75AB254E9F140020775D /* DetailDoctorsController.swift */,
+			);
+			path = DetailDoctors;
+			sourceTree = "<group>";
+		};
+		ED5E8622254D961C008BE23A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				ED6A3A8E254594B2002D6512 /* PeopleModel.swift */,
+				ED5E8623254D963D008BE23A /* DoctorsSingelton.swift */,
+				ED5E8625254D9661008BE23A /* PatientSingelton.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		ED6A3A6125458E1A002D6512 = {
 			isa = PBXGroup;
 			children = (
@@ -68,9 +96,11 @@
 		ED6A3A6C25458E1A002D6512 /* OOP */ = {
 			isa = PBXGroup;
 			children = (
+				ED5E8622254D961C008BE23A /* Data */,
 				ED6A3A892545911C002D6512 /* Helpers */,
 				ED6A3A8125458F52002D6512 /* Modul */,
 				ED6A3A6F25458E1A002D6512 /* SceneDelegate.swift */,
+				ED6A3A6D25458E1A002D6512 /* AppDelegate.swift */,
 				ED6A3A7325458E1A002D6512 /* Main.storyboard */,
 				ED6A3A7625458E1E002D6512 /* Assets.xcassets */,
 				ED6A3A7825458E1E002D6512 /* LaunchScreen.storyboard */,
@@ -82,9 +112,13 @@
 		ED6A3A8125458F52002D6512 /* Modul */ = {
 			isa = PBXGroup;
 			children = (
+				ED2E75AA254E9EFB0020775D /* DetailDoctors */,
+				ED6A3A9225459637002D6512 /* BasicCell.swift */,
+				EDF8FB1C254D479B00E9F08E /* AddNewPeople */,
 				ED6A3A8425458F7A002D6512 /* Patient */,
 				ED6A3A8325458F73002D6512 /* Statistic */,
 				ED6A3A8225458F61002D6512 /* Doctors */,
+				ED2E75AD254EB5C80020775D /* DetailPersonController.swift */,
 			);
 			path = Modul;
 			sourceTree = "<group>";
@@ -93,9 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				ED6A3A8725458FE6002D6512 /* DoctorsController.swift */,
-				ED6A3A8E254594B2002D6512 /* DoctorsModel.swift */,
-				ED6A3A9225459637002D6512 /* DoctorsCell.swift */,
-				ED6A3A6D25458E1A002D6512 /* AppDelegate.swift */,
 			);
 			path = Doctors;
 			sourceTree = "<group>";
@@ -111,7 +142,7 @@
 		ED6A3A8425458F7A002D6512 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
-				ED6A3A7125458E1A002D6512 /* PatientViewController.swift */,
+				ED6A3A7125458E1A002D6512 /* PatientController.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -139,6 +170,14 @@
 				ED6A3A8C25459165002D6512 /* Constant.swift */,
 			);
 			path = Constatn;
+			sourceTree = "<group>";
+		};
+		EDF8FB1C254D479B00E9F08E /* AddNewPeople */ = {
+			isa = PBXGroup;
+			children = (
+				EDF8FB1D254D48B300E9F08E /* AddNewPeopleController.swift */,
+			);
+			path = AddNewPeople;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,14 +251,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED6A3A7225458E1A002D6512 /* PatientViewController.swift in Sources */,
+				ED6A3A7225458E1A002D6512 /* PatientController.swift in Sources */,
+				ED5E8624254D963D008BE23A /* DoctorsSingelton.swift in Sources */,
 				ED6A3A6E25458E1A002D6512 /* AppDelegate.swift in Sources */,
-				ED6A3A9325459637002D6512 /* DoctorsCell.swift in Sources */,
+				ED6A3A9325459637002D6512 /* BasicCell.swift in Sources */,
 				ED6A3A7025458E1A002D6512 /* SceneDelegate.swift in Sources */,
+				ED5E8626254D9661008BE23A /* PatientSingelton.swift in Sources */,
 				ED6A3A8625458FDB002D6512 /* StatisticViewController.swift in Sources */,
+				ED2E75AE254EB5C80020775D /* DetailPersonController.swift in Sources */,
+				ED2E75AC254E9F140020775D /* DetailDoctorsController.swift in Sources */,
 				ED6A3A8825458FE6002D6512 /* DoctorsController.swift in Sources */,
 				ED6A3A9525459A29002D6512 /* UILabel + extention.swift in Sources */,
-				ED6A3A8F254594B2002D6512 /* DoctorsModel.swift in Sources */,
+				EDF8FB1E254D48B300E9F08E /* AddNewPeopleController.swift in Sources */,
+				ED6A3A8F254594B2002D6512 /* PeopleModel.swift in Sources */,
 				ED6A3A8D25459165002D6512 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
