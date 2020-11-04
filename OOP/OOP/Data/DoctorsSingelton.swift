@@ -12,8 +12,6 @@ class DoctorsSingelton {
     private init(){}
     var data: [PeopleModel] = [PeopleModel(name: "ivan", soname: "Petrov", profession: "doctor", image: UIImage(systemName: "table")!)]
     static let share = DoctorsSingelton()
-    
-//    var history:
 }
 
 struct History {

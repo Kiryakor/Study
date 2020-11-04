@@ -9,11 +9,18 @@
 import Foundation
 import UIKit
 
-struct PeopleModel {
-    let name: String
-    let soname: String
-    let profession: String
-    let image: UIImage
+protocol peopleProtocol{
+    var name:String { get set }
+    var soname:String { get set }
+    var profession:String { get set }
+    var image: UIImage { get set }
+}
+
+struct PeopleModel: peopleProtocol {
+    var name: String
+    var soname: String
+    var profession: String
+    var image: UIImage
     
     var fullName:String {
         return name + " " + soname
