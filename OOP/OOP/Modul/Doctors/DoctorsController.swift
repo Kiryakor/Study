@@ -14,7 +14,6 @@ enum StateData {
 }
 
 class DoctorsController: UIViewController {
-
     
     var doctorSingelton = DoctorsSingelton.share
     var stateData:StateData = .base
