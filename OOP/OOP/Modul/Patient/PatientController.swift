@@ -14,7 +14,7 @@ class PatientController: UIViewController {
         didSet{
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.register(BasicCell.self, forCellReuseIdentifier: Constant.Cell.cellId(.dostors)())
+            tableView.register(BasicCell.self, forCellReuseIdentifier: Constant.Cell.cellId(.patient)())
             tableView.tableFooterView = UIView()
             tableView.rowHeight = 80
         }
@@ -90,7 +90,7 @@ extension PatientController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Cell.cellId(.dostors)(), for: indexPath) as! BasicCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Cell.cellId(.patient)(), for: indexPath) as! BasicCell
         switch stateData {
         case .base:
             cell.setValue(data: patientSingelton.data[indexPath.row])

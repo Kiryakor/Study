@@ -23,6 +23,7 @@
 		ED6A3A8F254594B2002D6512 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8E254594B2002D6512 /* PeopleModel.swift */; };
 		ED6A3A9325459637002D6512 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A9225459637002D6512 /* BasicCell.swift */; };
 		ED6A3A9525459A29002D6512 /* UILabel + extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A9425459A29002D6512 /* UILabel + extention.swift */; };
+		EDA1CE6725567FCA0080ED54 /* WriteNewPatientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1CE6625567FCA0080ED54 /* WriteNewPatientController.swift */; };
 		EDF8FB1E254D48B300E9F08E /* AddNewPeopleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8FB1D254D48B300E9F08E /* AddNewPeopleController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		ED6A3A8E254594B2002D6512 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
 		ED6A3A9225459637002D6512 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		ED6A3A9425459A29002D6512 /* UILabel + extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extention.swift"; sourceTree = "<group>"; };
+		EDA1CE6625567FCA0080ED54 /* WriteNewPatientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNewPatientController.swift; sourceTree = "<group>"; };
 		EDF8FB1D254D48B300E9F08E /* AddNewPeopleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPeopleController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				ED6A3A8325458F73002D6512 /* Statistic */,
 				ED6A3A8225458F61002D6512 /* Doctors */,
 				ED2E75AD254EB5C80020775D /* DetailPersonController.swift */,
+				EDA1CE6625567FCA0080ED54 /* WriteNewPatientController.swift */,
 			);
 			path = Modul;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				ED5E8624254D963D008BE23A /* DoctorsSingelton.swift in Sources */,
 				ED6A3A6E25458E1A002D6512 /* AppDelegate.swift in Sources */,
 				ED6A3A9325459637002D6512 /* BasicCell.swift in Sources */,
+				EDA1CE6725567FCA0080ED54 /* WriteNewPatientController.swift in Sources */,
 				ED6A3A7025458E1A002D6512 /* SceneDelegate.swift in Sources */,
 				ED5E8626254D9661008BE23A /* PatientSingelton.swift in Sources */,
 				ED6A3A8625458FDB002D6512 /* StatisticViewController.swift in Sources */,

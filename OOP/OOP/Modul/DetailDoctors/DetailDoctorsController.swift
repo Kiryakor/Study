@@ -20,6 +20,7 @@ class DetailDoctorsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Доктор"
         fullName.text = data.data[index].fullName
         personImage.image = data.data[index].image
         profession.text = data.data[index].profession
@@ -28,7 +29,12 @@ class DetailDoctorsController: UIViewController {
     }
     
     @objc func editProfiel(){}
-    @objc func addProfiel(){}
+    @objc func addProfiel(){
+        //MARK: - запись нового чела
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "writePacientVC") as! WriteNewPatientController
+        navigationController?.pushViewController(vc,animated: true)
+    }
 }
 
 extension DetailDoctorsController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{

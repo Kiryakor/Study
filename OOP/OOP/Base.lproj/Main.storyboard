@@ -444,9 +444,24 @@
             </objects>
             <point key="canvasLocation" x="1254" y="-434"/>
         </scene>
+        <!--Write New Patient Controller-->
+        <scene sceneID="eZq-Dw-fVy">
+            <objects>
+                <viewController storyboardIdentifier="writePacientVC" id="VeZ-jb-qew" customClass="WriteNewPatientController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nRn-yu-Iwm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="YwP-wb-CQh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i18-R5-9Cc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2112" y="992"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1L7-yl-1Cp"/>
+        <segue reference="SlN-Rm-HHZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1" width="572" height="258"/>

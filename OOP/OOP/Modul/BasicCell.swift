@@ -27,7 +27,6 @@ class BasicCell: UITableViewCell {
         profession.translatesAutoresizingMaskIntoConstraints = false
         return profession
     }()
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
