@@ -110,6 +110,7 @@ extension PatientController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "detailPacientVC") as! DetailPersonController
+        vc.index = indexPath.row
         navigationController?.pushViewController(vc,animated: true)
     }
 }

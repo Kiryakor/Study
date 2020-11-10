@@ -10,6 +10,6 @@ import UIKit
 
 class PatientSingelton {
     private init(){}
-    var data: [PeopleModel] = [PeopleModel(name: "ivan", soname: "Petrov", profession: "работяга", image: UIImage(systemName: "table")!)]
+    var data: [PeopleModel] = [PeopleModel(name: "ivan", soname: "Petrov", profession: "работяга", image: UIImage(systemName: "table")!, data: Date())]
     static let share = PatientSingelton()
 }

@@ -254,10 +254,7 @@
 		EDBB264C25319A1D005A7DF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "-";
-=======
->>>>>>> 22f7e5728b8e9ba36ff498404b9e93a97aee71e4
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZQ27S689GF;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -268,10 +265,7 @@
 		EDBB264D25319A1D005A7DF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "-";
-=======
->>>>>>> 22f7e5728b8e9ba36ff498404b9e93a97aee71e4
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZQ27S689GF;
 				ENABLE_HARDENED_RUNTIME = YES;

@@ -27,7 +27,7 @@ class BasicCell: UITableViewCell {
         profession.translatesAutoresizingMaskIntoConstraints = false
         return profession
     }()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
@@ -52,14 +52,14 @@ extension BasicCell{
         addSubview(fullName)
         NSLayoutConstraint.activate([
             fullName.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: 8),
-            fullName.centerYAnchor.constraint(equalTo: centerYAnchor,constant: 8)
+            fullName.centerYAnchor.constraint(equalTo: centerYAnchor,constant: 0)
         ])
         
         
         addSubview(profession)
         NSLayoutConstraint.activate([
             profession.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: 8),
-            profession.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -8)
+            profession.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -20)
         ])
     }
     

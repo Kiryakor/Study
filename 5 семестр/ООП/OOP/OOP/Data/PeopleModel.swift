@@ -14,6 +14,7 @@ protocol peopleProtocol{
     var soname:String { get set }
     var profession:String { get set }
     var image: UIImage { get set }
+    var data: Date { get set }
 }
 
 struct PeopleModel: peopleProtocol {
@@ -21,8 +22,11 @@ struct PeopleModel: peopleProtocol {
     var soname: String
     var profession: String
     var image: UIImage
+    var data: Date
     
     var fullName:String {
         return name + " " + soname
     }
+    
+    var doctorHistory:[peopleProtocol] = []
 }

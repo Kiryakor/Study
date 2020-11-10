@@ -48,9 +48,9 @@ class AddNewPeopleController: UIViewController {
         guard nameTextField.text != "", somaneTextField.text != "", professionTextField.text != "" else { return }
         switch stateAddPeople {
         case .doctor:
-            doctorSingelton.data.append(PeopleModel(name: nameTextField.text!, soname: somaneTextField.text!, profession: professionTextField.text!, image: addImageView.image!))
+            doctorSingelton.data.append(PeopleModel(name: nameTextField.text!, soname: somaneTextField.text!, profession: professionTextField.text!, image: addImageView.image!, data: Date()))
         case .patient:
-            patientSingelton.data.append(PeopleModel(name: nameTextField.text!, soname: somaneTextField.text!, profession: professionTextField.text!, image: addImageView.image!))
+            patientSingelton.data.append(PeopleModel(name: nameTextField.text!, soname: somaneTextField.text!, profession: professionTextField.text!, image: addImageView.image!, data: Date()))
         case .none:
             break
         }
