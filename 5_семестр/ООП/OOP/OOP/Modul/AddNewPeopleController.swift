@@ -13,6 +13,12 @@ enum StateAddPeople {
     case doctor
 }
 
+class AddNewPeoplePresenter {
+    var doctorSingelton = DoctorsSingelton.share
+    var patientSingelton = PatientSingelton.share
+    var stateAddPeople: StateAddPeople!
+}
+
 class AddNewPeopleController: UIViewController {
     
     @IBOutlet weak var addImageView: UIImageView!
@@ -22,16 +28,14 @@ class AddNewPeopleController: UIViewController {
     @IBOutlet weak var someHelpersLabel: UILabel!
     var imageTapGestureRecognizer: UITapGestureRecognizer!
     
-    var doctorSingelton = DoctorsSingelton.share
-    var patientSingelton = PatientSingelton.share
-    var stateAddPeople: StateAddPeople!
+    var presenter = AddNewPeoplePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapPersonImageView))
         addImageView.addGestureRecognizer(imageTapGestureRecognizer)
         
-        switch stateAddPeople {
+        switch presenter.stateAddPeople {
         case .doctor:
             addImageView.image = #imageLiteral(resourceName: "doctor")
             title = "Добавление нового врача"
@@ -50,11 +54,11 @@ class AddNewPeopleController: UIViewController {
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
         guard nameTextField.text != "", somaneTextField.text != "", professionTextField.text != "" else { return }
-        switch stateAddPeople {
+        switch presenter.stateAddPeople {
         case .doctor:
-            doctorSingelton.data.append(PeopleModel(name: nameTextField.text!, soname: somaneTextField.text!, profession: professionTextField.text!, image: addImageView.image!, data: Date()))
+            presenter.doctorSingelton.data.append(PeopleModel(name: nameTextField.text!, soname: somaneTextField.text!, profession: professionTextField.text!, image: addImageView.image!, data: Date()))
         case .patient:
-            patientSingelton.data.append(PeopleModel(name: nameTextField.text!, soname: somaneTextField.text!, profession: professionTextField.text!, image: addImageView.image!, data: Date()))
+            presenter.patientSingelton.data.append(PeopleModel(name: nameTextField.text!, soname: somaneTextField.text!, profession: professionTextField.text!, image: addImageView.image!, data: Date()))
         case .none:
             break
         }

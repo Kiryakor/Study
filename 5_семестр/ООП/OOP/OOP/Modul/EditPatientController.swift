@@ -1,5 +1,5 @@
 //
-//  EditPeopleViewController.swift
+//  EditPatientViewController.swift
 //  OOP
 //
 //  Created by Кирилл on 08.11.2020.
@@ -8,27 +8,33 @@
 
 import UIKit
 
-class EditDoctorsViewController: UIViewController {
-
-    var data = DoctorsSingelton.share
+class EditPatientPresenter {
+    var data = PatientSingelton.share
     var index:Int!
-    
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var sonameTextField: UITextField!
-    @IBOutlet weak var proffessionTextField: UITextField!
-    @IBOutlet weak var professionLabel: UILabel!
+}
+
+class EditPatientController: UIViewController {
+
     @IBOutlet weak var peopleImageView: UIImageView!
+    @IBOutlet weak var infoTextField: UITextField!
+    @IBOutlet weak var sonameTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     var imageTapGestureRecognizer: UITapGestureRecognizer!
+    
+    var presenter = EditPatientPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Редактирование данных"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapPersonImageView))
         peopleImageView.addGestureRecognizer(imageTapGestureRecognizer)
-        nameTextField.text = data.data[index].name
-        sonameTextField.text = data.data[index].soname
-        proffessionTextField.text = data.data[index].profession
-        peopleImageView.image = data.data[index].image
+        peopleImageView.image = presenter.data.data[presenter.index].image
+        infoTextField.text = presenter.data.data[presenter.index].profession
+        nameTextField.text = presenter.data.data[presenter.index].name
+        sonameTextField.text = presenter.data.data[presenter.index].soname
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAction))
     }
     
@@ -37,16 +43,15 @@ class EditDoctorsViewController: UIViewController {
     }
     
     @objc func saveAction(){
-        data.data[index].image = peopleImageView.image!
-        data.data[index].name = nameTextField.text!
-        data.data[index].soname = sonameTextField.text!
-        data.data[index].profession = proffessionTextField.text!
+        presenter.data.data[presenter.index].image = peopleImageView.image!
+        presenter.data.data[presenter.index].name = nameTextField.text!
+        presenter.data.data[presenter.index].soname = sonameTextField.text!
         self.navigationController?.popViewController(animated: true)
     }
 }
 
 //MARK: Load Photo
-extension EditDoctorsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension EditPatientController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     private func alertImage(){
         let alert = UIAlertController(title: nil, message: "Выберите способ загрузки израбражения", preferredStyle: .alert)
         let cameraAction = UIAlertAction(title: "Сamera", style: .default) { (action) in

@@ -8,10 +8,14 @@
 
 import UIKit
 
-class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
-    
+class PickerPresenter {
     var data = StatisticSingelton.share
     var active = 0
+}
+
+class PickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+    
+    var presenter = PickerPresenter()
     @IBOutlet weak var picker: UIPickerView!
     
     override func viewDidLoad() {
@@ -25,14 +29,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @objc func add(){
-        data.count[active] += 1
+        presenter.data.count[presenter.active] += 1
         let date = Date()
         let calendar = Calendar.current
         let weekday = calendar.component(.weekday, from: date)
         if weekday == 1{
-            data.weekday[6] += 1
+            presenter.data.weekday[6] += 1
         }else {
-            data.weekday[weekday-2] += 1
+            presenter.data.weekday[weekday-2] += 1
         }
         let alert = UIAlertController(title: "Пациент успешно записан", message: nil, preferredStyle: .actionSheet)
         let action = UIAlertAction(title: "ok", style: .default)
@@ -45,14 +49,14 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return data.pickerData.count
+        return presenter.data.pickerData.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data.pickerData[row]
+        return presenter.data.pickerData[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        active = row
+        presenter.active = row
     }
 }

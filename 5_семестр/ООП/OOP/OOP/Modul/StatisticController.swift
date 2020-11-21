@@ -8,17 +8,22 @@
 
 import UIKit
 
-class StatisticViewController: UIViewController {
-
+class StatisticPresenter {
     enum presentDATA{
         case rayon
         case day
     }
     
     let statisticData = StatisticSingelton.share
+    var presentData: presentDATA = .rayon
+}
+
+class StatisticController: UIViewController {
+
     @IBOutlet weak var talbeView: UITableView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    var presentData: presentDATA = .rayon
+    
+    var presenter = StatisticPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +41,9 @@ class StatisticViewController: UIViewController {
     @objc func chengeValue(){
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            presentData = .rayon
+            presenter.presentData = .rayon
         case 1:
-            presentData = .day
+            presenter.presentData = .day
         default:
             break
         }
@@ -46,23 +51,23 @@ class StatisticViewController: UIViewController {
     }
 }
 
-extension StatisticViewController: UITableViewDelegate, UITableViewDataSource{
+extension StatisticController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch presentData {
+        switch presenter.presentData {
         case .day:
-            return statisticData.weekday.count
+            return presenter.statisticData.weekday.count
         case .rayon:
-            return statisticData.pickerData.count
+            return presenter.statisticData.pickerData.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath)
-        switch presentData {
+        switch presenter.presentData {
         case .rayon:
-            cell.textLabel?.text = String(statisticData.pickerData[indexPath.row] + " - " + String(statisticData.count[indexPath.row]))
+            cell.textLabel?.text = String(presenter.statisticData.pickerData[indexPath.row] + " - " + String(presenter.statisticData.count[indexPath.row]))
         case .day:
-            cell.textLabel?.text = String(statisticData.day[indexPath.row] + " - " + String(statisticData.weekday[indexPath.row]))
+            cell.textLabel?.text = String(presenter.statisticData.day[indexPath.row] + " - " + String(presenter.statisticData.weekday[indexPath.row]))
         }
         return cell
     }

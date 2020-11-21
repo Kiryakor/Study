@@ -160,7 +160,7 @@
         <!--Статистика-->
         <scene sceneID="0po-E8-iVq">
             <objects>
-                <viewController id="Avf-EU-YWi" customClass="StatisticViewController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Avf-EU-YWi" customClass="StatisticController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yr5-rj-vfp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -481,7 +481,7 @@
         <!--Редактирование данных-->
         <scene sceneID="tBs-mi-Odb">
             <objects>
-                <viewController storyboardIdentifier="EditPeopleViewController" title="Редактирование данных" id="MCk-ug-8kW" customClass="EditDoctorsViewController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditPeopleViewController" title="Редактирование данных" id="MCk-ug-8kW" customClass="EditDoctorsController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nPc-Pi-pZ8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -506,7 +506,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проблема" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXw-5l-u3Y">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Должность" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXw-5l-u3Y">
                                 <rect key="frame" x="32" y="258" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="IJ4-fn-12p"/>
@@ -589,7 +589,7 @@
         <!--Редактирование данных-->
         <scene sceneID="2uB-Bt-ic7">
             <objects>
-                <viewController storyboardIdentifier="EditPatientViewController" title="Редактирование данных" id="BLB-1k-bUk" customClass="EditPatientViewController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditPatientViewController" title="Редактирование данных" id="BLB-1k-bUk" customClass="EditPatientController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IrJ-en-YDE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -614,7 +614,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Должность" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vp3-Uu-vYu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проблема" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vp3-Uu-vYu">
                                 <rect key="frame" x="32" y="258" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="Oby-i9-UP0"/>
@@ -693,10 +693,10 @@
             </objects>
             <point key="canvasLocation" x="2149" y="260"/>
         </scene>
-        <!--Write Patient To Doctor View Controller-->
+        <!--Write Patient To Doctor Controller-->
         <scene sceneID="KQG-oA-Bil">
             <objects>
-                <viewController storyboardIdentifier="WritePatientToDoctorViewController" id="h5O-Bb-KaG" customClass="WritePatientToDoctorViewController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WritePatientToDoctorViewController" id="h5O-Bb-KaG" customClass="WritePatientToDoctorController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KK0-TC-1Oo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -737,10 +737,10 @@
             </objects>
             <point key="canvasLocation" x="1254" y="-1108"/>
         </scene>
-        <!--Picker View Controller-->
+        <!--Picker Controller-->
         <scene sceneID="HDc-v6-GRP">
             <objects>
-                <viewController storyboardIdentifier="PickerViewController" id="qfy-Gk-FbE" customClass="PickerViewController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickerViewController" id="qfy-Gk-FbE" customClass="PickerController" customModule="OOP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IJy-gM-hMh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

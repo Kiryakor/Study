@@ -8,10 +8,15 @@
 
 import UIKit
 
-class DetailPersonController: UIViewController {
-
+class DetailPersonPresenter {
     var index:Int!
     var data = PatientSingelton.share
+}
+
+class DetailPersonController: UIViewController {
+
+    var presenter = DetailPersonPresenter()
+    
     @IBOutlet weak var peopleImageView: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var professionLabel: UILabel!
@@ -30,22 +35,22 @@ class DetailPersonController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        peopleImageView.image = data.data[index].image
-        fullNameLabel.text = data.data[index].fullName
-        professionLabel.text = data.data[index].profession
+        peopleImageView.image = presenter.data.data[presenter.index].image
+        fullNameLabel.text = presenter.data.data[presenter.index].fullName
+        professionLabel.text = presenter.data.data[presenter.index].profession
     }
     
     @IBAction func writePeople(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "WritePatientToDoctorViewController") as! WritePatientToDoctorViewController
-        vc.indexTapPeople = index
+        let vc = storyboard.instantiateViewController(withIdentifier: "WritePatientToDoctorViewController") as! WritePatientToDoctorController
+        vc.presenter.indexTapPeople = presenter.index
         navigationController?.pushViewController(vc,animated: true)
     }
     
     @objc func editProfile(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditPatientViewController") as! EditPatientViewController
-        vc.index = index
+        let vc = storyboard.instantiateViewController(withIdentifier: "EditPatientViewController") as! EditPatientController
+        vc.presenter.index = presenter.index
         navigationController?.pushViewController(vc,animated: true)
     }
 }

@@ -8,7 +8,13 @@
 
 import UIKit
 
-class WritePatientToDoctorViewController: UIViewController {
+class WritePatientToDoctorPresenter {
+    var indexTapPeople:Int!
+    var doctors = DoctorsSingelton.share
+    var patient = PatientSingelton.share
+}
+
+class WritePatientToDoctorController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!{
         didSet{
@@ -17,9 +23,7 @@ class WritePatientToDoctorViewController: UIViewController {
         }
     }
     
-    var indexTapPeople:Int!
-    var doctors = DoctorsSingelton.share
-    var patient = PatientSingelton.share
+    var presenter = WritePatientToDoctorPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +32,22 @@ class WritePatientToDoctorViewController: UIViewController {
     }
 }
 
-extension WritePatientToDoctorViewController: UITableViewDelegate, UITableViewDataSource{
+extension WritePatientToDoctorController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        doctors.data.count
+        presenter.doctors.data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "writeCell", for: indexPath) as! BasicCell
-        cell.setValue(data: doctors.data[indexPath.row])
+        cell.setValue(data: presenter.doctors.data[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        doctors.data[indexPath.row].doctorHistory.append(patient.data[indexTapPeople])
+        presenter.doctors.data[indexPath.row].doctorHistory.append(presenter.patient.data[presenter.indexTapPeople])
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "PickerViewController") as! PickerViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "PickerViewController") as! PickerController
         navigationController?.pushViewController(vc,animated: true)
     }
 }
