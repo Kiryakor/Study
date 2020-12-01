@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED155D5F2573CF76000E325F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB264F25319A5D005A7DF3 /* GLUT.framework */; };
 		EDBB264825319A1D005A7DF3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDBB264725319A1D005A7DF3 /* main.cpp */; };
 		EDBB265325319B9A005A7DF3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB265125319A65005A7DF3 /* OpenGL.framework */; };
 		EDBB265425319BA4005A7DF3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB264F25319A5D005A7DF3 /* GLUT.framework */; };
@@ -38,6 +39,7 @@
 			files = (
 				EDBB265425319BA4005A7DF3 /* GLUT.framework in Frameworks */,
 				EDBB265325319B9A005A7DF3 /* OpenGL.framework in Frameworks */,
+				ED155D5F2573CF76000E325F /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
