@@ -1,49 +1,69 @@
 from scipy import stats
 import numpy
 import math
+import matplotlib.pyplot
+# входные данные
+x = numpy.array([-2.5, -1., -0.5, 0., 1., 1.5, 3.])
+y = numpy.array([-9., 10., 2., 5., 0., 2., 36.])
+n = x.size
+k = 3
+alpha = 0.05
 
-# Центры интервалов, на которые разбиты значения случайной величины:
-step = 0.15
-bins = numpy.arange(0.075, 1.05, step)
+# посчитали X и Y из лекции
+x1 = numpy.array([
+    [1., x[0], x[0]**2, x[0]**3],
+    [1., x[1], x[1]**2, x[1]**3],
+    [1., x[2], x[2]**2, x[2]**3],
+    [1., x[3], x[3]**2, x[3]**3],
+    [1., x[4], x[4]**2, x[4]**3],
+    [1., x[5], x[5]**2, x[5]**3],
+    [1., x[6], x[6]**2, x[6]**3],
+])
 
-# Частоты попадания случайной величины в заданные интервалы:
-counts = [14, 19, 14, 12, 14, 17, 10]
+y1 = y.transpose()
 
-# Общее число наблюдений:
-n = sum(counts)
+# нашли коэф
+a = numpy.dot(numpy.dot(numpy.linalg.inv(numpy.dot(x1.transpose(),x1)), x1.transpose()), y1)
+# их вывод на экран
+print(a[3],'\t',a[2],'\t',a[1],'\t',a[0])
 
-# Вероятности попаданий значений случайной величины в интервалы:
-p = []
-for i in counts:
-    p.append(float(i) / n)
+# считаем Y с крышкой (вместо x - наша выборка и наши коэффициенты)
+ySktushkoy = a[0] + a[1] * x + a[2]*(x**2) + a[3]*(x**3)
 
-# Длина интервалов (одинаковая для всех интервалов по условию)
-h = 0.15
+#RSS
+RSS = sum((y-ySktushkoy)**2)
 
-# Матожидание выборки
-m = 0
-for i in range(bins.size):
-    m = m + bins[i] * p[i]
+#y - среднее
+Ysrednee = sum(y) / n
 
-# Дисперсия выборки
-d = 0
-for i in range(bins.size):
-    d = d + ((bins[i] - m) ** 2) * p[i]
+# TSS
+TSS = sum((y - Ysrednee)**2)
 
-# Оценка параметров распределения методом моментов
-a = m - math.sqrt(3 * d)
-b = m + math.sqrt(3 * d)
+# R^2
+R2 = 1- RSS/TSS
 
-# Теоретические вероятности попадания в интервалы
-expP = []
-for i in range(bins.size):
-    expP.append(stats.uniform.cdf(bins[i] + h / 2, a, b) - stats.uniform.cdf(bins[i] - h / 2, a, b))
+# Считаем сигна квадрат и сигрма 1 квадрат
+sigma_2 = TSS/(n-1)
+sigma1_2 = RSS / (n-k-1)
 
-# Теоретические частоты попадания в интервалы
-expCount = []
-for i in expP:
-    expCount.append(i * n)
+# F наблюдаемов
+obsF = sigma_2 / sigma1_2
 
-# Мера расхождения между данными и моделью по критерию К.Пирсона
-u = stats.chisquare(counts, expCount, 2)
-print(u[0])
+# F критическое
+expF = stats.f.ppf(1-alpha,n-1,n-k-1)
+
+# (X^t * X) ^ -1
+xtx1 = numpy.linalg.inv(numpy.dot(x1.transpose(), x1))
+
+# T нблюдаемое
+obsT = [0, 0, 0, 0]
+for i in range(4):
+    obsT[i] = abs(a[i]) / (numpy.sqrt(RSS/(n-k-1)) * xtx1[i][i])
+
+# T критическое
+expT = stats.t.ppf(1-(alpha/2),n-k-1)
+
+# график
+xplot = numpy.arange(-3.,3.5,0.01)
+yplot = a[0] + a[1]*xplot + a[2]*(xplot**2) + a[3]*(xplot**3)
+# draw
