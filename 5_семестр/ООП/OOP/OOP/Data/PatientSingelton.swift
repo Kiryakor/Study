@@ -10,7 +10,7 @@ import UIKit
 
 class PatientSingelton {
     private init(){}
-    var data: [PeopleModel] = []
+    var data: [DoctorModel] = []
     static let share = PatientSingelton()
 }
 
@@ -48,7 +48,7 @@ class LoadPatient {
         let profession:[String] = defaults.array(forKey: "patientProfession") as? [String] ?? []
         let image:[Data] = defaults.array(forKey: "imageProfession") as? [Data] ?? []
         for i in 0..<name.count{
-            let model = PeopleModel(name: name[i], soname: soname[i], profession: profession[i], image: UIImage(data: image[i])!, data: date[i])
+            let model = DoctorModel(name: name[i], soname: soname[i], profession: profession[i], image: UIImage(data: image[i])!, data: date[i])
             saveData.data.append(model)
         }
     }

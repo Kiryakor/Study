@@ -28,7 +28,7 @@ class BaseCollectionCell: UICollectionViewCell {
         return label
     }()
     
-    func setupUI(data:PeopleModel) {
+    func setupUI(data:DoctorModel) {
         image.image = data.image
         fullName.text = data.fullName
         addSubview(image)

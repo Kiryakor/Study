@@ -11,7 +11,7 @@ import UIKit
 class PatientPresenter {
     var patientSingelton = PatientSingelton.share
     var stateData:StateData = .base
-    var findData:[PeopleModel] = []
+    var findData:[DoctorModel] = []
 }
 
 class PatientController: UIViewController {

@@ -63,7 +63,7 @@ extension BasicCell{
         ])
     }
     
-    func setValue(data: PeopleModel) {
+    func setValue(data: DoctorModel) {
         img.image =  data.image
         fullName.text = data.fullName
         profession.text = data.profession

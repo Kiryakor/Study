@@ -10,7 +10,7 @@ import UIKit
 
 class DoctorsSingelton {
     private init(){}
-    var data: [PeopleModel] = []
+    var data: [DoctorModel] = []
     static let share = DoctorsSingelton()
 }
 
@@ -75,7 +75,7 @@ class LoadDoctors {
         let profession:[String] = defaults.array(forKey: "doctorsProfession") as? [String] ?? []
         let imageDoctors:[Data] = defaults.array(forKey: "imageDoctors") as? [Data] ?? []
         for i in 0..<name.count{
-            let model = PeopleModel(name: name[i], soname: soname[i], profession: profession[i], image: UIImage(data: imageDoctors[i])!, data: date[i])
+            let model = DoctorModel(name: name[i], soname: soname[i], profession: profession[i], image: UIImage(data: imageDoctors[i])!, data: date[i])
             saveData.data.append(model)
         }
     }
@@ -91,7 +91,7 @@ class LoadDoctors {
         let index:[Int] = defaults.array(forKey: "indexHistory") as? [Int] ?? []
         
         for i in 0..<name.count{
-            let model = PeopleModel(name: name[i], soname: soname[i], profession: profession[i], image: UIImage(data: imageDoctors[i])!, data: date[i])
+            let model = DoctorModel(name: name[i], soname: soname[i], profession: profession[i], image: UIImage(data: imageDoctors[i])!, data: date[i])
             saveData.data[index[i]].doctorHistory.append(model)
         }
     }

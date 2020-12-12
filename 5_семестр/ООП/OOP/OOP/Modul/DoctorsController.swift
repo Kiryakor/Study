@@ -16,7 +16,7 @@ enum StateData {
 class DoctorsPresenter {
     var doctorSingelton = DoctorsSingelton.share
     var stateData:StateData = .base
-    var findData:[PeopleModel] = []
+    var findData:[DoctorModel] = []
 }
 
 class DoctorsController: UIViewController {

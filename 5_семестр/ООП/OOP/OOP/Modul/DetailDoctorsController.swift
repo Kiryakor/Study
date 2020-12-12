@@ -50,7 +50,7 @@ extension DetailDoctorsController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as! BaseCollectionCell
-        cell.setupUI(data: presenter.data.data[presenter.index].doctorHistory[indexPath.row] as! PeopleModel)
+        cell.setupUI(data: presenter.data.data[presenter.index].doctorHistory[indexPath.row] as! DoctorModel)
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
         cell.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

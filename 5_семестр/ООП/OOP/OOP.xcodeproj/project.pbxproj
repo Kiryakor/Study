@@ -23,7 +23,7 @@
 		ED6A3A8625458FDB002D6512 /* StatisticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8525458FDB002D6512 /* StatisticController.swift */; };
 		ED6A3A8825458FE6002D6512 /* DoctorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8725458FE6002D6512 /* DoctorsController.swift */; };
 		ED6A3A8D25459165002D6512 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8C25459165002D6512 /* Constant.swift */; };
-		ED6A3A8F254594B2002D6512 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8E254594B2002D6512 /* PeopleModel.swift */; };
+		ED6A3A8F254594B2002D6512 /* DoctorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A8E254594B2002D6512 /* DoctorModel.swift */; };
 		ED6A3A9325459637002D6512 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A9225459637002D6512 /* BasicCell.swift */; };
 		ED6A3A9525459A29002D6512 /* UILabel + extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A3A9425459A29002D6512 /* UILabel + extention.swift */; };
 		EDA36A7A25583D0E00312831 /* EditDoctorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA36A7925583D0E00312831 /* EditDoctorsController.swift */; };
@@ -53,7 +53,7 @@
 		ED6A3A8525458FDB002D6512 /* StatisticController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticController.swift; sourceTree = "<group>"; };
 		ED6A3A8725458FE6002D6512 /* DoctorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsController.swift; sourceTree = "<group>"; };
 		ED6A3A8C25459165002D6512 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		ED6A3A8E254594B2002D6512 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
+		ED6A3A8E254594B2002D6512 /* DoctorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorModel.swift; sourceTree = "<group>"; };
 		ED6A3A9225459637002D6512 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		ED6A3A9425459A29002D6512 /* UILabel + extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extention.swift"; sourceTree = "<group>"; };
 		EDA36A7925583D0E00312831 /* EditDoctorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDoctorsController.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		ED5E8622254D961C008BE23A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				ED6A3A8E254594B2002D6512 /* PeopleModel.swift */,
+				ED6A3A8E254594B2002D6512 /* DoctorModel.swift */,
 				ED5E8623254D963D008BE23A /* DoctorsSingelton.swift */,
 				ED5E8625254D9661008BE23A /* PatientSingelton.swift */,
 				EDA5D5BF256042460076EADD /* StatisticSingelton.swift */,
@@ -323,7 +323,7 @@
 				ED6A3A9525459A29002D6512 /* UILabel + extention.swift in Sources */,
 				EDA36A7C25584E3100312831 /* EditPatientController.swift in Sources */,
 				EDF8FB1E254D48B300E9F08E /* AddNewPeopleController.swift in Sources */,
-				ED6A3A8F254594B2002D6512 /* PeopleModel.swift in Sources */,
+				ED6A3A8F254594B2002D6512 /* DoctorModel.swift in Sources */,
 				ED6A3A8D25459165002D6512 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
