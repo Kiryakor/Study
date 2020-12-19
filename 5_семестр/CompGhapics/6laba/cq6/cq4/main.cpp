@@ -117,15 +117,12 @@ void treugol_i_cube_bez_c(){
 }
 
 void treugol_i_cube(){
+    //треугольник
     glBegin(GL_TRIANGLES);
     glVertex3f(x1, y_1, z1);
     glVertex3f(x2, y2, z2);
     glVertex3f(x3, y3, z3);
     glEnd();
-    glPushMatrix();
-    glTranslatef(200.f, centr_cube[1], 160.f);
-    glutSolidTeapot(20);
-    glPopMatrix();
 }
 
 void shadow_obj(){
@@ -135,7 +132,7 @@ void shadow_obj(){
     glPopMatrix();
 }
 
-void SetupRC(){
+void light_shadow_init(){
     int i;
     centr_cube[0] = 0.f;
     centr_cube[1] = 0.f;
@@ -162,35 +159,27 @@ void SetupRC(){
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     glMaterialfv(GL_FRONT, GL_SPECULAR, specref);
     glMateriali(GL_FRONT, GL_SHININESS, 128);
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
     glShadeModel(shademode);
     glFrontFace(GL_CCW);
     gltMakeShadowMatrix(floor_1, lightPos, shadowMat);
 }
 
 void Drawfloor(){
-    colv[0] = 0.9f;
+    colv[0] = 0.1f;
     colv[1] = 0.7f;
     colv[2] = 0.7f;
     colv[3] = 0.75f;
     glColor4fv(colv);
     glBegin(GL_QUADS);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(250.0f, 0.0f, 0.0f);
-    glVertex3f(250.0f, 0.0f, 250.0f);
-    glVertex3f(0.0f, 0.0f, 250.0f);
-    glEnd();
-    glLineWidth(2.f);
-    glBegin(GL_LINES);
-    for (int i = 0; i < 250; i += 5){
-        glColor3d(0, 0, 0);
-        glVertex3d(i, 0, 0);
-        glVertex3d(i, 0, 250);
-    }
+    glVertex3f(00.0f, 0.0f, 00.0f);
+    glVertex3f(150.0f, 0.0f, 0.0f);
+    glVertex3f(250.0f, 0.0f, 200.0f);
+    glVertex3f(0.0f, 0.0f, 150.0f);
     glEnd();
 }
 
-void RenderScene(void){
+void display(void){
     glLoadIdentity();
     gluLookAt(ex, ey, ez, cx, cy, cz, 0.0, 1.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -208,7 +197,7 @@ void RenderScene(void){
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     Drawfloor();
     glEnable(GL_DEPTH_TEST);
-    glColor4f(0.1f, 0.1f, 0.1f, al);
+    glColor4f(1.1f, 0.1f, 0.1f, al);
     shadow_obj();
     glDisable(GL_BLEND);
     glColor3f(0.4f, 0.05f, 0.1f);
@@ -218,7 +207,7 @@ void RenderScene(void){
     glutSwapBuffers();
 }
 
-void ChangeSize(GLsizei w, GLsizei h){
+void reshape(GLsizei w, GLsizei h){
     glViewport(0, 0, (GLsizei)w, (GLsizei)h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -226,7 +215,7 @@ void ChangeSize(GLsizei w, GLsizei h){
     glMatrixMode(GL_MODELVIEW);
 }
 
-void SpecialKeys(int key, int x, int y){
+void keybouard(int key, int x, int y){
     GLfloat dx, dz;
     if (key == GLUT_KEY_UP){
         GLfloat vx = ex - cx;
@@ -299,13 +288,12 @@ void SpecialKeys(int key, int x, int y){
 int main(int argc, char** argv){
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(768, 768);
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow(argv[0]);
-    glutDisplayFunc(RenderScene);
-    glutReshapeFunc(ChangeSize);
-    glutSpecialFunc(SpecialKeys);
-    SetupRC();
+    glutInitWindowSize(1000, 1000);
+    glutCreateWindow("6 лаба");
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
+    glutSpecialFunc(keybouard);
+    light_shadow_init();
     glutMainLoop();
     return 0;
 }

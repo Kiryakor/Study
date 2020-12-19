@@ -39,7 +39,6 @@ void reshape(int w, int h){
     glLoadIdentity(); // Очистка области отображения
         // Задаем область видимости glOrtho-прямоуольник не меняюий пропрции. glFrustum - пирамида, чем предмет дальше, тем он меньше
     glOrtho(-7.0, 7.0, -7.0, 7.0, -7, 7.0);
-    //glFrustum(-1.0, 1.0, -1.0, 1.0, 1.5, 20.0);
     glMatrixMode(GL_MODELVIEW); // Работа с матрицей вида
     glLoadIdentity(); // Очистка матрицы вида
 }
@@ -52,11 +51,6 @@ void Init(){
     // Включение света
     glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE); // Освещение всех сторон полигона
     glEnable(GL_LIGHTING);
-    //glEnable(GL_LIGHT0);
-    //glEnable(GL_LIGHT1);
-    //glEnable(GL_LIGHT2);
-    //glEnable(GL_LIGHT3);
-    //glEnable(GL_LIGHT4);
 
     glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE); // Цветом материала считается его диффузный цвет
     glEnable(GL_COLOR_MATERIAL); // Разрешить материалам использовать цвет
@@ -78,77 +72,66 @@ void keyboard(unsigned char key, int x, int y) {
             spiny = 1;
         else
             spiny++;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 's':
         if (spinx == -360)
             spinx = -1;
         else
             spinx--;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'w':
         if (spinx == 360)
             spinx = 1;
         else
             spinx++;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'q':
         if (spinz == -360)
             spinz = -1;
         else
             spinz--;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'e':
         if (spinz == 360)
             spinz = 1;
         else
             spinz++;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'z':
         if (Sun == -360)
             Sun = -1;
         else
             Sun--;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'x':
         if (Sun == 360)
             Sun = 1;
         else
             Sun++;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'c':
         if (Sun1 == -360)
             Sun1 = -1;
         else
             Sun1--;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'v':
         if (Sun1 == 360)
             Sun1 = 1;
         else
             Sun1++;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'b':
         if (Sun2 == -360)
             Sun2 = -1;
         else
             Sun2--;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case 'n':
         if (Sun2 == 360)
             Sun2 = 1;
         else
             Sun2++;
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case '1':
         if (L1){
@@ -159,7 +142,6 @@ void keyboard(unsigned char key, int x, int y) {
             glEnable(GL_LIGHT4);
             L1 = true;
         }
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case '2':
         if (L2){
@@ -170,7 +152,6 @@ void keyboard(unsigned char key, int x, int y) {
             glEnable(GL_LIGHT1);
             L2 = true;
         }
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case '3':
         if (L3){
@@ -181,7 +162,6 @@ void keyboard(unsigned char key, int x, int y) {
             glEnable(GL_LIGHT2);
             L3 = true;
         }
-        glutPostRedisplay(); // Перерисовать дисплей
         break;
     case '4':
         if (L4){
@@ -443,7 +423,7 @@ int main(int argc, char** argv){
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(WinLenght, WinHight); // Размер создаваемого окна
-    glutCreateWindow("Свет"); // Создание окна с именем белый квадрат
+    glutCreateWindow("4 лаба"); // Создание окна с именем белый квадрат
 
     Init();
 

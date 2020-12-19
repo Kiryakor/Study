@@ -28,9 +28,8 @@ void reshape(int w, int h){
     glViewport(0, 0, (GLsizei)w, (GLsizei)h); // Создание окна отрисовки на весь экран
     glMatrixMode(GL_PROJECTION); // Работа в матрице проекций (с областью отображения)
     glLoadIdentity(); // Очистка области отображения
-        // Задаем область видимости glOrtho-прямоуольник не меняюий пропрции. glFrustum - пирамида, чем предмет дальше, тем он меньше
+        // Задаем область видимости glOrtho-прямоуольник не меняюий пропрции.
     glOrtho(-7.0, 7.0, -7.0, 7.0, -7, 7.0);
-    //glFrustum(-1.0, 1.0, -1.0, 1.0, 1.5, 20.0);
     glMatrixMode(GL_MODELVIEW); // Работа с матрицей вида
     glLoadIdentity(); // Очистка матрицы вида
 }
@@ -294,7 +293,7 @@ void Light3() {
 
 // Функция отрисовки
 void display() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Очистка буеров цвета и глубины
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Очистка буферов цвета и глубины
     glLoadIdentity(); // Очистка текущей
 
         // Код отрисовки
@@ -339,8 +338,9 @@ void display() {
 
 int main(int argc, char** argv){
     glutInit(&argc, argv);
+//    GLUT_DEPTH - буфер глубины для 3d // GLUT_SINGLE - 1 буфер при выводе
     glutInitDisplayMode(GLUT_DEPTH | GLUT_SINGLE | GLUT_RGB);
-    glutCreateWindow("Свет"); // Создание окна с именем белый квадрат
+    glutCreateWindow("3 лаба"); // Создание окна с именем белый квадрат
 
     Init();
 

@@ -19,7 +19,7 @@
 
 GLfloat ctrlpoints[4][4][3];
 GLUnurbsObj *theNurb;
-GLuint theTeapot;
+GLuint cars;
 
 #define stripeImageWidth 64
 
@@ -33,11 +33,12 @@ GLint currentGenMode;
 GLint fog;
 
 void init_nurb() {
+    //Рисуем подставку 
     int u, v;
     for (u = 0; u<4; u++) {
         for (v = 0; v<4; v++) {
-            ctrlpoints[u][v][0] = 3.0*((GLfloat)u - 1.5);
-            ctrlpoints[u][v][1] = 2.0*((GLfloat)v - 1.5);
+            ctrlpoints[u][v][0] = 7.0*((GLfloat)u - 1.5);
+            ctrlpoints[u][v][1] = 1.0*((GLfloat)v - 1.5);
             if ((u == 1 || u == 2) && (v == 1 || v == 2))
                 ctrlpoints[u][v][2] = 3.0;
             else
@@ -62,6 +63,7 @@ void init_nurb() {
     glutPostRedisplay();
 }
 
+//кривые полоски
 void makeStripeImage(){
     int j;
     for (j = 0; j < stripeImageWidth; j++){
@@ -85,7 +87,7 @@ void display(){
     glFlush();
     glPushMatrix();
     glTranslatef(-2.0, 1.1, 0.0);
-    glCallList(theTeapot);
+    glCallList(cars);
     glPopMatrix();
     glFlush();
 }
@@ -143,14 +145,78 @@ void init(){
         glFogf(GL_FOG_START, 1.0);
         glFogf(GL_FOG_END, 5.0);
     }
-    theTeapot = glGenLists(1);
-    glNewList(theTeapot, GL_COMPILE);
+    
+    //Рисуем машинки
+    cars = glGenLists(1);
+    glNewList(cars, GL_COMPILE);
     glTranslatef(0.0, 0.0, 0.0);
-    glutSolidTeapot(0.8);
+    //Машинка 3
+    glPushMatrix();
+    glPushMatrix();                   // body
+    glScalef(2,.5,1);
+    glutSolidCube(.5);
+    glPopMatrix();
+    glTranslatef(0,0,.25);
+    glPushMatrix();
+    glTranslatef(-.4,-.2,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glTranslatef(.8,0,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glPopMatrix();
+    glTranslatef(0,0,-.5);
+    glPushMatrix();
+    glTranslatef(-.4,-.2,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glTranslatef(.8,0,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glPopMatrix();
+    glPopMatrix();
     glTranslatef(2.2, 0.0, 0.0);
-    glutSolidTeapot(0.6);
+    //Машинка 2
+    glPushMatrix();
+    glPushMatrix();                   // body
+    glScalef(2,.5,1);
+    glutSolidCube(.5);
+    glPopMatrix();
+    glTranslatef(0,0,.25);
+    glPushMatrix();
+    glTranslatef(-.4,-.2,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glTranslatef(.8,0,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glPopMatrix();
+    glTranslatef(0,0,-.5);
+    glPushMatrix();
+    glTranslatef(-.4,-.2,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glTranslatef(.8,0,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glPopMatrix();
+    glPopMatrix();
     glTranslatef(1.5, 0.0, 0.0);
-    glutSolidTeapot(0.4);
+//    glutSolidTorus(1, 2, 10, 10);//Рисуем тор
+    //Машинка 1
+    glPushMatrix();
+    glPushMatrix();                   // body
+    glScalef(2,.5,1);
+    glutSolidCube(.5);
+    glPopMatrix();
+    glTranslatef(0,0,.25);
+    glPushMatrix();
+    glTranslatef(-.4,-.2,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glTranslatef(.8,0,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glPopMatrix();
+    glTranslatef(0,0,-.5);
+    glPushMatrix();
+    glTranslatef(-.4,-.2,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glTranslatef(.8,0,0);
+    glutSolidTorus(.05,.1,8,8);       // wheel
+    glPopMatrix();
+    glPopMatrix();
+
     glEndList();
 }
 
@@ -212,9 +278,8 @@ void keyboard(unsigned char key, int x, int y){
 int main(int argc, char** argv){
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(1000, 500);
-    glutInitWindowPosition(0, 0);
-    glutCreateWindow("Компьютерная графика №5");
+    glutInitWindowSize(2000, 2000);
+    glutCreateWindow("5 лаба");
     init_nurb();
     init();
     glutDisplayFunc(display);
