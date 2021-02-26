@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0940B025DEC58C00E6DC8C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0940AF25DEC58C00E6DC8C /* LocationViewController.swift */; };
+		EDA090E625D98D2D0091ABDB /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA090E525D98D2D0091ABDB /* StartViewController.swift */; };
+		EDA090E925D98D570091ABDB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA090E825D98D570091ABDB /* SecondViewController.swift */; };
 		EDD2ACA925D67CFB008ED85B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD2ACA825D67CFB008ED85B /* AppDelegate.swift */; };
 		EDD2ACAB25D67CFB008ED85B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD2ACAA25D67CFB008ED85B /* SceneDelegate.swift */; };
-		EDD2ACAD25D67CFB008ED85B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD2ACAC25D67CFB008ED85B /* ViewController.swift */; };
+		EDD2ACAD25D67CFB008ED85B /* LighteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD2ACAC25D67CFB008ED85B /* LighteViewController.swift */; };
 		EDD2ACB025D67CFB008ED85B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD2ACAE25D67CFB008ED85B /* Main.storyboard */; };
 		EDD2ACB225D67CFC008ED85B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD2ACB125D67CFC008ED85B /* Assets.xcassets */; };
 		EDD2ACB525D67CFC008ED85B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD2ACB325D67CFC008ED85B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED0940AF25DEC58C00E6DC8C /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		EDA090E525D98D2D0091ABDB /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		EDA090E825D98D570091ABDB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		EDD2ACA525D67CFB008ED85B /* Laba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD2ACA825D67CFB008ED85B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD2ACAA25D67CFB008ED85B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EDD2ACAC25D67CFB008ED85B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDD2ACAC25D67CFB008ED85B /* LighteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LighteViewController.swift; sourceTree = "<group>"; };
 		EDD2ACAF25D67CFB008ED85B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDD2ACB125D67CFC008ED85B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDD2ACB425D67CFC008ED85B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,11 +64,14 @@
 			children = (
 				EDD2ACA825D67CFB008ED85B /* AppDelegate.swift */,
 				EDD2ACAA25D67CFB008ED85B /* SceneDelegate.swift */,
-				EDD2ACAC25D67CFB008ED85B /* ViewController.swift */,
+				EDD2ACAC25D67CFB008ED85B /* LighteViewController.swift */,
 				EDD2ACAE25D67CFB008ED85B /* Main.storyboard */,
 				EDD2ACB125D67CFC008ED85B /* Assets.xcassets */,
 				EDD2ACB325D67CFC008ED85B /* LaunchScreen.storyboard */,
 				EDD2ACB625D67CFC008ED85B /* Info.plist */,
+				EDA090E525D98D2D0091ABDB /* StartViewController.swift */,
+				EDA090E825D98D570091ABDB /* SecondViewController.swift */,
+				ED0940AF25DEC58C00E6DC8C /* LocationViewController.swift */,
 			);
 			path = Laba;
 			sourceTree = "<group>";
@@ -137,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDD2ACAD25D67CFB008ED85B /* ViewController.swift in Sources */,
+				EDD2ACAD25D67CFB008ED85B /* LighteViewController.swift in Sources */,
+				EDA090E625D98D2D0091ABDB /* StartViewController.swift in Sources */,
 				EDD2ACA925D67CFB008ED85B /* AppDelegate.swift in Sources */,
+				ED0940B025DEC58C00E6DC8C /* LocationViewController.swift in Sources */,
+				EDA090E925D98D570091ABDB /* SecondViewController.swift in Sources */,
 				EDD2ACAB25D67CFB008ED85B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
